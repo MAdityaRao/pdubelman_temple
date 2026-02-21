@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Book sevas and offerings at Sri Mahalingeshwara Temple, Padubelman — Rudrabhisheka, Maha Pooje, Ranga Pooje, and more." />
   <title>Sevas | Mahalingeshwara Temple</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="inner-page">
+
+  <!-- ===== NAVIGATION ===== -->
   <header class="page-header">
     <nav class="navbar solid-nav">
       <div class="nav-container">
         <div class="logo">
-          <a href="index.html" style="color: white; text-decoration: none;">Mahalingeshwara</a>
+          <a href="index.html">Mahalingeshwara</a>
         </div>
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#rituals">Rituals</a></li>
           <li><a href="seva.html" class="active">Seva</a></li>
           <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="right-controls">
           <div class="lang-switch" role="group" aria-label="Language switcher">
             <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
           </div>
-          <button class="nav-toggle" onclick="toggleNav()">
+          <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -32,235 +38,157 @@
       </div>
     </nav>
     <div class="page-title-container fade-in">
-        <h1 data-i18n="hero.h1">Divine Sevas & Offerings</h1>
-        <p data-i18n="hero.p">Daily poojas, abhishekas, homas, and special rituals offered with devotion</p>
+      <span class="section-label" style="color:var(--clr-gold-light)">Divine Service</span>
+      <h1 data-i18n="hero.h1">Divine Sevas &amp; Offerings</h1>
+      <p data-i18n="hero.p">Daily poojas, abhishekas, homas, and special rituals offered with devotion</p>
     </div>
   </header>
 
+  <!-- ===== SEVA CONTENT ===== -->
   <main class="section fade-in">
-    <div class="section-container seva-wrap">
-      
-      <h2 class="group-title" data-i18n="groups.daily">Daily Sevas</h2>
-      <div class="seva-list">
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.panchakajaya.name">Panchakajaya</span>
-            <span class="seva-badge" data-i18n="badges.daily">Daily</span>
-            <span class="seva-price">₹20</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.panchakajaya.desc">Panchakajaya is a wholesome prasada prepared with jaggery, sesame, coconut, ghee and honey. Offered with simple devotion, it signifies balance of the five elements and the sweetness of a steady mind.</div>
-        </div>
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.rudra.name">Rudrabhisheka</span>
-            <span class="seva-badge" data-i18n="badges.daily">Daily</span>
-            <span class="seva-price">₹50</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.rudra.desc">The Shiva Linga is bathed with water, milk and sacred dravyas while chanting Sri Rudram. Devotees undertake this seva to dissolve inner negativity and invite clarity, health and protection.</div>
-        </div>
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.maha.name">Maha Pooje</span>
-            <span class="seva-badge" data-i18n="badges.daily">Daily</span>
-            <span class="seva-price">₹50</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.maha.desc">A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.</div>
-        </div>
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.nitya.name">Nitya Pooje</span>
-            <span class="seva-badge" data-i18n="badges.daily">Daily</span>
-            <span class="seva-price">₹250</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.nitya.desc">The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.</div>
-        </div>
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.shashwatha.name">Shashwatha Pooje</span>
-            <span class="seva-badge" data-i18n="badges.endowment">Endowment</span>
-            <span class="seva-price">₹3001</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.shashwatha.desc">A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.</div>
-        </div>
-      </div>
+    <div class="section-container">
+      <div class="seva-wrap">
 
-      <h2 class="group-title" data-i18n="groups.special" style="margin-top: 3rem;">Special Sevas (On Request)</h2>
-      <div class="seva-list">
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.ranga.name">Ranga Pooje</span>
-            <span class="seva-badge" data-i18n="badges.special">Special</span>
-            <span class="seva-price" data-i18n="prices.asReq">As per request</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.ranga.desc">
-            <p>Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>
-          </div>
-        </div>
-        <div class="seva-item">
-          <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
-            <span class="seva-name" data-i18n="sevas.shatarudra.name">Shatarudrabhisheka</span>
-            <span class="seva-badge" data-i18n="badges.special">Special</span>
-            <span class="seva-price" data-i18n="prices.asReq">As per request</span>
-          </div>
-          <div class="seva-content" data-i18n="sevas.shatarudra.desc">
-            <p>Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>
-          </div>
-        </div>
-      </div>
+        <!-- Daily Sevas -->
+        <h2 class="group-title" data-i18n="groups.daily">Daily Sevas</h2>
+        <div class="seva-list">
 
-      <p class="contact-info" data-i18n="contact.line">For bookings and details: +91 9880544629 • padubelmantemple@gmail.com</p>
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.panchakajaya.name">Panchakajaya</span>
+              <span class="seva-badge" data-i18n="badges.daily">Daily</span>
+              <span class="seva-price">&#8377;20</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content" data-i18n="sevas.panchakajaya.desc">
+              Panchakajaya is a wholesome prasada prepared with jaggery, sesame, coconut, ghee and honey. Offered with simple devotion, it signifies balance of the five elements and the sweetness of a steady mind.
+            </div>
+          </div>
 
-      <section class="donation-card">
-        <h2 class="donation-title" data-i18n="donation.title">Donations and Temple Support</h2>
-        <p class="donation-note" data-i18n="donation.note">Devotees may kindly contribute towards daily poojas, special sevas, and the development of the temple. Your offerings help sustain the spiritual and cultural activities of Mahalingeshwara Temple.</p>
-        
-        <div class="donation-grid">
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.rudra.name">Rudrabhisheka</span>
+              <span class="seva-badge" data-i18n="badges.daily">Daily</span>
+              <span class="seva-price">&#8377;50</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content" data-i18n="sevas.rudra.desc">
+              The Shiva Linga is bathed with water, milk and sacred dravyas while chanting Sri Rudram. Devotees undertake this seva to dissolve inner negativity and invite clarity, health and protection.
+            </div>
+          </div>
+
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.maha.name">Maha Pooje</span>
+              <span class="seva-badge" data-i18n="badges.daily">Daily</span>
+              <span class="seva-price">&#8377;50</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content" data-i18n="sevas.maha.desc">
+              A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.
+            </div>
+          </div>
+
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.nitya.name">Nitya Pooje</span>
+              <span class="seva-badge" data-i18n="badges.daily">Daily</span>
+              <span class="seva-price">&#8377;250</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content" data-i18n="sevas.nitya.desc">
+              The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.
+            </div>
+          </div>
+
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.shashwatha.name">Shashwatha Pooje</span>
+              <span class="seva-badge" data-i18n="badges.endowment">Endowment</span>
+              <span class="seva-price">&#8377;3001</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content" data-i18n="sevas.shashwatha.desc">
+              A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Special Sevas -->
+        <h2 class="group-title" data-i18n="groups.special">Special Sevas (On Request)</h2>
+        <div class="seva-list">
+
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.ranga.name">Ranga Pooje</span>
+              <span class="seva-badge" data-i18n="badges.special">Special</span>
+              <span class="seva-price" data-i18n="prices.asReq">As per request</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content">
+              <p data-i18n="sevas.ranga.desc">Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>
+            </div>
+          </div>
+
+          <div class="seva-item">
+            <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
+              <span class="seva-name" data-i18n="sevas.shatarudra.name">Shatarudrabhisheka</span>
+              <span class="seva-badge" data-i18n="badges.special">Special</span>
+              <span class="seva-price" data-i18n="prices.asReq">As per request</span>
+              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+            </div>
+            <div class="seva-content">
+              <p data-i18n="sevas.shatarudra.desc">Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact line -->
+        <p class="contact-info" data-i18n="contact.line">
+          For bookings and details: <a href="tel:+919880544629">+91 9880 544 629</a> &bull; <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a>
+        </p>
+
+        <!-- Donation card -->
+        <section class="donation-card">
+          <h2 class="donation-title" data-i18n="donation.title">Donations and Temple Support</h2>
+          <p class="donation-note" data-i18n="donation.note">Devotees may kindly contribute towards daily poojas, special sevas, and the development of the temple. Your offerings help sustain the spiritual and cultural activities of Mahalingeshwara Temple.</p>
+
+          <div class="donation-grid">
             <div class="bank-details">
-                <p><strong data-i18n="donation.templename.label">Temple Name:</strong> <span data-i18n="donation.templename.value">Mahalingeshwara Temple, Padubelman</span></p>
-                <p><strong data-i18n="donation.bank.label">Bank:</strong> <span data-i18n="donation.bank.value">Indian Overseas Bank</span></p>
-                <p><strong data-i18n="donation.branch.label">Branch:</strong> <span data-i18n="donation.branch.value">Belmannu (2591)</span></p>
-                <p><strong data-i18n="donation.acno.label">Account No:</strong> <span>25910100000524</span></p>
-                <p><strong data-i18n="donation.ifsc.label">IFSC:</strong> <span>IOBA0002591</span></p>
+              <p><strong data-i18n="donation.templename.label">Temple Name:</strong> <span data-i18n="donation.templename.value">Mahalingeshwara Temple, Padubelman</span></p>
+              <p><strong data-i18n="donation.bank.label">Bank:</strong> <span data-i18n="donation.bank.value">Indian Overseas Bank</span></p>
+              <p><strong data-i18n="donation.branch.label">Branch:</strong> <span data-i18n="donation.branch.value">Belmannu (2591)</span></p>
+              <p><strong data-i18n="donation.acno.label">Account No:</strong> <span>25910100000524</span></p>
+              <p><strong data-i18n="donation.ifsc.label">IFSC:</strong> <span>IOBA0002591</span></p>
             </div>
             <div class="upi-donation">
-                <p><strong data-i18n="donation.upi.text">Scan to Donate via UPI:</strong></p>
-                <img src="assets/upi-qr.png" alt="Temple UPI QR Code" class="upi-qr" data-i18n-alt="images.upi.alt">
+              <p><strong data-i18n="donation.upi.text">Scan to Donate via UPI:</strong></p>
+              <img src="assets/upi-qr.png" alt="Temple UPI QR Code" class="upi-qr" data-i18n-alt="images.upi.alt" loading="lazy" />
             </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
+      </div>
     </div>
   </main>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-container">
-      <p>&copy; <span id="year"></span> <span data-i18n="footer.templename">Mahalingeshwara Temple, Padubelman</span></p>
       <p class="footer-mantra" data-i18n="footer.mantra">Om Namah Shivaya</p>
+      <div class="footer-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#rituals">Rituals</a>
+        <a href="seva.html">Seva</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> <span data-i18n="footer.templename">Mahalingeshwara Temple, Padubelman</span>. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    const i18n = {
-      en: {
-        title: 'Sevas | Mahalingeshwara Temple',
-        'lang.label': 'Language',
-        'hero.h1': 'Divine Sevas and Offerings',
-        'hero.p': 'Daily poojas, abhishekas, homas, and special rituals offered with devotion',
-        'groups.daily': 'Daily Sevas',
-        'groups.special': 'Special Sevas (On Request)',
-        'badges.daily': 'Daily',
-        'badges.endowment': 'Endowment',
-        'badges.special': 'Special',
-        'prices.asReq': 'As per request',
-        'sevas.panchakajaya.name': 'Panchakajaya',
-        'sevas.panchakajaya.desc': 'Panchakajaya is a wholesome prasada prepared with jaggery, sesame, coconut, ghee and honey. Offered with simple devotion, it signifies balance of the five elements and the sweetness of a steady mind.',
-        'sevas.rudra.name': 'Rudrabhisheka',
-        'sevas.rudra.desc': 'The Shiva Linga is bathed with water, milk and sacred dravyas while chanting Sri Rudram. Devotees undertake this seva to dissolve inner negativity and invite clarity, health and protection.',
-        'sevas.maha.name': 'Maha Pooje',
-        'sevas.maha.desc': 'A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.',
-        'sevas.nitya.name': 'Nitya Pooje',
-        'sevas.nitya.desc': "The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.",
-        'sevas.shashwatha.name': 'Shashwatha Pooje',
-        'sevas.shashwatha.desc': "A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.",
-        'sevas.ranga.name': 'Ranga Pooje',
-        'sevas.ranga.desc': `<p>Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>`,
-        'sevas.shatarudra.name': 'Shatarudrabhisheka',
-        'sevas.shatarudra.desc': `<p>Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>`,
-        'contact.line': 'For bookings and details: +91 9880544629 • padubelmantemple@gmail.com',
-        'donation.title': 'Donations and Temple Support',
-        'donation.note': 'Devotees may kindly contribute towards the daily poojas, special sevas and temple development. Your offerings help sustain the spiritual activities of Mahalingeshwara Temple.',
-        'donation.templename.label': 'Temple Name:',
-        'donation.templename.value': 'Mahalingeshwara Temple, Padubelman',
-        'donation.bank.label': 'Bank:',
-        'donation.bank.value': 'Indian Overseas Bank',
-        'donation.branch.label': 'Branch:',
-        'donation.branch.value': 'Belmannu (2591)',
-        'donation.acno.label': 'Account No:',
-        'donation.ifsc.label': 'IFSC:',
-        'donation.upi.text': 'Scan to Donate via UPI:',
-        'footer.templename': 'Mahalingeshwara Temple, Padubelman',
-        'footer.mantra': 'Om Namah Shivaya',
-        'images.upi.alt': 'Temple UPI QR Code'
-      },
-      kn: {
-        title: 'ಸೇವೆಗಳು | ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
-        'lang.label': 'ಭಾಷೆ',
-        'hero.h1': 'ದೈವಿಕ ಸೇವೆಗಳು ಮತ್ತು ಸಮರ್ಪಣೆಗಳು',
-        'hero.p': 'ಭಕ್ತಿಭಾವದಿಂದ ನೆರವೇರುವ ದೈನಂದಿನ ಪೂಜೆ, ಅಭಿಷೇಕ, ಹೋಮ ಮತ್ತು ವಿಶೇಷ ವಿಧಿಗಳು',
-        'groups.daily': 'ದೈನಂದಿನ ಸೇವೆಗಳು',
-        'groups.special': 'ವಿಶೇಷ ಸೇವೆಗಳು (ವಿನಂತಿಯ ಮೇರೆಗೆ)',
-        'badges.daily': 'ಪ್ರತಿ ದಿನ',
-        'badges.endowment': 'ಸ್ಥಾಯಿ ನಿಧಿ',
-        'badges.special': 'ವಿಶೇಷ',
-        'prices.asReq': 'ವಿನಂತಿಯಂತೆ',
-        'sevas.panchakajaya.name': 'ಪಂಚಕಜ್ಜಾಯ',
-        'sevas.panchakajaya.desc': 'ಪಂಚಕಜ್ಜಾಯವು ಬೆಲ್ಲ, ಎಳ್ಳು, ತೆಂಗಿನಕಾಯಿ, ತುಪ್ಪ ಮತ್ತು ಜೇನುಗಳಿಂದ ತಯಾರಾಗುವ ಪೂಜಾ ಪ್ರಸಾದ. ಸರಳ ಭಕ್ತಿಯಿಂದ ಸಮರ್ಪಿಸಿದಾಗ ಇದು ಪಂಚಭೂತಗಳ ಸಮತೋಲನ ಮತ್ತು ಸ್ಥಿರಮನಸ್ಸಿನ ಸಿಹಿತನವನ್ನು ಸಂಕೇತಿಸುತ್ತದೆ.',
-        'sevas.rudra.name': 'ರುದ್ರಾಭಿಷೇಕ',
-        'sevas.rudra.desc': 'ಶಿವಲಿಂಗಕ್ಕೆ ನೀರು, ಹಾಲು ಹಾಗೂ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ಮಾಡುತ್ತಾ ಶ್ರೀ ರುದ್ರಮ್ ಪಠಿಸಲಾಗುತ್ತದೆ. ಈ ಸೇವೆ ಒಳಗಿನ ನಕಾರಾತ್ಮಕತೆಯನ್ನು ಕರಗಿಸಿ ಸ್ಪಷ್ಟತೆ, ಆರೋಗ್ಯ ಮತ್ತು ರಕ್ಷಣೆಯನ್ನು ಕಲ್ಪಿಸುತ್ತದೆ.',
-        'sevas.maha.name': 'ಮಹಾ ಪೂಜೆ',
-        'sevas.maha.desc': 'ಅಲಂಕಾರ, ನೈವೇದ್ಯ ಮತ್ತು ಮಂಗಳಾರತಿ ಒಳಗೊಂಡ ಸಂಪೂರ್ಣ ಪೂಜೆ. ಸಮಗ್ರ ಕಲ್ಯಾಣ ಮತ್ತು ಮಹಾಲಿಂಗೇಶ್ವರನ ಅನುಗ್ರಹಕ್ಕಾಗಿ ನೆರವೇರುವ ಸೇವೆ.',
-        'sevas.nitya.name': 'ನಿತ್ಯ ಪೂಜೆ',
-        'sevas.nitya.desc': 'ಅಲಂಕಾರ, ನೈವೇದ್ಯ ಮತ್ತು ಆರತಿಯೊಂದಿಗೆ ದಿನನಿತ್ಯದ ದೇವಾಲಯ ಪೂಜೆ. ನಿತ್ಯಪೂಜೆಗೆ ಸಹಕಾರ ನೀಡುವುದು ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ರಿತ್ತಿಯನ್ನು ಉಳಿಸುತ್ತದೆ.',
-        'sevas.shashwatha.name': 'ಶಾಶ್ವತ ಪೂಜೆ',
-        'sevas.shashwatha.desc': 'ಒಮ್ಮೆದಿನ ದಾನ (ಸ್ಥಾಯಿ ನಿಧಿ) ಮುಖಾಂತರ ಪ್ರತಿವರ್ಷ ಭಕ್ತರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರುವ ಸೇವೆ—ಇದು ಅನುಗ್ರಹವನ್ನು ಮುಂದಿನ ತಲೆಮಾರುಗಳಿಗೂ ಸಾಗಿಸುತ್ತದೆ.',
-        'sevas.ranga.name': 'ರಂಗ ಪೂಜೆ',
-        'sevas.ranga.desc': `<p>ರಂಗ ಪೂಜೆ ಭಕ್ತರ ವಿನಂತಿಯ ಮೇರೆಗೆ ಮಾತ್ರ ನಡೆಯುವ ವಿಶೇಷ ಸಾಯಂಕಾಲದ ವಿಧಿ. ಇದು ಸಂಜೆ <strong>6:00</strong>ಕ್ಕೆ ಆರಂಭವಾಗುತ್ತದೆ; ತಾಜಾ ಅನ್ನವನ್ನು ಮೊದಲು <strong>ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ</strong>ನಿಗೂ <strong>ಶ್ರೀ ಗಣಪತಿ</strong>ಗೂ ಸಮರ್ಪಿಸಲಾಗುತ್ತದೆ. ಅದರ ಬಳಿಕ <em>ಬಲಿ</em> ವಿಧಿಯು ನಡೆಯುತ್ತದೆ—ಎಲೆಗಳ ಮೇಲೆ ಇಟ್ಟಿರುವ ಕಚ್ಚಾ ಅಕ್ಕಿಯನ್ನು ದೇವಾಲಯದ ಒಳಗೆ ಮತ್ತು ಹೊರಗೆ ಇರುವ ಬಲಿ ಕಲ್ಲುಗಳಿಗೆ ಸಮ್ಮಾನದಿಂದ ಸಮರ್ಪಿಸಲಾಗುತ್ತದೆ.</p>`,
-        'sevas.shatarudra.name': 'ಶತರುದ್ರಾಭಿಷೇಕ',
-        'sevas.shatarudra.desc': `<p>ಶತರುದ್ರಾಭಿಷೇಕವು ಮಹಾಲಿಂಗೇಶ್ವರನಿಗೆ ಸಲ್ಲಿಸುವ ಅತ್ಯಂತ ಪವಿತ್ರ ಮತ್ತು ಶಕ್ತಿಯುತ ಸೇವೆಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ. ಈ ಸೇವೆಯಲ್ಲಿ <strong>ಶ್ರೀ ರುದ್ರಮ್</strong> ಅನ್ನು ನೂರು ಬಾರಿ ಭಕ್ತಿಭಾವದಿಂದ ಪಠಿಸುತ್ತಾ, ಶಿವಲಿಂಗಕ್ಕೆ ತೀರ್ಥ, ಪಂಚಾಮೃತ, ತೆಂಗಿನೀರು ಮುಂತಾದ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ಮಾಡಲಾಗುತ್ತದೆ.</p>`,
-        'contact.line': 'ಬುಕ್ಕಿಂಗ್ ಮತ್ತು ಹೆಚ್ಚಿನ ವಿವರಗಳಿಗೆ: +91 9880544629 • padubelmantemple@gmail.com',
-        'donation.title': 'ದಾನಗಳು ಮತ್ತು ದೇವಾಲಯ ಬೆಂಬಲ',
-        'donation.note': 'ಭಕ್ತರು ದೈನಂದಿನ ಪೂಜೆಗಳು, ವಿಶೇಷ ಸೇವೆಗಳು ಮತ್ತು ದೇವಾಲಯಾಭಿವೃದ್ಧಿಗಾಗಿ ದಯವಿಟ್ಟು ದಾನವಾಗಿ ಸಹಕರಿಸಬಹುದು. ನಿಮ್ಮ ಸಮರ್ಪಣೆ ದೇವಾಲಯದ ಆಧ್ಯಾತ್ಮಿಕ ಕಾರ್ಯಕ್ರಮಗಳನ್ನು ನಿರಂತರವಾಗಿ ಸಾಗಿಸಲು ನೆರವಾಗುತ್ತದೆ.',
-        'donation.templename.label': 'ದೇವಾಲಯದ ಹೆಸರು:',
-        'donation.templename.value': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ',
-        'donation.bank.label': 'ಬ್ಯಾಂಕ್:',
-        'donation.bank.value': 'ಇಂಡಿಯನ್ ಓವರ್ಸೀಸ್ ಬ್ಯಾಂಕ್',
-        'donation.branch.label': 'ಶಾಖೆ:',
-        'donation.branch.value': 'ಬೆಲ್ಮಣ್ಣು (2591)',
-        'donation.acno.label': 'ಖಾತೆ ಸಂಖ್ಯೆ:',
-        'donation.ifsc.label': 'ಐಎಫ್‌ಎಸ್‌ಸಿ:',
-        'donation.upi.text': 'ಯುಪಿಐ ಮೂಲಕ ದಾನ ಮಾಡಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ:',
-        'footer.templename': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ',
-        'footer.mantra': 'ಓಂ ನಮಃ ಶಿವಾಯ',
-        'images.upi.alt': 'ದೇವಾಲಯ ಯುಪಿಐ ಕ್ಯೂಆರ್ ಕೋಡ್'
-      }
-    };
-
-    function applyLang(lang) {
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        const val = i18n[lang][key];
-        if (val !== undefined) {
-          if (/<\/?(strong|em|p|br|span)/i.test(String(val))) el.innerHTML = val;
-          else el.textContent = val;
-        }
-      });
-      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-        const key = el.getAttribute('data-i18n-alt');
-        const val = i18n[lang][key];
-        if (val !== undefined) el.setAttribute('alt', val);
-      });
-      document.title = i18n[lang].title || document.title;
-      const btn = document.getElementById('langBtn');
-      if (btn) {
-          btn.textContent = lang === 'en' ? 'ಕನ್ನಡ' : 'English';
-          btn.setAttribute('aria-pressed', lang === 'kn');
-      }
-      try { localStorage.setItem('lang', lang); } catch(e){}
-      document.documentElement.setAttribute('lang', lang === 'kn' ? 'kn' : 'en');
-    }
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const saved = (()=>{ try { return localStorage.getItem('lang'); } catch(e){ return null; } })();
-    applyLang(saved || 'en');
-
-    const btn = document.getElementById('langBtn');
-    if(btn) {
-        btn.addEventListener('click', () => {
-          const current = (localStorage.getItem('lang') || 'en');
-          applyLang(current === 'en' ? 'kn' : 'en');
-        });
-    }
-  </script>
 </body>
 </html>

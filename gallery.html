@@ -2,107 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Photo gallery of Sri Mahalingeshwara Temple, Padubelman — temple views, Kola, Utsava, and deity photos." />
   <title>Gallery | Mahalingeshwara Temple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="inner-page">
+
+  <!-- ===== NAVIGATION ===== -->
   <header class="page-header">
     <nav class="navbar solid-nav">
       <div class="nav-container">
         <div class="logo">
-          <a href="index.html" style="color: white; text-decoration: none;">Mahalingeshwara</a>
+          <a href="index.html">Mahalingeshwara</a>
         </div>
         <ul class="nav-links" id="nav-links">
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#rituals">Rituals</a></li>
           <li><a href="seva.html">Seva</a></li>
           <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <button class="nav-toggle" onclick="toggleNav()">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
+        <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
       </div>
     </nav>
     <div class="page-title-container fade-in">
-        <h1>Temple Gallery</h1>
-        <p>Glimpses of divine presence and vibrant traditions</p>
+      <span class="section-label" style="color:var(--clr-gold-light)">Sacred Moments</span>
+      <h1>Temple Gallery</h1>
+      <p>Glimpses of divine presence and vibrant traditions</p>
     </div>
   </header>
 
+  <!-- ===== GALLERY ===== -->
   <main class="section fade-in">
     <div class="section-container">
-        <div class="gallery-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="outskirts">Temple Outskirts</button>
-            <button class="filter-btn" data-filter="kola">Kola</button>
-            <button class="filter-btn" data-filter="utsava">Utsava</button>
-            <button class="filter-btn" data-filter="deities">Deities</button>
+
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">All Photos</button>
+        <button class="filter-btn" data-filter="outskirts">Temple Outskirts</button>
+        <button class="filter-btn" data-filter="kola">Kola</button>
+        <button class="filter-btn" data-filter="utsava">Utsava</button>
+        <button class="filter-btn" data-filter="deities">Deities</button>
+      </div>
+
+      <div class="gallery-masonry" id="gallery-container">
+
+        <!-- Temple Outskirts -->
+        <div class="gallery-item" data-category="outskirts">
+          <img src="photos/out2.jpg" alt="Mahalingeshwara Temple exterior view" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="outskirts">
+          <img src="photos/out1.jpg" alt="Temple entrance and surroundings" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="outskirts">
+          <img src="photos/blueprint.jpg" alt="Temple architectural blueprint" loading="lazy" />
         </div>
 
-        <div class="gallery-masonry" id="gallery-container">
-            <div class="gallery-item" data-category="outskirts">
-                <img src="photos/out2.jpg" alt="Temple View 1" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="outskirts">
-                <img src="photos/out1.jpg" alt="Temple View 2" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="outskirts">
-                <img src="photos/blueprint.jpg" alt="Temple Blueprint" loading="lazy">
-            </div>
-
-            <div class="gallery-item" data-category="kola">
-                <img src="photos/kola2.jpg" alt="Kola Ritual 1" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="kola">
-                <img src="photos/kola.jpg" alt="Kola Ritual 2" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="kola">
-                <img src="photos/daiva.jpg" alt="Kola Ritual 3" loading="lazy">
-            </div>
-
-            <div class="gallery-item" data-category="utsava">
-                <img src="photos/bali.jpg" alt="Utsava 1" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="utsava">
-                <img src="photos/bali2.jpg" alt="Utsava 2" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="utsava">
-                <img src="photos/bali3.jpg" alt="Utsava 3" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="utsava">
-                <img src="photos/bali4.jpg" alt="Utsava 4" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="utsava">
-                <img src="photos/bali5.jpg" alt="Utsava 5" loading="lazy">
-            </div>
-
-            <div class="gallery-item" data-category="deities">
-                <img src="photos/ganpati_kavacha.jpg" alt="Ganapathi 1" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="deities">
-                <img src="photos/ganapti.jpg" alt="Ganapathi 2" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="deities">
-                <img src="photos/eshwara.jpg" alt="Mahalingeshwara 1" loading="lazy">
-            </div>
-            <div class="gallery-item" data-category="deities">
-                <img src="photos/eshwara_kavacha.jpg" alt="Mahalingeshwara 2" loading="lazy">
-            </div>
+        <!-- Kola -->
+        <div class="gallery-item" data-category="kola">
+          <img src="photos/kola2.jpg" alt="Kola ritual ceremony" loading="lazy" />
         </div>
+        <div class="gallery-item" data-category="kola">
+          <img src="photos/kola.jpg" alt="Kola tradition at the temple" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="kola">
+          <img src="photos/daiva.jpg" alt="Daiva ritual" loading="lazy" />
+        </div>
+
+        <!-- Utsava -->
+        <div class="gallery-item" data-category="utsava">
+          <img src="photos/bali.jpg" alt="Bali ritual during Utsava" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="utsava">
+          <img src="photos/bali2.jpg" alt="Utsava celebrations" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="utsava">
+          <img src="photos/bali3.jpg" alt="Temple festival procession" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="utsava">
+          <img src="photos/bali4.jpg" alt="Utsava rituals at Mahalingeshwara" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="utsava">
+          <img src="photos/bali5.jpg" alt="Festival ceremony at the temple" loading="lazy" />
+        </div>
+
+        <!-- Deities -->
+        <div class="gallery-item" data-category="deities">
+          <img src="photos/ganpati_kavacha.jpg" alt="Lord Ganapathi with Kavacha" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="deities">
+          <img src="photos/ganapti.jpg" alt="Lord Ganapathi deity" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="deities">
+          <img src="photos/eshwara.jpg" alt="Lord Mahalingeshwara" loading="lazy" />
+        </div>
+        <div class="gallery-item" data-category="deities">
+          <img src="photos/eshwara_kavacha.jpg" alt="Lord Mahalingeshwara with Kavacha" loading="lazy" />
+        </div>
+
+      </div>
     </div>
   </main>
 
-  <div id="lightbox">
-    <div class="lightbox-close">&times;</div>
-    <img src="" alt="enlarged" id="lightbox-img">
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close image">&times;</button>
+    <img src="" alt="" id="lightbox-img" />
   </div>
 
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-container">
-        <p>© 2026 Mahalingeshwara Temple. All rights reserved.</p>
+      <p class="footer-mantra">Om Namah Shivaya</p>
+      <div class="footer-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#rituals">Rituals</a>
+        <a href="seva.html">Seva</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <p class="footer-copy">&copy; <span id="year"></span> Sri Mahalingeshwara Temple Trust, Padubelman. All rights reserved.</p>
     </div>
   </footer>
 
