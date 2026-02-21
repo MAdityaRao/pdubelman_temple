@@ -9,7 +9,6 @@ function toggleNav() {
   if (!navLinks) return;
   const isOpen = navLinks.classList.toggle('active');
   if (navToggle) navToggle.classList.toggle('open', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 function closeNav() {
@@ -17,7 +16,6 @@ function closeNav() {
   const navToggle = document.querySelector('.nav-toggle');
   if (navLinks) navLinks.classList.remove('active');
   if (navToggle) navToggle.classList.remove('open');
-  document.body.style.overflow = '';
 }
 
 /* Close nav on link click */
@@ -95,10 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* --- Gallery: Filter & Lightbox --- */
+/* --- Gallery: Filter, Lightbox & Drag Scroll --- */
 document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryContainer = document.getElementById('gallery-container');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
@@ -114,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryItems.forEach(item => {
           if (filter === 'all' || item.getAttribute('data-category') === filter) {
             item.style.opacity = '0';
-            item.style.display = 'block';
+            item.style.display = 'flex';
             requestAnimationFrame(() => {
               requestAnimationFrame(() => { item.style.opacity = '1'; });
             });
@@ -127,36 +126,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Gallery item transitions */
+  /* Gallery item fade transitions */
   galleryItems.forEach(item => {
-    item.style.transition = 'opacity 0.3s ease';
+    item.style.transition = 'opacity 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease';
   });
 
-  /* Lightbox */
-  if (lightbox && lightboxImg) {
+  /* Drag-to-scroll */
+  if (galleryContainer) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let moved = false;
+
+    galleryContainer.addEventListener('mousedown', e => {
+      isDown = true;
+      moved = false;
+      startX = e.pageX - galleryContainer.offsetLeft;
+      scrollLeft = galleryContainer.scrollLeft;
+    });
+    galleryContainer.addEventListener('mouseleave', () => { isDown = false; });
+    galleryContainer.addEventListener('mouseup', () => { isDown = false; });
+    galleryContainer.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - galleryContainer.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      if (Math.abs(walk) > 4) moved = true;
+      galleryContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    /* Prevent lightbox opening when user is dragging */
     galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', e => {
+        if (moved) { moved = false; return; }
         const img = item.querySelector('img');
-        if (!img) return;
+        if (!img || !lightbox || !lightboxImg) return;
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
         lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       });
     });
+  }
 
+  /* Lightbox close */
+  if (lightbox && lightboxImg) {
     const closeLightbox = () => {
       lightbox.style.display = 'none';
       lightboxImg.src = '';
       document.body.style.overflow = '';
     };
-
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
     });
@@ -192,7 +213,6 @@ const i18n = {
     'groups.daily': 'Daily Sevas',
     'groups.special': 'Special Sevas (On Request)',
     'badges.daily': 'Daily',
-    'badges.endowment': 'Endowment',
     'badges.special': 'Special',
     'prices.asReq': 'As per request',
     'sevas.panchakajaya.name': 'Panchakajaya',
