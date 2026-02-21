@@ -6,71 +6,84 @@
   <title>Privacy Policy – Mahalingeshwara Temple</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <!-- Background video for consistency -->
-  <div class="video-background">
-    <video autoplay muted loop playsinline>
-      <source src="photos/bg.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <div class="video-overlay"></div>
+<body class="inner-page">
 
-  <!-- Header -->
-  <header class="hero" style="min-height:40vh;">
-    <div class="hero-content">
-      <h1 class="hero-title">Privacy Policy</h1>
-      <p class="hero-subtitle">Your privacy matters to Sri Mahalingeshwara Temple, Padubelman</p>
+  <header class="page-header">
+    <nav class="navbar solid-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="index.html" style="color: white; text-decoration: none;">Mahalingeshwara</a>
+        </div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#rituals">Rituals</a></li>
+          <li><a href="seva.html">Seva</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+        <button class="nav-toggle" onclick="toggleNav()">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </nav>
+    <div class="page-title-container fade-in">
+      <h1>Privacy Policy</h1>
+      <p>Your privacy matters to Sri Mahalingeshwara Temple, Padubelman</p>
     </div>
   </header>
 
-  <!-- Privacy Policy Content -->
-  <section class="section fade-in">
-    <h2 class="section-title">Privacy Policy</h2>
-    <div class="about-text">
-      <p>At Sri Mahalingeshwara Temple, Padubelman, we deeply respect the trust you place in us. This Privacy Policy explains how we handle personal information collected through our website, seva bookings, and WhatsApp communication.</p>
+  <main class="section fade-in">
+    <div class="section-container content-container">
+      <div class="text-block">
+        <p>At Sri Mahalingeshwara Temple, Padubelman, we deeply respect the trust you place in us. This Privacy Policy explains how we handle personal information collected through our website, seva bookings, and WhatsApp communication.</p>
 
-      <h3>1. Information We Collect</h3>
-      <p>We may collect your name, phone number, email address, and seva/donation details when you voluntarily share them with us.</p>
+        <h3>1. Information We Collect</h3>
+        <p>We may collect your name, phone number, email address, and seva/donation details when you voluntarily share them with us.</p>
 
-      <h3>2. How We Use Your Information</h3>
-      <p>Your information is used only to:</p>
-      <ul style="margin-left:1.5rem; list-style:disc;">
-        <li>Send temple updates, festival notifications, and seva schedules</li>
-        <li>Provide donation receipts or acknowledgments</li>
-        <li>Respond to queries or requests</li>
-      </ul>
+        <h3>2. How We Use Your Information</h3>
+        <p>Your information is used only to:</p>
+        <ul>
+          <li>Send temple updates, festival notifications, and seva schedules</li>
+          <li>Provide donation receipts or acknowledgments</li>
+          <li>Respond to queries or requests</li>
+        </ul>
 
-      <h3>3. Data Sharing</h3>
-      <p>We do not sell or rent your details. Only authorized temple trust members may access your data for religious and administrative purposes.</p>
+        <h3>3. Data Sharing</h3>
+        <p>We do not sell or rent your details. Only authorized temple trust members may access your data for religious and administrative purposes.</p>
 
-      <h3>4. Security</h3>
-      <p>We take reasonable steps to secure your information. However, no system is completely secure, and we encourage devotees to share details responsibly.</p>
+        <h3>4. Security</h3>
+        <p>We take reasonable steps to secure your information. However, no system is completely secure, and we encourage devotees to share details responsibly.</p>
 
-      <h3>5. Opt-Out</h3>
-      <p>You may opt out of WhatsApp or email updates anytime by contacting us at 
-        <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a>.
-      </p>
+        <h3>5. Opt-Out</h3>
+        <p>You may opt out of updates anytime by contacting us at 
+          <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a>.
+        </p>
 
-      <h3>6. Contact Us</h3>
-      <p>If you have questions about this policy, please reach out:</p>
-      <p><strong>Sri Mahalingeshwara Temple Trust</strong><br>
-        Padubelman, Karnataka<br>
-        📧 <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a><br>
-        📞 <a href="tel:9880544629">9880 544 629</a>
-      </p>
+        <h3>6. Contact Us</h3>
+        <p>If you have questions about this policy, please reach out:</p>
+        <p class="contact-card">
+          <strong>Sri Mahalingeshwara Temple Trust</strong><br>
+          Padubelman, Karnataka<br>
+          padubelmantemple@gmail.com<br>
+          9880 544 629
+        </p>
 
-      <p style="margin-top:2rem; font-size:0.9rem; color:#666;">Last updated: August 2025</p>
+        <p class="last-updated">Last updated: August 2026</p>
+      </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <p>
-      &copy; 2025 Mahalingeshwara Temple, Padubelman. All rights reserved. | 
-      <a href="privacy.html" style="color:#fff; text-decoration:underline;">Privacy Policy</a>
-    </p>
-    <p style="margin-top:.5rem; opacity:.8;">Om Namah Shivaya</p>
+    <div class="footer-container">
+      <p>
+        &copy; 2026 Mahalingeshwara Temple, Padubelman. All rights reserved. | 
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      </p>
+      <p class="footer-mantra">Om Namah Shivaya</p>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

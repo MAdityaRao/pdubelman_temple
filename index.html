@@ -5,21 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="meta.title">Mahalingeshwara Temple – Padubelman</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Tiny addition just for the language button, matches existing navbar look */
-    .lang-switch { display:flex; align-items:center; gap:.5rem; }
-    .lang-btn{ background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.35); padding:.4rem .6rem; border-radius:8px; cursor:pointer; font-weight:600 }
-    .lang-btn:hover{ background:rgba(255,255,255,.25) }
-    .lang-label{ color:#fff; opacity:.85; font-size:.9rem }
-    @media (min-width:768px){ .nav-container{ gap:1rem } }
-  </style>
 </head>
 <body>
-  <!-- Background video -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
       <source src="photos/bg.mp4" type="video/mp4" />
-      <!-- Fallback for browsers that don't support video -->
       Your browser does not support the video tag.
     </video>
   </div>
@@ -28,29 +18,29 @@
   <header class="hero">
     <nav class="navbar">
       <div class="nav-container">
-  <!-- Logo on the far left -->
-  <div class="logo">
-    <img src="photos/blueprint.jpg" alt="Temple Logo" class="logo-img" data-i18n-alt="alt.logo" />
-  </div>
+        <div class="logo">
+          <img src="photos/blueprint.jpg" alt="Temple Logo" class="logo-img" data-i18n-alt="alt.logo" />
+        </div>
 
-  <!-- Nav links (desktop visible) -->
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about" onclick="closeNav()" data-i18n="nav.about">About</a></li>
-    <li><a href="#rituals" onclick="closeNav()" data-i18n="nav.rituals">Rituals</a></li>
-    <li><a href="seva.html" onclick="closeNav()" data-i18n="nav.seva">Seva</a></li>
-    <li><a href="gallery.html" onclick="closeNav()" data-i18n="nav.gallery">Gallery</a></li>
-    <li><a href="#contact" onclick="closeNav()" data-i18n="nav.contact">Contact</a></li>
-  </ul>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about" onclick="closeNav()" data-i18n="nav.about">About</a></li>
+          <li><a href="#rituals" onclick="closeNav()" data-i18n="nav.rituals">Rituals</a></li>
+          <li><a href="seva.html" onclick="closeNav()" data-i18n="nav.seva">Seva</a></li>
+          <li><a href="gallery.html" onclick="closeNav()" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="#contact" onclick="closeNav()" data-i18n="nav.contact">Contact</a></li>
+        </ul>
 
-  <!-- Right side controls -->
-  <div class="right-controls">
-    <div class="lang-switch" role="group" aria-label="Language switcher">
-      <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
-    </div>
-    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
-  </div>
-</div>
-
+        <div class="right-controls">
+          <div class="lang-switch" role="group" aria-label="Language switcher">
+            <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
+          </div>
+          <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
     </nav>
 
     <div class="hero-content">
@@ -58,169 +48,161 @@
       <p class="hero-subtitle" data-i18n="hero.subtitle">Sacred sanctuary in Padubelman, where divine energy flows through ancient traditions and timeless devotion</p>
       <div class="hero-cta">
         <a href="#about" class="btn btn-primary" data-i18n="hero.cta.explore">Explore Temple</a>
-        <a href="#rituals" class="btn btn-secondary" data-i18n="hero.cta.rituals">📿 View Rituals</a>
+        <a href="#rituals" class="btn btn-secondary" data-i18n="hero.cta.rituals">View Rituals</a>
       </div>
     </div>
   </header>
 
-  <section id="about" class="section fade-in">
-    <h2 class="section-title" data-i18n="about.title">About Our Sacred Temple</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p data-i18n="about.p1">Nestled in the serene landscape of Padubelman, the Mahalingeshwara Temple stands as a beacon of spiritual tranquility and divine grace. Dedicated to Lord Shiva in his magnificent form as Mahalingeshwara, this sacred sanctuary has been a source of peace and enlightenment for countless devotees.</p>
-        <p data-i18n="about.p2">Surrounded by lush plantations and blessed with natural beauty, our temple radiates an aura of calm and spiritual energy that touches every soul who enters its hallowed grounds. The temple's architecture reflects the rich cultural heritage of Karnataka while providing a perfect setting for prayer, meditation, and spiritual awakening.</p>
-      </div>
-      <div class="temple-stats">
-        <div class="stat-card fade-in">
-          <span class="stat-number" data-i18n="stats.years.num">1200+</span>
-          <span class="stat-label" data-i18n="stats.years.label">Years of Heritage</span>
-        </div>
-        <div class="stat-card fade-in">
-          <span class="stat-number" data-i18n="stats.days.num">365</span>
-          <span class="stat-label" data-i18n="stats.days.label">Days of Worship</span>
-        </div>
-        <div class="stat-card fade-in">
-          <span class="stat-number" data-i18n="stats.infinity.num">∞</span>
-          <span class="stat-label" data-i18n="stats.infinity.label">Divine Blessings</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="rituals" class="section fade-in">
-    <h2 class="section-title" data-i18n="rituals.title">Sacred Rituals &amp; Festivals</h2>
-    <div class="rituals-grid">
-      <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
-        <span class="ritual-icon"></span>
-        <h3 class="ritual-title" data-i18n="rituals.items.abhisheka.title">Daily Abhisheka</h3>
-        <p class="ritual-description" data-i18n="rituals.items.abhisheka.short">Sacred morning ritual performed with Vedic chants and pure offerings</p>
-        <div class="ritual-details">
-          <p data-i18n="rituals.items.abhisheka.long">Each dawn brings the sacred Abhisheka ceremony, where the Shivalinga is bathed with holy water, milk, honey, and other sacred substances. Accompanied by the melodious chanting of ancient Vedic mantras, this ritual purifies the atmosphere and invokes divine blessings for all devotees.</p>
-          <img src="photos/eshwara.jpg" alt="Daily Abhisheka" loading="lazy" data-i18n-alt="alt.abhisheka" />
+  <main>
+    <section id="about" class="section fade-in">
+      <div class="section-container">
+        <h2 class="section-title" data-i18n="about.title">About Our Sacred Temple</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p data-i18n="about.p1">Nestled in the serene landscape of Padubelman, the Mahalingeshwara Temple stands as a beacon of spiritual tranquility and divine grace. Dedicated to Lord Shiva in his magnificent form as Mahalingeshwara, this sacred sanctuary has been a source of peace and enlightenment for countless devotees.</p>
+            <p data-i18n="about.p2">Surrounded by lush plantations and blessed with natural beauty, our temple radiates an aura of calm and spiritual energy that touches every soul who enters its hallowed grounds. The temple's architecture reflects the rich cultural heritage of Karnataka while providing a perfect setting for prayer, meditation, and spiritual awakening.</p>
+          </div>
+          <div class="temple-stats">
+            <div class="stat-card fade-in">
+              <span class="stat-number" data-i18n="stats.years.num">1200+</span>
+              <span class="stat-label" data-i18n="stats.years.label">Years of Heritage</span>
+            </div>
+            <div class="stat-card fade-in">
+              <span class="stat-number" data-i18n="stats.days.num">365</span>
+              <span class="stat-label" data-i18n="stats.days.label">Days of Worship</span>
+            </div>
+            <div class="stat-card fade-in">
+              <span class="stat-number" data-i18n="stats.infinity.num">∞</span>
+              <span class="stat-label" data-i18n="stats.infinity.label">Divine Blessings</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
-        <span class="ritual-icon"></span>
-        <h3 class="ritual-title" data-i18n="rituals.items.ranga.title">Ranga Pooje</h3>
-        <p class="ritual-description" data-i18n="rituals.items.ranga.short">Colorful celebration with intricate rangoli and devotional offerings</p>
-        <div class="ritual-details">
-          <p data-i18n="rituals.items.ranga.long">A vibrant festival unique to our temple, Ranga Pooje transforms the temple grounds into a canvas of devotion. Intricate rangoli patterns made from colored powders, flower petals, and rice create stunning artworks that honor the divine while bringing the community together in celebration.</p>
-          <img src="photos/rangapooje.jpg" alt="Ranga Pooje" loading="lazy" data-i18n-alt="alt.ranga" />
+    <section id="rituals" class="section fade-in">
+      <div class="section-container">
+        <h2 class="section-title" data-i18n="rituals.title">Sacred Rituals & Festivals</h2>
+        <div class="rituals-grid">
+          <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
+            <h3 class="ritual-title" data-i18n="rituals.items.abhisheka.title">Daily Abhisheka</h3>
+            <p class="ritual-description" data-i18n="rituals.items.abhisheka.short">Sacred morning ritual performed with Vedic chants and pure offerings</p>
+            <div class="ritual-details">
+              <p data-i18n="rituals.items.abhisheka.long">Each dawn brings the sacred Abhisheka ceremony, where the Shivalinga is bathed with holy water, milk, honey, and other sacred substances. Accompanied by the melodious chanting of ancient Vedic mantras, this ritual purifies the atmosphere and invokes divine blessings for all devotees.</p>
+              <img src="photos/eshwara.jpg" alt="Daily Abhisheka" loading="lazy" data-i18n-alt="alt.abhisheka" />
+            </div>
+          </div>
+
+          <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
+            <h3 class="ritual-title" data-i18n="rituals.items.ranga.title">Ranga Pooje</h3>
+            <p class="ritual-description" data-i18n="rituals.items.ranga.short">Colorful celebration with intricate rangoli and devotional offerings</p>
+            <div class="ritual-details">
+              <p data-i18n="rituals.items.ranga.long">A vibrant festival unique to our temple, Ranga Pooje transforms the temple grounds into a canvas of devotion. Intricate rangoli patterns made from colored powders, flower petals, and rice create stunning artworks that honor the divine while bringing the community together in celebration.</p>
+              <img src="photos/rangapooje.jpg" alt="Ranga Pooje" loading="lazy" data-i18n-alt="alt.ranga" />
+            </div>
+          </div>
+
+          <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
+            <h3 class="ritual-title" data-i18n="rituals.items.samaradhane.title">Samaradhane</h3>
+            <p class="ritual-description" data-i18n="rituals.items.samaradhane.short">Weekly offering of sacred meals to devotees with devotion and hospitality</p>
+            <div class="ritual-details">
+              <p data-i18n="rituals.items.samaradhane.long1">Every <strong>Monday</strong>, the temple observes the divine tradition of <em>Samaradhane</em> — a spiritual and communal gathering where special poojas are conducted in the morning, followed by a sacred <strong>Annasantharpane</strong> (lunch offering) to all visiting devotees.</p>
+              <p data-i18n="rituals.items.samaradhane.long2">The meal is lovingly prepared with devotion and served at <strong>1:00 PM</strong> in the temple premises, symbolizing equality, unity, and the blessings of Lord Mahalingeshwara.</p>
+              <img src="photos/eshwara.jpg" alt="Samaradhane – Community Lunch" loading="lazy" data-i18n-alt="alt.samaradhane" />
+            </div>
+          </div>
+
+          <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
+            <h3 class="ritual-title" data-i18n="rituals.items.mahashivaratri.title">Maha Shivaratri</h3>
+            <p class="ritual-description" data-i18n="rituals.items.mahashivaratri.short">Night-long celebration with continuous chanting and divine offerings</p>
+            <div class="ritual-details">
+              <p data-i18n="rituals.items.mahashivaratri.long">The most sacred night in the Shaivite calendar, Maha Shivaratri transforms our temple into a hub of continuous devotion. Devotees maintain vigil through the night, offering prayers, performing abhisheka, and immersing themselves in the divine energy that pervades the temple throughout this holy night.</p>
+              <img src="photos/eshwara_kavacha.jpg" alt="Shivaratri" loading="lazy" data-i18n-alt="alt.mahashivaratri" />
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
-        <span class="ritual-icon"></span>
-        <h3 class="ritual-title" data-i18n="rituals.items.samaradhane.title">Samaradhane</h3>
-        <p class="ritual-description" data-i18n="rituals.items.samaradhane.short">Weekly offering of sacred meals to devotees with devotion and hospitality</p>
-        <div class="ritual-details">
-          <p data-i18n="rituals.items.samaradhane.long1">Every <strong>Monday</strong>, the temple observes the divine tradition of <em>Samaradhane</em> — a spiritual and communal gathering where special poojas are conducted in the morning, followed by a sacred <strong>Annasantharpane</strong> (lunch offering) to all visiting devotees.</p>
-          <p data-i18n="rituals.items.samaradhane.long2">The meal is lovingly prepared with devotion and served at <strong>1:00 PM</strong> in the temple premises, symbolizing equality, unity, and the blessings of Lord Mahalingeshwara.</p>
-          <img src="photos/eshwara.jpg" alt="Samaradhane – Community Lunch" loading="lazy" data-i18n-alt="alt.samaradhane" />
+    <section id="visit" class="section fade-in">
+      <div class="section-container">
+        <h2 class="section-title" data-i18n="visit.title">Plan Your Sacred Visit</h2>
+        <div class="visit-info">
+          <div class="info-card">
+            <h3 data-i18n="visit.timings.title">Temple Timings</h3>
+            <p data-i18n="visit.timings.p"><strong>Morning:</strong> 7:00 AM - 12:30 PM<br /><strong>Evening:</strong> 5:00 PM - 8:00 PM</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="visit.dress.title">Dress Code</h3>
+            <p data-i18n="visit.dress.p">Traditional attire is recommended. Please dress modestly as a mark of respect to the divine atmosphere.</p>
+          </div>
+          <div class="info-card">
+            <h3 data-i18n="visit.access.title">Accessibility</h3>
+            <p data-i18n="visit.access.p">Temple is easily accessible by road. Parking available. Special arrangements for elderly and differently-abled devotees.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="ritual-card interactive-element" onclick="toggleRitual(this)">
-        <span class="ritual-icon"></span>
-        <h3 class="ritual-title" data-i18n="rituals.items.mahashivaratri.title">Maha Shivaratri</h3>
-        <p class="ritual-description" data-i18n="rituals.items.mahashivaratri.short">Night-long celebration with continuous chanting and divine offerings</p>
-        <div class="ritual-details">
-          <p data-i18n="rituals.items.mahashivaratri.long">The most sacred night in the Shaivite calendar, Maha Shivaratri transforms our temple into a hub of continuous devotion. Devotees maintain vigil through the night, offering prayers, performing abhisheka, and immersing themselves in the divine energy that pervades the temple throughout this holy night.</p>
-          <img src="photos/eshwara_kavacha.jpg" alt="Shivaratri" loading="lazy" data-i18n-alt="alt.mahashivaratri" />
+    <section id="video" class="section fade-in">
+      <div class="section-container">
+        <h2 class="section-title" data-i18n="video.title">Virtual Temple Darshan</h2>
+        <p class="section-subtitle" data-i18n="video.tagline">Experience the divine atmosphere of our temple from anywhere in the world</p>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/VKpmfI4BSYM" title="Mahalingeshwara Temple Virtual Darshan" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="visit" class="section fade-in">
-    <h2 class="section-title" data-i18n="visit.title">Plan Your Sacred Visit</h2>
-    <div class="visit-info">
-      <div class="info-card">
-        <span class="info-icon">🕒</span>
-        <h3 data-i18n="visit.timings.title">Temple Timings</h3>
-        <p data-i18n="visit.timings.p"><strong>Morning:</strong> 7:00 AM - 12:30 PM<br /><strong>Evening:</strong> 5:00 PM - 8:00 PM</p>
+    <section id="contact" class="section contact-section fade-in">
+      <div class="section-container">
+        <h2 class="section-title" data-i18n="contact.title">Connect With Us</h2>
+        <div class="contact-content">
+          <div class="contact-item">
+            <h3 data-i18n="contact.call.title">Call Us</h3>
+            <p><a href="tel:9880544629">9880 544 629</a></p>
+            <p class="contact-muted" data-i18n="contact.call.p">Available for queries and guidance</p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.email.title">Email</h3>
+            <p><a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a></p>
+            <p class="contact-muted" data-i18n="contact.email.p">For detailed information and bookings</p>
+          </div>
+          <div class="contact-item">
+            <h3 data-i18n="contact.visit.title">Visit Us</h3>
+            <p data-i18n="contact.visit.addr">Padubelman, Karnataka</p>
+            <a href="https://maps.app.goo.gl/xPbAiiJ9NELCtw7z7" target="_blank" class="btn btn-primary map-button" data-i18n="contact.visit.btn">Get Directions</a>
+          </div>
+        </div>
       </div>
-      <div class="info-card">
-        <span class="info-icon"></span>
-        <h3 data-i18n="visit.dress.title">Dress Code</h3>
-        <p data-i18n="visit.dress.p">Traditional attire is recommended. Please dress modestly as a mark of respect to the divine atmosphere.</p>
-      </div>
-      <div class="info-card">
-        <span class="info-icon"></span>
-        <h3 data-i18n="visit.access.title">Accessibility</h3>
-        <p data-i18n="visit.access.p">Temple is easily accessible by road. Parking available. Special arrangements for elderly and differently-abled devotees.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="video" class="section fade-in">
-    <h2 class="section-title" data-i18n="video.title">Virtual Temple Darshan</h2>
-    <p style="text-align:center; margin-bottom:2rem; color:#666;" data-i18n="video.tagline">Experience the divine atmosphere of our temple from anywhere in the world</p>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/VKpmfI4BSYM" title="Mahalingeshwara Temple Virtual Darshan" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </section>
-
-  <section id="contact" class="section contact fade-in">
-    <h2 class="section-title" style="color: white;" data-i18n="contact.title">Connect With Us</h2>
-    <div class="contact-content">
-      <div class="contact-item">
-        <span class="info-icon">📞</span>
-        <h3 data-i18n="contact.call.title">Call Us</h3>
-        <p><a href="tel:9880544629">9880 544 629</a></p>
-        <p data-i18n="contact.call.p">Available for queries and guidance</p>
-      </div>
-      <div class="contact-item">
-        <span class="info-icon">📧</span>
-        <h3 data-i18n="contact.email.title">Email</h3>
-        <p><a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a></p>
-        <p data-i18n="contact.email.p">For detailed information and bookings</p>
-      </div>
-      <div class="contact-item">
-        <span class="info-icon">📍</span>
-        <h3 data-i18n="contact.visit.title">Visit Us</h3>
-        <p data-i18n="contact.visit.addr">Padubelman, Karnataka</p>
-        <a href="https://maps.app.goo.gl/xPbAiiJ9NELCtw7z7" target="_blank" class="map-button" data-i18n="contact.visit.btn">🗺️ Get Directions</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="footer">
-  <p>
-    <span data-i18n="footer.copy">&copy; 2025 Mahalingeshwara Temple, Padubelman. All rights reserved.</span> | 
-    <a href="privacy.html" style="color:#fff; text-decoration:underline;">Privacy Policy</a>
-  </p>
-  <p style="margin-top: .5rem; opacity: .8;" data-i18n="footer.mantra">Om Namah Shivaya</p>
-</footer>
+    <div class="footer-container">
+      <p>
+        <span data-i18n="footer.copy">© 2026 Mahalingeshwara Temple, Padubelman. All rights reserved.</span> | 
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+      </p>
+      <p class="footer-mantra" data-i18n="footer.mantra">Om Namah Shivaya</p>
+    </div>
+  </footer>
 
-
-  <!-- Language + helpers -->
   <script>
-    // Basic nav toggles (in case script.js isn't present)
-    function toggleNav(){ const nl = document.getElementById('nav-links'); nl && nl.classList.toggle('active'); }
-    function closeNav(){ const nl = document.getElementById('nav-links'); nl && nl.classList.remove('active'); }
-    function toggleRitual(card){ const d = card.querySelector('.ritual-details'); if(d){ d.classList.toggle('active'); } }
-
     const i18n = {
       en: {
         'meta.title': 'Mahalingeshwara Temple – Padubelman',
         'lang.label': 'Language',
-        // Nav
         'nav.about': 'About', 'nav.rituals': 'Rituals', 'nav.seva': 'Seva', 'nav.gallery': 'Gallery', 'nav.contact': 'Contact',
-        // Hero
         'hero.title': 'Mahalingeshwara Temple',
         'hero.subtitle': 'Sacred sanctuary in Padubelman, where divine energy flows through ancient traditions and timeless devotion',
-        'hero.cta.explore': 'Explore Temple', 'hero.cta.rituals': '📿 View Rituals',
-        // About
+        'hero.cta.explore': 'Explore Temple', 'hero.cta.rituals': 'View Rituals',
         'about.title': 'About Our Sacred Temple',
         'about.p1': 'Nestled in the serene landscape of Padubelman, the Mahalingeshwara Temple stands as a beacon of spiritual tranquility and divine grace. Dedicated to Lord Shiva in his magnificent form as Mahalingeshwara, this sacred sanctuary has been a source of peace and enlightenment for countless devotees.',
         'about.p2': "Surrounded by lush plantations and blessed with natural beauty, our temple radiates an aura of calm and spiritual energy that touches every soul who enters its hallowed grounds. The temple's architecture reflects the rich cultural heritage of Karnataka while providing a perfect setting for prayer, meditation, and spiritual awakening.",
-        // Stats
         'stats.years.num': '1200+', 'stats.years.label': 'Years of Heritage',
         'stats.days.num': '365', 'stats.days.label': 'Days of Worship',
         'stats.infinity.num': '∞', 'stats.infinity.label': 'Divine Blessings',
-        // Rituals
         'rituals.title': 'Sacred Rituals & Festivals',
         'rituals.items.abhisheka.title': 'Daily Abhisheka',
         'rituals.items.abhisheka.short': 'Sacred morning ritual performed with Vedic chants and pure offerings',
@@ -235,7 +217,6 @@
         'rituals.items.mahashivaratri.title': 'Maha Shivaratri',
         'rituals.items.mahashivaratri.short': 'Night-long celebration with continuous chanting and divine offerings',
         'rituals.items.mahashivaratri.long': 'The most sacred night in the Shaivite calendar, Maha Shivaratri transforms our temple into a hub of continuous devotion. Devotees maintain vigil through the night, offering prayers, performing abhisheka, and immersing themselves in the divine energy that pervades the temple throughout this holy night.',
-        // Visit
         'visit.title': 'Plan Your Sacred Visit',
         'visit.timings.title': 'Temple Timings',
         'visit.timings.p': '<strong>Morning:</strong> 7:00 AM - 12:30 PM<br><strong>Evening:</strong> 5:00 PM - 8:00 PM',
@@ -243,10 +224,8 @@
         'visit.dress.p': 'Traditional attire is recommended. Please dress modestly as a mark of respect to the divine atmosphere.',
         'visit.access.title': 'Accessibility',
         'visit.access.p': 'Temple is easily accessible by road. Parking available. Special arrangements for elderly and differently-abled devotees.',
-        // Video
         'video.title': 'Virtual Temple Darshan',
         'video.tagline': 'Experience the divine atmosphere of our temple from anywhere in the world',
-        // Contact
         'contact.title': 'Connect With Us',
         'contact.call.title': 'Call Us',
         'contact.call.p': 'Available for queries and guidance',
@@ -254,11 +233,9 @@
         'contact.email.p': 'For detailed information and bookings',
         'contact.visit.title': 'Visit Us',
         'contact.visit.addr': 'Padubelman, Karnataka',
-        'contact.visit.btn': '🗺️ Get Directions',
-        // Footer
-        'footer.copy': '&copy; 2025 Mahalingeshwara Temple, Padubelman. All rights reserved.',
+        'contact.visit.btn': 'Get Directions',
+        'footer.copy': '© 2026 Mahalingeshwara Temple, Padubelman. All rights reserved.',
         'footer.mantra': 'Om Namah Shivaya',
-        // Alt
         'alt.logo': 'Temple Logo',
         'alt.abhisheka': 'Daily Abhisheka',
         'alt.ranga': 'Ranga Pooje',
@@ -268,21 +245,16 @@
       kn: {
         'meta.title': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ – ಪಡುಬೆಲ್ಮನ್',
         'lang.label': 'ಭಾಷೆ',
-        // Nav
         'nav.about': 'ಪರಿಚಯ', 'nav.rituals': 'ಪೂಜೆಗಳು', 'nav.seva': 'ಸೇವೆಗಳು', 'nav.gallery': 'ಗ್ಯಾಲರಿ', 'nav.contact': 'ಸಂಪರ್ಕ',
-        // Hero
         'hero.title': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
         'hero.subtitle': 'ಪಡುಬೆಲ್ಮನ್‌ನ ಪವಿತ್ರ ಧಾಮ — ಪ್ರಾಚೀನ ಸಂಪ್ರದಾಯಗಳು ಮತ್ತು ಶಾಶ್ವತ ಭಕ್ತಿಯಿಂದ ಹರಡುವ ದೈವಿಕ ಶಕ್ತಿಯ ನೆಲೆ',
-        'hero.cta.explore': 'ದೇವಾಲಯ ಪರಿಚಯ', 'hero.cta.rituals': '📿 ಪೂಜೆಗಳನ್ನು ನೋಡಿ',
-        // About
+        'hero.cta.explore': 'ದೇವಾಲಯ ಪರಿಚಯ', 'hero.cta.rituals': 'ಪೂಜೆಗಳನ್ನು ನೋಡಿ',
         'about.title': 'ನಮ್ಮ ಪವಿತ್ರ ದೇವಾಲಯದ ಕುರಿತು',
         'about.p1': 'ಪ್ರಕೃತಿಯ ಮಿಡಿತದ ಮಧ್ಯೆ ನೆಲೆಸಿರುವ ಪಡುಬೆಲ್ಮನ್‌ನ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯವು ಆತ್ಮಶಾಂತಿ ಮತ್ತು ದೈವಿಕ ಕೃಪೆಯ ದೀಪಸ್ತಂಭವಾಗಿ ಕಂಗೊಳಿಸುತ್ತದೆ. ಮಹಾಲಿಂಗೇಶ್ವರ ರೂಪದಲ್ಲಿ ವಿರಾಜಮಾನರಾದ ಭಗವಾನ್ ಶಿವನಿಗೆ ಅರ್ಪಿತವಾದ ಈ ಪವಿತ್ರ ಕ್ಷೇತ್ರ ಅನೇಕ ಭಕ್ತರಿಗೆ ಶಾಂತಿ ಮತ್ತು ಬೋಧನೆಯ ಮೂಲವಾಗಿದೆ.',
         'about.p2': 'ಸಮೃದ್ಧ ತೋಟಗಳು ಮತ್ತು ನೈಸರ್ಗಿಕ ಸೌಂದರ್ಯದಿಂದ ಆವರಿಸಲ್ಪಟ್ಟ ನಮ್ಮ ದೇವಾಲಯವು ಪ್ರವೇಶಿಸುವ ಪ್ರತಿಯೊಬ್ಬರ ಮನಸ್ಸನ್ನು ಶಾಂತಗೊಳಿಸುವ ದೈವಿಕ ಸ್ಪಂದನವನ್ನು ಹರಡುತ್ತದೆ. ದೇವಾಲಯದ ವಾಸ್ತುಶಿಲ್ಪವು ಕರ್ನಾಟಕದ ಸಮೃದ್ಧ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯನ್ನು ಪ್ರತಿಬಿಂಬಿಸುತ್ತಿದ್ದು, ಪ್ರಾರ್ಥನೆ, ಧ್ಯಾನ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಜಾಗೃತಿಗೆ ಸಕಾಲಿದವಾದ ವಾತಾವರಣ ಒದಗಿಸುತ್ತದೆ.',
-        // Stats
         'stats.years.num': '1200+', 'stats.years.label': 'ಪಾರಂಪರ್ಯದ ವರ್ಷಗಳು',
         'stats.days.num': '365', 'stats.days.label': 'ಪೂಜೆಯ ದಿನಗಳು',
         'stats.infinity.num': '∞', 'stats.infinity.label': 'ದೈವಿಕ ಆಶೀರ್ವಾದ',
-        // Rituals
         'rituals.title': 'ಪವಿತ್ರ ಪೂಜೆಗಳು ಮತ್ತು ಹಬ್ಬಗಳು',
         'rituals.items.abhisheka.title': 'ದೈನಂದಿನ ಅಭಿಷೇಕ',
         'rituals.items.abhisheka.short': 'ವೇದ ಮಂತ್ರಗಳೊಂದಿಗೆ ಶುದ್ಧ ದ್ರವ್ಯಗಳಿಂದ ನಡೆಯುವ ಪ್ರಾತಃಕಾಲಿನ ಅಭಿಷೇಕ',
@@ -297,7 +269,6 @@
         'rituals.items.mahashivaratri.title': 'ಮಹಾ ಶಿವರಾತ್ರಿ',
         'rituals.items.mahashivaratri.short': 'ಇಡೀ ರಾತ್ರಿ ನಾದಮಯ ಜಪ, ಅಭಿಷೇಕ ಮತ್ತು ದೈವಿಕ ಸೇವೆಗಳು',
         'rituals.items.mahashivaratri.long': 'ಶೈವ ಸಂಪ್ರದಾಯದ ಅತ್ಯಂತ ಪವಿತ್ರರಾತ್ರಿ ಮಹಾ ಶಿವರಾತ್ರಿಯಲ್ಲಿ ನಮ್ಮ ದೇವಾಲಯದಲ್ಲಿ ನಿಶ್ಶಬ್ದ ಭಕ್ತಿಯ ಹರಿವು ತೇಲುತ್ತದೆ. ಭಕ್ತರು ಇಡೀ ರಾತ್ರಿ ಜಾಗರಣೆ ಮಾಡಿ ಪ್ರಾರ್ಥನೆ, ಅಭಿಷೇಕ ನಡೆಸಿ, ದೇವಾಲಯವನ್ನು ಆವರಿಸುವ ದೈವಿಕ ಶಕ್ತಿಯಲ್ಲಿ ಲೀನರಾಗುತ್ತಾರೆ.',
-        // Visit
         'visit.title': 'ನಿಮ್ಮ ಪವಿತ್ರ ಭೇಟಿಯ ಯೋಜನೆ',
         'visit.timings.title': 'ದೇವಾಲಯದ ಸಮಯ',
         'visit.timings.p': '<strong>ಬೆಳಿಗ್ಗೆ:</strong> 7:00 – 12:30<br><strong>ಸಂಜೆ:</strong> 5:00 – 8:00',
@@ -305,10 +276,8 @@
         'visit.dress.p': 'ಭಾರತೀಯ ಪರಂಪರೆಯ ಉಡುಪು ಶಿಫಾರಸು. ದೈವಿಕ ವಾತಾವರಣಕ್ಕೆ ಗೌರವ ಸೂಚಿಸಲು ವಿನಯಶೀಲವಾಗಿ ವಸ್ತ್ರ ಧರಿಸಿ.',
         'visit.access.title': 'ಸೌಕರ್ಯಗಳು',
         'visit.access.p': 'ದೇವಾಲಯ ರಸ್ತೆ ಮಾರ್ಗದಿಂದ ಸುಲಭವಾಗಿ ತಲುಪಬಹುದಾಗಿದೆ. ಪಾರ್ಕಿಂಗ್ ವ್ಯವಸ್ಥೆ ಇದೆ. ಹಿರಿಯರು ಮತ್ತು ವಿಭಿನ್ನ ಸಾಮರ್ಥ್ಯ ಹೊಂದಿರುವ ಭಕ್ತರಿಗೆ ವಿಶೇಷ ವ್ಯವಸ್ಥೆಗಳು.',
-        // Video
         'video.title': 'ವರ್ಚುವಲ್ ದೇವಾಲಯ ದರ್ಶನ',
         'video.tagline': 'ನೀವು ಎಲ್ಲಿದ್ದರೂ ನಮ್ಮ ದೇವಾಲಯದ ದೈವಿಕ ವಾತಾವರಣವನ್ನು ಅನುಭವಿಸಿ',
-        // Contact
         'contact.title': 'ನಮಗೆ ಸಂಪರ್ಕಿಸಿ',
         'contact.call.title': 'ಫೋನ್',
         'contact.call.p': 'ಪ್ರಶ್ನೆಗಳು ಮತ್ತು ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಲಭ್ಯ',
@@ -316,11 +285,9 @@
         'contact.email.p': 'ವಿವರವಾದ ಮಾಹಿತಿ ಮತ್ತು ಬುಕ್ಕಿಂಗ್‌ಗಾಗಿ',
         'contact.visit.title': 'ನಮ್ಮ ವಿಳಾಸ',
         'contact.visit.addr': 'ಪಡುಬೆಲ್ಮನ್, ಕರ್ನಾಟಕ',
-        'contact.visit.btn': '🗺️ ಮಾರ್ಗದರ್ಶಿ ಪಡೆಯಿರಿ',
-        // Footer
-        'footer.copy': '&copy; 2025 ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪಡುಬೆಲ್ಮನ್. ಎಲ್ಲಾ ಹಕ್ಕುಗಳು ಮೀಸಲು.',
+        'contact.visit.btn': 'ಮಾರ್ಗದರ್ಶಿ ಪಡೆಯಿರಿ',
+        'footer.copy': '© 2026 ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪಡುಬೆಲ್ಮನ್. ಎಲ್ಲಾ ಹಕ್ಕುಗಳು ಮೀಸಲು.',
         'footer.mantra': 'ಓಂ ನಮಃ ಶಿವಾಯ',
-        // Alt
         'alt.logo': 'ದೇವಾಲಯದ ಲೋಗೋ',
         'alt.abhisheka': 'ದೈನಂದಿನ ಅಭಿಷೇಕ',
         'alt.ranga': 'ರಂಗ ಪೂಜೆ',
@@ -333,22 +300,17 @@
 
     function applyI18n(lang){
       const dict = i18n[lang] || i18n.en;
-      // Text nodes
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const key = el.getAttribute('data-i18n');
         if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
       });
-      // Alt attributes
       document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
         const key = el.getAttribute('data-i18n-alt');
         if(dict[key] !== undefined){ el.setAttribute('alt', dict[key]); }
       });
-      // <title>
       const titleEl = document.querySelector('title[data-i18n]');
       if(titleEl){ titleEl.innerHTML = dict[titleEl.getAttribute('data-i18n')] || titleEl.innerHTML; }
-      // html lang
       document.documentElement.setAttribute('lang', lang === 'kn' ? 'kn' : 'en');
-      // Button state
       const btn = document.getElementById('langBtn');
       if(btn){ btn.textContent = lang === 'kn' ? 'English' : 'ಕನ್ನಡ'; btn.setAttribute('aria-pressed', lang==='kn'); }
     }
@@ -360,14 +322,11 @@
       setLang(current === 'en' ? 'kn' : 'en');
     });
 
-    // Init
     (function(){
       const preferred = localStorage.getItem(LANG_KEY) || (navigator.language && navigator.language.startsWith('kn') ? 'kn' : 'en');
       applyI18n(preferred);
     })();
   </script>
-
-  <!-- Keep your existing site script if any -->
   <script src="script.js"></script>
 </body>
 </html>
