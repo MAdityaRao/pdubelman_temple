@@ -324,3 +324,50 @@ document.addEventListener('DOMContentLoaded', () => {
     applyLang(currentLang);
   });
 });
+/* --- Premium interactions layer --- */
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
+  const glow = document.getElementById('cursorGlow');
+
+  window.addEventListener('pointermove', (event) => {
+    root.style.setProperty('--mx', `${event.clientX}px`);
+    root.style.setProperty('--my', `${event.clientY}px`);
+    if (glow) {
+      glow.style.left = `${event.clientX}px`;
+      glow.style.top = `${event.clientY}px`;
+    }
+  }, { passive: true });
+
+  const tiltItems = document.querySelectorAll('[data-tilt]');
+  tiltItems.forEach((item) => {
+    item.addEventListener('pointermove', (event) => {
+      const rect = item.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      item.style.transform = `perspective(900px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+    });
+
+    item.addEventListener('pointerleave', () => {
+      item.style.transform = '';
+    });
+  });
+
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  if (sections.length && navLinks.length) {
+    const setActiveLink = () => {
+      const fromTop = window.scrollY + 120;
+      let current = sections[0].id;
+      sections.forEach((section) => {
+        if (section.offsetTop <= fromTop) current = section.id;
+      });
+      navLinks.forEach((link) => {
+        const active = link.getAttribute('href') === `#${current}`;
+        link.classList.toggle('active', active);
+      });
+    };
+
+    setActiveLink();
+    window.addEventListener('scroll', setActiveLink, { passive: true });
+  }
+});
