@@ -10,35 +10,52 @@ function toggleNav() {
 
   const isOpen = navLinks.classList.toggle('active');
 
-  if (isOpen) navLinks.removeAttribute('style');
-  else navLinks.style.cssText = '';
-
   if (navToggle) {
     navToggle.classList.toggle('open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
   }
+  /* Prevent body scroll when nav is open */
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 function closeNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
 
-  if (navLinks) {
+  if (navLinks && navLinks.classList.contains('active')) {
     navLinks.classList.remove('active');
-    navLinks.style.cssText = '';
   }
-
   if (navToggle) {
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
   }
+  document.body.style.overflow = '';
 }
 
-/* Close nav on link click */
+/* Attach click to nav-toggle buttons that have no inline onclick (e.g. index.html) */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-toggle').forEach(btn => {
+    if (!btn.hasAttribute('onclick')) {
+      btn.addEventListener('click', toggleNav);
+    }
+  });
+});
+
+/* Close nav on nav link click */
 document.addEventListener('click', (e) => {
+  if (e.target.closest('.nav-links a')) { closeNav(); return; }
+  /* Close on outside click */
   const navLinks = document.getElementById('nav-links');
-  if (!navLinks) return;
-  if (e.target.closest('.nav-links a')) closeNav();
+  if (navLinks && navLinks.classList.contains('active')) {
+    if (!e.target.closest('.navbar') && !e.target.closest('.page-header nav')) {
+      closeNav();
+    }
+  }
+});
+
+/* Close nav on Escape */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeNav();
 });
 
 

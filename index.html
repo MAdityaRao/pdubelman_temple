@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,6 @@
         <a href="index.html">Mahalingeshwara</a>
       </div>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" data-i18n="nav.about">Home</a></li>
         <li><a href="#about" data-i18n="nav.about">About</a></li>
         <li><a href="#rituals" data-i18n="nav.rituals">Rituals</a></li>
         <li><a href="seva.html" data-i18n="nav.seva">Seva</a></li>
@@ -275,7 +275,7 @@
             </div>
             <div class="contact-detail-text">
               <strong data-i18n="contact.email.label">Email</strong>
-              <span><a href="mailto:padubelmantemple@gmail.com" style="color:inherit">padubelmantemple@gmail.com</a></span>
+              <span><a href="/cdn-cgi/l/email-protection#3c4c5d58495e5950515d524859514c50597c5b515d5550125f5351" style="color:inherit"><span class="__cf_email__" data-cfemail="453524213027202928242b312028352920052228242c296b262a28">[email&#160;protected]</span></a></span>
             </div>
           </div>
 
@@ -326,95 +326,20 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 
   <script>
-  /* ---- Cursor glow ---- */
-  (function() {
-    const glow = document.getElementById('cursorGlow');
-    const ambient = document.querySelector('.ambient-gradient');
-    if (!glow || !ambient) return;
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-      ambient.style.setProperty('--mx', (e.clientX / window.innerWidth * 100) + '%');
-      ambient.style.setProperty('--my', (e.clientY / window.innerHeight * 100) + '%');
-    });
-  })();
-
-  /* ---- Navbar scroll ---- */
-  (function() {
-    const nav = document.getElementById('navbar');
-    if (!nav) return;
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        nav.classList.remove('transparent');
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.add('transparent');
-        nav.classList.remove('scrolled');
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-  })();
-
-  /* ---- Hero BG loaded ---- */
-  window.addEventListener('load', () => {
-    const bg = document.querySelector('.hero-bg');
-    if (bg) bg.classList.add('loaded');
-  });
-
-  /* ---- Mobile nav toggle ---- */
-  function toggleNav() {
-    const links = document.getElementById('nav-links');
-    const toggle = document.getElementById('navToggle');
-    if (!links || !toggle) return;
-    const isOpen = links.classList.toggle('active');
-    toggle.classList.toggle('open', isOpen);
-  }
-
-  /* ---- Close nav on link click ---- */
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('nav-links')?.classList.remove('active');
-      document.getElementById('navToggle')?.classList.remove('open');
-    });
-  });
-
-  /* ---- Ritual accordion ---- */
-  function toggleRitual(card) {
-    const details = card.querySelector('.ritual-details');
-    const isOpen = card.classList.contains('open');
-    document.querySelectorAll('.ritual-card.open').forEach(c => {
-      c.classList.remove('open');
-      c.querySelector('.ritual-details').classList.remove('active');
-    });
-    if (!isOpen) {
-      card.classList.add('open');
-      details.classList.add('active');
-    }
-  }
-
-  /* ---- Scroll animations ---- */
-  (function() {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
-  })();
-
-  /* ---- Footer year ---- */
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---- i18n ---- */
+  /* ============================================================
+     HOME PAGE — i18n (Language Switch)
+     All other logic (nav, scroll, animations) handled by script.js
+  ============================================================ */
   const homeI18n = {
     en: {
       'nav.about':'About','nav.rituals':'Rituals','nav.seva':'Seva','nav.gallery':'Gallery','nav.contact':'Contact',
       'hero.badge':'Padubelman, Karnataka',
       'hero.h1':'Sri Mahalingeshwara Temple',
       'hero.p':'Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace',
-      'hero.status':'Daily Darshan Open • Morning & Evening',
+      'hero.status':'Daily Darshan Open \u2022 Morning & Evening',
       'hero.cta1':'Discover the Temple','hero.cta2':'Book a Seva','hero.cta3':'Gallery','hero.scroll':'Scroll',
       'highlights.label':'Why Devotees Choose This Temple','highlights.h2':'Spiritual Experience with Trusted Tradition',
       'highlights.card1.title':'Traditional Authenticity','highlights.card1.desc':'Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.',
@@ -453,47 +378,47 @@
       'footer.copy':'Sri Mahalingeshwara Temple Trust, Padubelman. All rights reserved.'
     },
     kn: {
-      'nav.about':'ಬಗ್ಗೆ','nav.rituals':'ವಿಧಿಗಳು','nav.seva':'ಸೇವೆ','nav.gallery':'ಗ್ಯಾಲರಿ','nav.contact':'ಸಂಪರ್ಕ',
-      'hero.badge':'ಪದುಬೆಲ್ಮಣ, ಕರ್ನಾಟಕ',
-      'hero.h1':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
-      'hero.p':'ಭಕ್ತಿ ಮತ್ತು ದಿವ್ಯತೆ ಒಂದಾಗುವ ಪವಿತ್ರ ಕ್ಷೇತ್ರ — ಶಾಶ್ವತ ಸಂಪ್ರದಾಯ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಅನುಗ್ರಹದ ತಾಣ',
-      'hero.status':'ಪ್ರತಿದಿನ ದರ್ಶನ ತೆರೆದಿದೆ • ಬೆಳಿಗ್ಗೆ ಮತ್ತು ಸಂಜೆ',
-      'hero.cta1':'ದೇವಾಲಯ ಅನ್ವೇಷಿಸಿ','hero.cta2':'ಸೇವೆ ಬುಕ್ ಮಾಡಿ','hero.cta3':'ಗ್ಯಾಲರಿ','hero.scroll':'ಮುಂದೆ',
-      'highlights.label':'ಭಕ್ತರು ಈ ದೇವಾಲಯವನ್ನು ಆರಿಸುವ ಕಾರಣ','highlights.h2':'ಪರಂಪರೆಯ ವಿಶ್ವಾಸದೊಂದಿಗೆ ಆಧ್ಯಾತ್ಮಿಕ ಅನುಭವ',
-      'highlights.card1.title':'ಸಾಂಪ್ರದಾಯಿಕ ಪ್ರಾಮಾಣಿಕತೆ','highlights.card1.desc':'ಪ್ರತಿ ವಿಧಿಯೂ ಆಗಮ ಮತ್ತು ತುಳುನಾಡು ಸಂಪ್ರದಾಯದ ಪ್ರಕಾರ ತರಬೇತಿ ಪಡೆದ ಅರ್ಚಕರಿಂದ ನೆರವೇರುತ್ತದೆ.',
-      'highlights.card2.title':'ಭಕ್ತರಿಗೆ ಸುಲಭ ಸಹಾಯ','highlights.card2.desc':'WhatsApp ಮೂಲಕ ತ್ವರಿತ ಸೇವಾ ಮಾರ್ಗದರ್ಶನ, ಸ್ಪಷ್ಟ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಪಾರದರ್ಶಕ ಮಾಹಿತಿ.',
-      'highlights.card3.title':'ಹಬ್ಬಗಳ ಶಿಸ್ತುಬದ್ಧ ಆಯೋಜನೆ','highlights.card3.desc':'ವಾರ್ಷಿಕ ಉತ್ಸವಗಳನ್ನು ಶಿಸ್ತಿನ ಯೋಜನೆಯೊಂದಿಗೆ ಭಕ್ತಿ ಮತ್ತು ಸಮುದಾಯ ಪಾಲ್ಗೊಳ್ಳುವಿಕೆಯಿಂದ ಆಯೋಜಿಸಲಾಗುತ್ತದೆ.',
-      'about.label':'ದೇವಾಲಯದ ಬಗ್ಗೆ','about.h2':'ಶ್ರೀ ಶಿವನ ಪವಿತ್ರ ನೆಲೆ',
-      'about.p1':'ಪದುಬೆಲ್ಮಣದ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಕರಾವಳಿ ಕರ್ನಾಟಕದ ಒಂದು ಪ್ರತಿಷ್ಠಿತ ಶೈವ ಕ್ಷೇತ್ರ. ಶ್ರೀ ಶಿವನ ರೂಪವಾದ ಮಹಾಲಿಂಗೇಶ್ವರನಿಗೆ ಸಮರ್ಪಿತ ಈ ದೇವಾಲಯ ಭಕ್ತರ ಮನದಲ್ಲಿ ವಿಶೇಷ ಸ್ಥಾನ ಪಡೆದಿದೆ.',
-      'about.p2':'ದೇವಾಲಯ ತುಳು ನಾಡಿನ ಪೂಜಾ ಸಂಪ್ರದಾಯವನ್ನು ಅನುಸರಿಸುತ್ತದೆ. ಆಗಮ ಶಾಸ್ತ್ರದ ಪ್ರಕಾರ ತರಬೇತಿ ಪಡೆದ ಅರ್ಚಕರಿಂದ ನಿತ್ಯ ಪೂಜೆ ನೆರವೇರುತ್ತದೆ. ಶ್ರೀ ಗಣಪತಿಯ ಅನುಗ್ರಹದೊಂದಿಗೆ ಎಲ್ಲ ಧಾರ್ಮಿಕ ಕಾರ್ಯಗಳು ಪ್ರಾರಂಭವಾಗುತ್ತವೆ.',
-      'about.p3':'ಪ್ರತಿ ವರ್ಷ ಬ್ರಹ್ಮಕಲಶ, ಕೋಲ ಮತ್ತು ಉತ್ಸವ ನಡೆಯುತ್ತವೆ. ಸಾವಿರಾರು ಭಕ್ತರು ಭಾಗವಹಿಸುವ ಈ ಉತ್ಸವಗಳಲ್ಲಿ ಭಕ್ತಿ ಗೀತೆ, ಮಂತ್ರ ಪಠಣ ಮತ್ತು ಪ್ರಾಚೀನ ವಿಧಿ-ವಿಧಾನಗಳ ಮೂಲಕ ದೇವ ಸಂನಿಧಿ ಅನುಭವಿಸಬಹುದು.',
-      'stat.deities':'ದೇವತೆಗಳು','stat.sevas':'ಸೇವೆಗಳು','stat.days':'ಪೂಜಾ ದಿನಗಳು',
-      'rituals.label':'ದೈನಂದಿನ ಆಚರಣೆಗಳು','rituals.h2':'ಪವಿತ್ರ ವಿಧಿಗಳು ಮತ್ತು ಸಮಯ',
-      'rituals.sub':'ದೇವಾಲಯದ ಪ್ರತಿ ದಿನ ಭಕ್ತಿಮಯ ಪೂಜಾ ಕ್ರಮದಿಂದ ಸಾಗುತ್ತದೆ',
-      'ritual.morning.title':'ಬೆಳಿಗ್ಗೆ ಪೂಜೆ','ritual.morning.time':'ಬೆಳಿಗ್ಗೆ 7:00 – 8:00',
-      'ritual.morning.desc':'ದಿನದ ಆರಂಭ ಮಂಗಳಾರತಿಯಿಂದ ಆಗುತ್ತದೆ. ನಂತರ ನೀರು ಮತ್ತು ಪಂಚಾಮೃತದಿಂದ ಅಭಿಷೇಕ ನಡೆಯುತ್ತದೆ. ಅರ್ಚಕರು ಲಿಂಗಕ್ಕೆ ತಾಜಾ ಹೂವಿನಿಂದ ಅಲಂಕಾರ ಮಾಡಿ ರುದ್ರಾಭಿಷೇಕ ನೆರವೇರಿಸುತ್ತಾರೆ.',
-      'ritual.evening.title':'ಸಂಜೆ ಪೂಜೆ','ritual.evening.time':'ಸಂಜೆ 5:00 – 7:30',
-      'ritual.evening.desc':'ಸಂಜೆ ದೀಪ ಬೆಳಗಿನೊಂದಿಗೆ ದೇವಾಲಯ ಝಗಮಗಿಸುತ್ತದೆ. ದೀಪ ಆರಾಧನೆ ಮತ್ತು ಭಜನೆಯ ನಡುವೆ ಸಂಜೆ ಮಂಗಳಾರತಿ ನೆರವೇರುತ್ತದೆ.',
-      'ritual.ranga.title':'ರಂಗ ಪೂಜೆ','ritual.ranga.time':'ಸಂಜೆ 6:00 (ವಿನಂತಿಯ ಮೇರೆಗೆ)',
-      'ritual.ranga.desc':'ಭಕ್ತರ ವಿನಂತಿಯ ಮೇರೆಗೆ ಮಾತ್ರ ನಡೆಯುವ ವಿಶೇಷ ಸಾಯಂಕಾಲ ವಿಧಿ. ಅನ್ನ ನೈವೇದ್ಯ ಮತ್ತು ಬಲಿ ವಿಧಿ ಒಳಗೊಂಡ ಈ ಸೇವೆ ಭಕ್ತ ಸಮುದಾಯಕ್ಕೆ ಅತ್ಯಂತ ಪ್ರಿಯ.',
-      'ritual.shata.title':'ಶತರುದ್ರಾಭಿಷೇಕ','ritual.shata.time':'ವಿಶೇಷ ಸಂದರ್ಭಗಳಲ್ಲಿ',
-      'ritual.shata.desc':'ದೇವಾಲಯದ ಅತ್ಯಂತ ಶಕ್ತಿಯುತ ಸೇವೆಗಳಲ್ಲೊಂದು. ಶ್ರೀ ರುದ್ರಮ್ ನೂರು ಬಾರಿ ಪಠಿಸುತ್ತಾ ತೀರ್ಥ, ಪಂಚಾಮೃತ ಮತ್ತು ಇತರ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ನೆರವೇರುತ್ತದೆ.',
-      'visit.label':'ಭೇಟಿ ಯೋಜಿಸಿ','visit.h2':'ದೇವಾಲಯ ಸಮಯ ಮತ್ತು ಮಾಹಿತಿ',
-      'visit.sub':'ದೇವಾಲಯ ವರ್ಷಪೂರ್ತಿ ಎಲ್ಲ ಭಕ್ತರಿಗೆ ತೆರೆದಿದೆ',
-      'visit.morning.title':'ಬೆಳಿಗ್ಗೆ ಸಮಯ','visit.morning.desc':'ಬೆಳಿಗ್ಗೆ 6:00 ರಿಂದ ಮಧ್ಯಾಹ್ನ 1:00. ಹಬ್ಬ ಮತ್ತು ರಜಾ ದಿನಗಳಂದೂ ತೆರೆದಿರುತ್ತದೆ',
-      'visit.evening.title':'ಸಂಜೆ ಸಮಯ','visit.evening.desc':'ಸಂಜೆ 5:30 ರಿಂದ ರಾತ್ರಿ 8:00. ಸಂಜೆ ಪೂಜೆ ಮತ್ತು ದೀಪ ಆರಾಧನೆ',
-      'visit.location.title':'ಸ್ಥಳ','visit.location.desc':'ಪದುಬೆಲ್ಮಣ, ಬಂಟ್ವಾಳ ತಾಲ್ಲೂಕು, ದಕ್ಷಿಣ ಕನ್ನಡ, ಕರ್ನಾಟಕ',
-      'visit.dress.title':'ಉಡುಗೆ ನಿಯಮ','visit.dress.desc':'ಸಾಂಪ್ರದಾಯಿಕ ಉಡುಗೆ ಸೂಕ್ತ. ಧೋತಿ ಅಥವಾ ಸೀರೆ ಶ್ರೇಯಸ್ಕರ. ಗೌರವಪೂರ್ಣ ಉಡುಗೆ ಕಡ್ಡಾಯ',
-      'contact.label':'ಸಂಪರ್ಕಿಸಿ','contact.h2':'ದೇವಾಲಯ ಸಂಪರ್ಕ',
-      'contact.sub':'ಸೇವೆ ಬುಕ್ಕಿಂಗ್, ಹಬ್ಬದ ಮಾಹಿತಿ ಅಥವಾ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಸಂಪರ್ಕಿಸಿ',
-      'contact.trust':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಟ್ರಸ್ಟ್',
-      'contact.intro':'ಸೇವೆ ಬುಕ್ಕಿಂಗ್, ಹಬ್ಬದ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಸಾಮಾನ್ಯ ವಿಚಾರಣೆಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡಲು ಸಿದ್ಧ.',
-      'contact.phone.label':'ದೂರವಾಣಿ','contact.email.label':'ಇ-ಮೇಲ್','contact.address.label':'ವಿಳಾಸ',
-      'contact.address.value':'ಪದುಬೆಲ್ಮಣ, ಬಂಟ್ವಾಳ ತಾಲ್ಲೂಕು, ದಕ್ಷಿಣ ಕನ್ನಡ, ಕರ್ನಾಟಕ',
-      'contact.cta1':'ಸೇವೆ ಬುಕ್ ಮಾಡಿ','contact.cta2':'WhatsApp ಮಾಡಿ',
-      'contact.maplabel':'ಪದುಬೆಲ್ಮಣ, ಕರ್ನಾಟಕ','contact.mapbtn':'ನಕ್ಷೆಯಲ್ಲಿ ತೆರೆಯಿರಿ',
-      'footer.mantra':'ಓಂ ನಮಃ ಶಿವಾಯ','footer.privacy':'ಗೌಪ್ಯತಾ ನೀತಿ',
-      'footer.copy':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಟ್ರಸ್ಟ್, ಪದುಬೆಲ್ಮಣ. ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಿವೆ.'
+      'nav.about':'\u0cac\u0c97\u0ccd\u0c97\u0cc6','nav.rituals':'\u0cb5\u0cbf\u0ca7\u0cbf\u0c97\u0cb3\u0cc1','nav.seva':'\u0cb8\u0cc7\u0cb5\u0cc6','nav.gallery':'\u0c97\u0ccd\u0caf\u0cbe\u0cb2\u0cb0\u0cbf','nav.contact':'\u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95',
+      'hero.badge':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
+      'hero.h1':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf',
+      'hero.p':'\u0cad\u0c95\u0ccd\u0ca4\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cbf\u0cb5\u0ccd\u0caf\u0ca4\u0cc6 \u0c92\u0c82\u0ca6\u0cbe\u0c97\u0cc1\u0cb5 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0c95\u0ccd\u0cb7\u0cc7\u0ca4\u0ccd\u0cb0 \u2014 \u0cb6\u0cbe\u0cb6\u0ccd\u0cb5\u0ca4 \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c86\u0ca7\u0ccd\u0caf\u0cbe\u0ca4\u0ccd\u0cae\u0cbf\u0c95 \u0c85\u0ca8\u0cc1\u0c97\u0ccd\u0cb0\u0cb9\u0ca6 \u0ca4\u0cbe\u0ca3',
+      'hero.status':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf\u0ca6\u0cbf\u0ca8 \u0ca6\u0cb0\u0ccd\u0cb6\u0ca8 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6 \u2022 \u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0c82\u0c9c\u0cc6',
+      'hero.cta1':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c85\u0ca8\u0ccd\u0cb5\u0cc7\u0cb7\u0cbf\u0cb8\u0cbf','hero.cta2':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd \u0cae\u0cbe\u0ca1\u0cbf','hero.cta3':'\u0c97\u0ccd\u0caf\u0cbe\u0cb2\u0cb0\u0cbf','hero.scroll':'\u0cae\u0cc1\u0c82\u0ca6\u0cc6',
+      'highlights.label':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cc1 \u0c88 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0cb5\u0ca8\u0ccd\u0ca8\u0cc1 \u0c86\u0cb0\u0cbf\u0cb8\u0cc1\u0cb5 \u0c95\u0cbe\u0cb0\u0ca3','highlights.h2':'\u0caa\u0cb0\u0c82\u0caa\u0cb0\u0cc6\u0caf \u0cb5\u0cbf\u0cb6\u0ccd\u0cb5\u0cbe\u0cb8\u0ca6\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0c86\u0ca7\u0ccd\u0caf\u0cbe\u0ca4\u0ccd\u0cae\u0cbf\u0c95 \u0c85\u0ca8\u0cc1\u0cad\u0cb5',
+      'highlights.card1.title':'\u0cb8\u0cbe\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cbf\u0c95 \u0caa\u0ccd\u0cb0\u0cbe\u0cae\u0cbe\u0ca3\u0cbf\u0c95\u0ca4\u0cc6','highlights.card1.desc':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0cb5\u0cbf\u0ca7\u0cbf\u0caf\u0cc2 \u0c86\u0c97\u0cae \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca4\u0cc1\u0cb3\u0cc1\u0ca8\u0cbe\u0ca1\u0cc1 \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0ca6 \u0caa\u0ccd\u0cb0\u0c95\u0cbe\u0cb0 \u0ca4\u0cb0\u0cac\u0cc7\u0ca4\u0cbf \u0caa\u0ca1\u0cc6\u0ca6 \u0c85\u0cb0\u0ccd\u0c9a\u0c95\u0cb0\u0cbf\u0c82\u0ca6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'highlights.card2.title':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cbf\u0c97\u0cc6 \u0cb8\u0cc1\u0cb2\u0cad \u0cb8\u0cb9\u0cbe\u0caf','highlights.card2.desc':'WhatsApp \u0cae\u0cc2\u0cb2\u0c95 \u0ca4\u0ccd\u0cb5\u0cb0\u0cbf\u0ca4 \u0cb8\u0cc7\u0cb5\u0cbe \u0cae\u0cbe\u0cb0\u0ccd\u0c97\u0ca6\u0cb0\u0ccd\u0cb6\u0ca8, \u0cb8\u0ccd\u0caa\u0cb7\u0ccd\u0c9f \u0cb5\u0cc7\u0cb3\u0cbe\u0caa\u0c9f\u0ccd\u0c9f\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0caa\u0cbe\u0cb0\u0ca6\u0cb0\u0ccd\u0cb6\u0c95 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf.',
+      'highlights.card3.title':'\u0cb9\u0cac\u0ccd\u0cac\u0c97\u0cb3 \u0cb6\u0cbf\u0cb8\u0ccd\u0ca4\u0cc1\u0cac\u0ca6\u0ccd\u0ca7 \u0c86\u0caf\u0ccb\u0c9c\u0ca8\u0cc6','highlights.card3.desc':'\u0cb5\u0cbe\u0cb0\u0ccd\u0cb7\u0cbf\u0c95 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5\u0c97\u0cb3\u0ca8\u0ccd\u0ca8\u0cc1 \u0cb6\u0cbf\u0cb8\u0ccd\u0ca4\u0cbf\u0ca8 \u0caf\u0ccb\u0c9c\u0ca8\u0cc6\u0caf\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0cad\u0c95\u0ccd\u0ca4\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cae\u0cc1\u0ca6\u0cbe\u0caf \u0caa\u0cbe\u0cb2\u0ccd\u0c97\u0cca\u0cb3\u0ccd\u0cb3\u0cc1\u0cb5\u0cbf\u0c95\u0cc6\u0caf\u0cbf\u0c82\u0ca6 \u0c86\u0caf\u0ccb\u0c9c\u0cbf\u0cb8\u0cb2\u0cbe\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'about.label':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0cac\u0c97\u0ccd\u0c97\u0cc6','about.h2':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cb6\u0cbf\u0cb5\u0ca8 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0ca8\u0cc6\u0cb2\u0cc6',
+      'about.p1':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3\u0ca6 \u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c95\u0cb0\u0cbe\u0cb5\u0cb3\u0cbf \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95\u0ca6 \u0c92\u0c82\u0ca6\u0cc1 \u0caa\u0ccd\u0cb0\u0ca4\u0cbf\u0cb7\u0ccd\u0c9f\u0cbf\u0ca4 \u0cb6\u0cc8\u0cb5 \u0c95\u0ccd\u0cb7\u0cc7\u0ca4\u0ccd\u0cb0. \u0cb6\u0ccd\u0cb0\u0cc0 \u0cb6\u0cbf\u0cb5\u0ca8 \u0cb0\u0cc2\u0caa\u0cb5\u0cbe\u0ca6 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0\u0ca8\u0cbf\u0c97\u0cc6 \u0cb8\u0cae\u0cb0\u0ccd\u0caa\u0cbf\u0ca4 \u0c88 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cae\u0ca8\u0ca6\u0cb2\u0ccd\u0cb2\u0cbf \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0ccd\u0ca5\u0cbe\u0ca8 \u0caa\u0ca1\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6.',
+      'about.p2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0ca4\u0cc1\u0cb3\u0cc1 \u0ca8\u0cbe\u0ca1\u0cbf\u0ca8 \u0caa\u0cc2\u0c9c\u0cbe \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cb5\u0ca8\u0ccd\u0ca8\u0cc1 \u0c85\u0ca8\u0cc1\u0cb8\u0cb0\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0c86\u0c97\u0cae \u0cb6\u0cbe\u0cb8\u0ccd\u0ca4\u0ccd\u0cb0\u0ca6 \u0caa\u0ccd\u0cb0\u0c95\u0cbe\u0cb0 \u0ca4\u0cb0\u0cac\u0cc7\u0ca4\u0cbf \u0caa\u0ca1\u0cc6\u0ca6 \u0c85\u0cb0\u0ccd\u0c9a\u0c95\u0cb0\u0cbf\u0c82\u0ca6 \u0ca8\u0cbf\u0ca4\u0ccd\u0caf \u0caa\u0cc2\u0c9c\u0cc6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'about.p3':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0cb5\u0cb0\u0ccd\u0cb7 \u0cac\u0ccd\u0cb0\u0cb9\u0ccd\u0cae\u0c95\u0cb2\u0cb6, \u0c95\u0ccb\u0cb2 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6. \u0cb8\u0cbe\u0cb5\u0cbf\u0cb0\u0cbe\u0cb0\u0cc1 \u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cc1 \u0cad\u0cbe\u0c97\u0cb5\u0cb9\u0cbf\u0cb8\u0cc1\u0cb5 \u0c88 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cbf \u0ca6\u0cc7\u0cb5 \u0cb8\u0ca8\u0ccd\u0ca8\u0cbf\u0ca7\u0cbf \u0c85\u0ca8\u0cc1\u0cad\u0cb5\u0cbf\u0cb8\u0cac\u0cb9\u0cc1\u0ca6\u0cc1.',
+      'stat.deities':'\u0ca6\u0cc7\u0cb5\u0ca4\u0cc6\u0c97\u0cb3\u0cc1','stat.sevas':'\u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1','stat.days':'\u0caa\u0cc2\u0c9c\u0cbe \u0ca6\u0cbf\u0ca8\u0c97\u0cb3\u0cc1',
+      'rituals.label':'\u0ca6\u0cc8\u0ca8\u0c82\u0ca6\u0cbf\u0ca8 \u0c86\u0c9a\u0cb0\u0ca3\u0cc6\u0c97\u0cb3\u0cc1','rituals.h2':'\u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0cb5\u0cbf\u0ca7\u0cbf\u0c97\u0cb3\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cae\u0caf',
+      'rituals.sub':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0ca6\u0cbf\u0ca8 \u0cad\u0c95\u0ccd\u0ca4\u0cbf\u0cae\u0caf \u0caa\u0cc2\u0c9c\u0cbe \u0c95\u0ccd\u0cb0\u0cae\u0ca6\u0cbf\u0c82\u0ca6 \u0cb8\u0cbe\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6',
+      'ritual.morning.title':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6','ritual.morning.time':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 7:00 \u2013 8:00',
+      'ritual.morning.desc':'\u0ca6\u0cbf\u0ca8\u0ca6 \u0c86\u0cb0\u0c82\u0cad \u0cae\u0c82\u0c97\u0cb3\u0cbe\u0cb0\u0ca4\u0cbf\u0caf\u0cbf\u0c82\u0ca6 \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0ca8\u0c82\u0ca4\u0cb0 \u0ca8\u0cc0\u0cb0\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0caa\u0c82\u0c9a\u0cbe\u0cae\u0cc3\u0ca4\u0ca6\u0cbf\u0c82\u0ca6 \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'ritual.evening.title':'\u0cb8\u0c82\u0c9c\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6','ritual.evening.time':'\u0cb8\u0c82\u0c9c\u0cc6 5:00 \u2013 7:30',
+      'ritual.evening.desc':'\u0cb8\u0c82\u0c9c\u0cc6 \u0ca6\u0cc0\u0caa \u0cac\u0cc6\u0cb3\u0c97\u0cbf\u0ca8\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9d\u0c97\u0cae\u0c97\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0ca6\u0cc0\u0caa \u0c86\u0cb0\u0cbe\u0ca7\u0ca8\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cad\u0c9c\u0ca8\u0cc6\u0caf \u0ca8\u0ca1\u0cc1\u0cb5\u0cc6 \u0cb8\u0c82\u0c9c\u0cc6 \u0cae\u0c82\u0c97\u0cb3\u0cbe\u0cb0\u0ca4\u0cbf \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'ritual.ranga.title':'\u0cb0\u0c82\u0c97 \u0caa\u0cc2\u0c9c\u0cc6','ritual.ranga.time':'\u0cb8\u0c82\u0c9c\u0cc6 6:00 (\u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6)',
+      'ritual.ranga.desc':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6 \u0cae\u0cbe\u0ca4\u0ccd\u0cb0 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0cb5 \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0cbe\u0caf\u0c82\u0c95\u0cbe\u0cb2\u0ca6 \u0cb5\u0cbf\u0ca7\u0cbf. \u0c85\u0ca8\u0ccd\u0ca8 \u0ca8\u0cc8\u0cb5\u0cc7\u0ca6\u0ccd\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cac\u0cb2\u0cbf \u0cb5\u0cbf\u0ca7\u0cbf \u0c92\u0cb3\u0c97\u0cca\u0c82\u0ca1 \u0c88 \u0cb8\u0cc7\u0cb5\u0cc6 \u0cad\u0c95\u0ccd\u0ca4 \u0cb8\u0cae\u0cc1\u0ca6\u0cbe\u0caf\u0c95\u0ccd\u0c95\u0cc6 \u0c85\u0ca4\u0ccd\u0caf\u0c82\u0ca4 \u0caa\u0ccd\u0cb0\u0cbf\u0caf.',
+      'ritual.shata.title':'\u0cb6\u0ca4\u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cbe\u0cad\u0cbf\u0cb7\u0cc7\u0c95','ritual.shata.time':'\u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0c82\u0ca6\u0cb0\u0ccd\u0cad\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cbf',
+      'ritual.shata.desc':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0c85\u0ca4\u0ccd\u0caf\u0c82\u0ca4 \u0cb6\u0c95\u0ccd\u0ca4\u0cbf\u0caf\u0cc1\u0ca4 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cca\u0c82\u0ca6\u0cc1. \u0cb6\u0ccd\u0cb0\u0cc0 \u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cae\u0ccd \u0ca8\u0cc2\u0cb0\u0cc1 \u0cac\u0cbe\u0cb0\u0cbf \u0caa\u0ca0\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0cbe \u0ca4\u0cc0\u0cb0\u0ccd\u0ca5, \u0caa\u0c82\u0c9a\u0cbe\u0cae\u0cc3\u0ca4 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c87\u0ca4\u0cb0 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0ca6\u0ccd\u0cb0\u0cb5\u0ccd\u0caf\u0c97\u0cb3\u0cbf\u0c82\u0ca6 \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
+      'visit.label':'\u0cad\u0cc7\u0c9f\u0cbf \u0caf\u0ccb\u0c9c\u0cbf\u0cb8\u0cbf','visit.h2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb8\u0cae\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf',
+      'visit.sub':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb5\u0cb0\u0ccd\u0cb7\u0cac\u0cc2\u0cb0\u0ccd\u0ca4\u0cbf \u0c8e\u0cb2\u0ccd\u0cb2 \u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cbf\u0c97\u0cc6 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6',
+      'visit.morning.title':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0cb8\u0cae\u0caf','visit.morning.desc':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 6:00 \u0cb0\u0cbf\u0c82\u0ca6 \u0cae\u0ca7\u0ccd\u0caf\u0cbe\u0cb9\u0ccd\u0ca8 1:00. \u0cb9\u0cac\u0ccd\u0cac \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb0\u0c9c\u0cbe \u0ca6\u0cbf\u0ca8\u0c97\u0cb3\u0c82\u0ca6\u0cc2 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6',
+      'visit.evening.title':'\u0cb8\u0c82\u0c9c\u0cc6 \u0cb8\u0cae\u0caf','visit.evening.desc':'\u0cb8\u0c82\u0c9c\u0cc6 5:30 \u0cb0\u0cbf\u0c82\u0ca6 \u0cb0\u0cbe\u0ca4\u0ccd\u0cb0\u0cbf 8:00. \u0cb8\u0c82\u0c9c\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cc0\u0caa \u0c86\u0cb0\u0cbe\u0ca7\u0ca8\u0cc6',
+      'visit.location.title':'\u0cb8\u0ccd\u0ca5\u0cb3','visit.location.desc':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0cac\u0c82\u0c9f\u0ccd\u0cb5\u0cb3 \u0ca4\u0cbe\u0cb2\u0ccd\u0cb2\u0cc2\u0c95\u0cc1, \u0ca6\u0c95\u0ccd\u0cb7\u0cbf\u0ca3 \u0c95\u0ca8\u0ccd\u0ca8\u0ca1, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
+      'visit.dress.title':'\u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0ca8\u0cbf\u0caf\u0cae','visit.dress.desc':'\u0cb8\u0cbe\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cbf\u0c95 \u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0cb8\u0cc2\u0c95\u0ccd\u0ca4. \u0ca7\u0ccb\u0ca4\u0cbf \u0c85\u0ca5\u0cb5\u0cbe \u0cb8\u0cc0\u0cb0\u0cc6 \u0cb6\u0ccd\u0cb0\u0cc7\u0caf\u0cb8\u0ccd\u0c95\u0cb0. \u0c97\u0ccc\u0cb0\u0cb5\u0caa\u0cc2\u0cb0\u0ccd\u0ca3 \u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0c95\u0ca1\u0ccd\u0ca1\u0cbe\u0caf',
+      'contact.label':'\u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95\u0cbf\u0cb8\u0cbf','contact.h2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95',
+      'contact.sub':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd\u0c95\u0cbf\u0c82\u0c97\u0ccd, \u0cb9\u0cac\u0ccd\u0cac\u0ca6 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf \u0c85\u0ca5\u0cb5\u0cbe \u0caf\u0cbe\u0cb5\u0cc1\u0ca6\u0cc7\u0ca8\u0cc1 \u0caa\u0ccd\u0cb0\u0cb6\u0ccd\u0ca8\u0cc6\u0c97\u0cb3\u0cbf\u0c97\u0cbe\u0c97\u0cbf \u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95\u0cbf\u0cb8\u0cbf',
+      'contact.trust':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9f\u0ccd\u0cb0\u0cb8\u0ccd\u0c9f\u0ccd',
+      'contact.intro':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd\u0c95\u0cbf\u0c82\u0c97\u0ccd, \u0cb9\u0cac\u0ccd\u0cac\u0ca6 \u0cb5\u0cc7\u0cb3\u0cbe\u0caa\u0c9f\u0ccd\u0c9f\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cbe\u0cae\u0cbe\u0ca8\u0ccd\u0caf \u0cb5\u0cbf\u0c9a\u0cbe\u0cb0\u0ca3\u0cc6\u0c97\u0cb3\u0cbf\u0c97\u0cc6 \u0ca8\u0cbe\u0cb5\u0cc1 \u0cb8\u0cb9\u0cbe\u0caf \u0cae\u0cbe\u0ca1\u0cb2\u0cc1 \u0cb8\u0cbf\u0ca6\u0ccd\u0ca7.',
+      'contact.phone.label':'\u0ca6\u0cc2\u0cb0\u0cb5\u0cbe\u0ca3\u0cbf','contact.email.label':'\u0c87-\u0cae\u0cc7\u0cb2\u0ccd','contact.address.label':'\u0cb5\u0cbf\u0cb3\u0cbe\u0cb8',
+      'contact.address.value':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0cac\u0c82\u0c9f\u0ccd\u0cb5\u0cb3 \u0ca4\u0cbe\u0cb2\u0ccd\u0cb2\u0cc2\u0c95\u0cc1, \u0ca6\u0c95\u0ccd\u0cb7\u0cbf\u0ca3 \u0c95\u0ca8\u0ccd\u0ca8\u0ca1, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
+      'contact.cta1':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd \u0cae\u0cbe\u0ca1\u0cbf','contact.cta2':'WhatsApp \u0cae\u0cbe\u0ca1\u0cbf',
+      'contact.maplabel':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95','contact.mapbtn':'\u0ca8\u0c95\u0ccd\u0cb7\u0cc6\u0caf\u0cb2\u0ccd\u0cb2\u0cbf \u0ca4\u0cc6\u0cb0\u0cc6\u0caf\u0cbf\u0cb0\u0cbf',
+      'footer.mantra':'\u0d13\u0c82 \u0ca8\u0cae\u0c83 \u0cb6\u0cbf\u0cb5\u0cbe\u0caf','footer.privacy':'\u0c97\u0ccc\u0caa\u0ccd\u0caf\u0ca4\u0cbe \u0ca8\u0cc0\u0ca4\u0cbf',
+      'footer.copy':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9f\u0ccd\u0cb0\u0cb8\u0ccd\u0c9f\u0ccd, \u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3. \u0c8e\u0cb2\u0ccd\u0cb2 \u0cb9\u0c95\u0ccd\u0c95\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0cbe\u0caf\u0ccd\u0ca6\u0cbf\u0cb0\u0cbf\u0cb8\u0cbf\u0cb5\u0cc6.'
     }
   };
 
@@ -505,7 +430,7 @@
     });
     const btn = document.getElementById('langBtn');
     if (btn) {
-      btn.textContent = lang === 'en' ? 'ಕನ್ನಡ' : 'English';
+      btn.textContent = lang === 'en' ? '\u0c95\u0ca8\u0ccd\u0ca8\u0ca1' : 'English';
       btn.setAttribute('aria-pressed', String(lang === 'kn'));
     }
     document.documentElement.lang = lang === 'kn' ? 'kn' : 'en';
@@ -524,6 +449,5 @@
     });
   });
   </script>
-
 </body>
 </html>
