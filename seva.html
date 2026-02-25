@@ -29,7 +29,7 @@
           <div class="lang-switch" role="group" aria-label="Language switcher">
             <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
           </div>
-          <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+          <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -38,7 +38,7 @@
       </div>
     </nav>
     <div class="page-title-container fade-in">
-      <span class="section-label" style="color:var(--clr-gold-light)">Divine Service</span>
+      <span class="section-label" style="color:var(--dk-gold-light)">Divine Service</span>
       <h1 data-i18n="hero.h1">Divine Sevas &amp; Offerings</h1>
       <p data-i18n="hero.p">Daily poojas, abhishekas, homas, and special rituals offered with devotion</p>
     </div>
@@ -58,10 +58,12 @@
               <span class="seva-name" data-i18n="sevas.panchakajaya.name">Panchakajaya</span>
               <span class="seva-badge" data-i18n="badges.daily">Daily</span>
               <span class="seva-price">&#8377;20</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
-            <div class="seva-content" data-i18n="sevas.panchakajaya.desc">
-              Panchakajaya is a wholesome prasada prepared with jaggery, sesame, coconut, ghee and honey. Offered with simple devotion, it signifies balance of the five elements and the sweetness of a steady mind.
+            <div class="seva-content">
+              <div class="seva-content-inner" data-i18n="sevas.panchakajaya.desc">
+                Panchakajaya is a wholesome prasada prepared with jaggery, sesame, coconut, ghee and honey. Offered with simple devotion, it signifies balance of the five elements and the sweetness of a steady mind.
+              </div>
             </div>
           </div>
 
@@ -70,10 +72,12 @@
               <span class="seva-name" data-i18n="sevas.rudra.name">Rudrabhisheka</span>
               <span class="seva-badge" data-i18n="badges.daily">Daily</span>
               <span class="seva-price">&#8377;50</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
-            <div class="seva-content" data-i18n="sevas.rudra.desc">
-              The Shiva Linga is bathed with water, milk and sacred dravyas while chanting Sri Rudram. Devotees undertake this seva to dissolve inner negativity and invite clarity, health and protection.
+            <div class="seva-content">
+              <div class="seva-content-inner" data-i18n="sevas.rudra.desc">
+                The Shiva Linga is bathed with water, milk and sacred dravyas while chanting Sri Rudram. Devotees undertake this seva to dissolve inner negativity and invite clarity, health and protection.
+              </div>
             </div>
           </div>
 
@@ -82,10 +86,12 @@
               <span class="seva-name" data-i18n="sevas.maha.name">Maha Pooje</span>
               <span class="seva-badge" data-i18n="badges.daily">Daily</span>
               <span class="seva-price">&#8377;50</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
-            <div class="seva-content" data-i18n="sevas.maha.desc">
-              A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.
+            <div class="seva-content">
+              <div class="seva-content-inner" data-i18n="sevas.maha.desc">
+                A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.
+              </div>
             </div>
           </div>
 
@@ -94,22 +100,26 @@
               <span class="seva-name" data-i18n="sevas.nitya.name">Nitya Pooje</span>
               <span class="seva-badge" data-i18n="badges.daily">Daily</span>
               <span class="seva-price">&#8377;250</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
-            <div class="seva-content" data-i18n="sevas.nitya.desc">
-              The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.
+            <div class="seva-content">
+              <div class="seva-content-inner" data-i18n="sevas.nitya.desc">
+                The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.
+              </div>
             </div>
           </div>
 
           <div class="seva-item">
             <div class="seva-header" role="button" tabindex="0" aria-expanded="false">
               <span class="seva-name" data-i18n="sevas.shashwatha.name">Shashwatha Pooje</span>
-              <span class="seva-badge" data-i18n="badges.daily">Yearly</span>
+              <span class="seva-badge">Yearly</span>
               <span class="seva-price">&#8377;3001</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
-            <div class="seva-content" data-i18n="sevas.shashwatha.desc">
-              A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.
+            <div class="seva-content">
+              <div class="seva-content-inner" data-i18n="sevas.shashwatha.desc">
+                A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.
+              </div>
             </div>
           </div>
 
@@ -124,10 +134,12 @@
               <span class="seva-name" data-i18n="sevas.ranga.name">Ranga Pooje</span>
               <span class="seva-badge" data-i18n="badges.special">Special</span>
               <span class="seva-price" data-i18n="prices.asReq">As per request</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
             <div class="seva-content">
-              <p data-i18n="sevas.ranga.desc">Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>
+              <div class="seva-content-inner">
+                <p>Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>
+              </div>
             </div>
           </div>
 
@@ -136,10 +148,12 @@
               <span class="seva-name" data-i18n="sevas.shatarudra.name">Shatarudrabhisheka</span>
               <span class="seva-badge" data-i18n="badges.special">Special</span>
               <span class="seva-price" data-i18n="prices.asReq">As per request</span>
-              <i class="seva-chevron"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></i>
+              <i class="seva-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></i>
             </div>
             <div class="seva-content">
-              <p data-i18n="sevas.shatarudra.desc">Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>
+              <div class="seva-content-inner">
+                <p>Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>
+              </div>
             </div>
           </div>
 
@@ -147,7 +161,7 @@
 
         <!-- Contact line -->
         <p class="contact-info" data-i18n="contact.line">
-          For bookings and details: <a href="tel:+919880544629">+91 9880 544 629</a> &bull; <a href="/cdn-cgi/l/email-protection#cfbfaeabbaadaaa3a2aea1bbaaa2bfa3aa8fa8a2aea6a3e1aca0a2"><span class="__cf_email__" data-cfemail="0b7b6a6f7e696e67666a657f6e667b676e4b6c666a626725686466">[email&#160;protected]</span></a>
+          For bookings and details: <a href="tel:+919880544629">+91 9880 544 629</a> &bull; <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a>
         </p>
 
         <!-- Donation card -->
@@ -178,6 +192,7 @@
   <footer class="footer">
     <div class="footer-container">
       <p class="footer-mantra" data-i18n="footer.mantra">Om Namah Shivaya</p>
+      <div class="footer-rule"></div>
       <div class="footer-links">
         <a href="index.html#about">About</a>
         <a href="index.html#rituals">Rituals</a>

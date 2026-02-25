@@ -1,30 +1,24 @@
 /* ============================================================
-   MAHALINGESHWARA TEMPLE — SCRIPT.JS
+   MAHALINGESHWARA TEMPLE — SCRIPT.JS (Premium Redesign)
    ============================================================ */
 
-/* --- Mobile Navigation --- */
+/* ===== MOBILE NAVIGATION ===== */
 function toggleNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
   if (!navLinks) return;
-
   const isOpen = navLinks.classList.toggle('active');
-
   if (navToggle) {
     navToggle.classList.toggle('open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
   }
-  /* Prevent body scroll when nav is open */
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 function closeNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
-
-  if (navLinks && navLinks.classList.contains('active')) {
-    navLinks.classList.remove('active');
-  }
+  if (navLinks) navLinks.classList.remove('active');
   if (navToggle) {
     navToggle.classList.remove('open');
     navToggle.setAttribute('aria-expanded', 'false');
@@ -32,7 +26,6 @@ function closeNav() {
   document.body.style.overflow = '';
 }
 
-/* Attach click to nav-toggle buttons that have no inline onclick (e.g. index.html) */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-toggle').forEach(btn => {
     if (!btn.hasAttribute('onclick')) {
@@ -41,10 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* Close nav on nav link click */
 document.addEventListener('click', (e) => {
   if (e.target.closest('.nav-links a')) { closeNav(); return; }
-  /* Close on outside click */
   const navLinks = document.getElementById('nav-links');
   if (navLinks && navLinks.classList.contains('active')) {
     if (!e.target.closest('.navbar') && !e.target.closest('.page-header nav')) {
@@ -53,81 +44,115 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* Close nav on Escape */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeNav();
 });
 
-
-/* --- Navbar Scroll Effect --- */
+/* ===== NAVBAR SCROLL ===== */
 window.addEventListener('scroll', () => {
   const navbar = document.querySelector('.navbar');
   if (!navbar || navbar.classList.contains('solid-nav')) return;
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+    navbar.classList.remove('transparent');
+  } else {
+    navbar.classList.remove('scrolled');
+    navbar.classList.add('transparent');
+  }
 }, { passive: true });
 
-/* --- Hero background parallax load --- */
+/* ===== HERO BG LOAD ===== */
 document.addEventListener('DOMContentLoaded', () => {
   const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    setTimeout(() => heroBg.classList.add('loaded'), 100);
-  }
+  if (heroBg) setTimeout(() => heroBg.classList.add('loaded'), 120);
 });
 
-/* --- Scroll Animations (Intersection Observer) --- */
+/* ===== SCROLL ANIMATIONS ===== */
 document.addEventListener('DOMContentLoaded', () => {
-  const observerOpts = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
-
-  const observer = new IntersectionObserver((entries) => {
+  const opts = { threshold: 0.08, rootMargin: '0px 0px -50px 0px' };
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
-  }, observerOpts);
-
-  document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
+  }, opts);
+  document.querySelectorAll('.fade-in, .slide-up').forEach(el => obs.observe(el));
 });
 
-/* --- Ritual Cards Accordion --- */
+/* ===== LAZY IMAGE LOADING ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const imgObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.addEventListener('load', () => img.classList.add('loaded'));
+        img.addEventListener('error', () => img.classList.add('loaded'));
+        if (img.complete) img.classList.add('loaded');
+        imgObs.unobserve(img);
+      }
+    });
+  });
+  document.querySelectorAll('.gallery-item img').forEach(img => imgObs.observe(img));
+});
+
+/* ===== RITUAL CARDS ACCORDION ===== */
 function toggleRitual(card) {
   const isOpen = card.classList.contains('open');
-  document.querySelectorAll('.ritual-card.open').forEach(c => c.classList.remove('open'));
-  document.querySelectorAll('.ritual-details.active').forEach(d => d.classList.remove('active'));
-
+  document.querySelectorAll('.ritual-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.setAttribute('aria-expanded', 'false');
+    const d = c.querySelector('.ritual-details');
+    if (d) d.classList.remove('active');
+  });
   if (!isOpen) {
     card.classList.add('open');
+    card.setAttribute('aria-expanded', 'true');
     const details = card.querySelector('.ritual-details');
     if (details) details.classList.add('active');
   }
 }
 
-/* --- Seva Accordion --- */
+/* Keyboard support for ritual cards */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.ritual-card').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleRitual(card);
+      }
+    });
+  });
+});
+
+/* ===== SEVA ACCORDION ===== */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.seva-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.closest('.seva-item');
       if (!item) return;
       const isActive = item.classList.contains('active');
-
-      // Close all
       document.querySelectorAll('.seva-item.active').forEach(i => {
         i.classList.remove('active');
-        const h = i.querySelector('.seva-header');
-        if (h) h.setAttribute('aria-expanded', 'false');
+        i.querySelector('.seva-header')?.setAttribute('aria-expanded', 'false');
       });
-
-      // Open clicked (if was closed)
       if (!isActive) {
         item.classList.add('active');
         header.setAttribute('aria-expanded', 'true');
       }
     });
+
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
   });
 });
 
-/* --- Gallery: Filter, Lightbox & Drag Scroll --- */
+/* ===== GALLERY: FILTER + LIGHTBOX + DRAG SCROLL ===== */
 document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -136,113 +161,124 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
 
-  /* Filtering */
+  /* Filter */
   if (filterBtns.length) {
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-
+        const filter = btn.dataset.filter;
         galleryItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.opacity = '0';
-            item.style.display = 'flex';
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => { item.style.opacity = '1'; });
-            });
-          } else {
-            item.style.opacity = '0';
-            setTimeout(() => { item.style.display = 'none'; }, 300);
-          }
+          const match = filter === 'all' || item.dataset.category === filter;
+          item.style.display = match ? '' : 'none';
+          item.style.opacity = match ? '1' : '0';
         });
       });
     });
   }
 
-  /* Gallery item fade transitions */
+  /* Lightbox */
   galleryItems.forEach(item => {
-    item.style.transition = 'opacity 0.3s ease, transform 0.35s ease, box-shadow 0.35s ease';
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      if (!img || !lightbox || !lightboxImg) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    /* Keyboard */
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+    });
   });
 
-  /* Drag-to-scroll */
-  if (galleryContainer) {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let moved = false;
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    if (lightboxImg) lightboxImg.src = '';
+  }
 
-    galleryContainer.addEventListener('mousedown', e => {
-      isDown = true;
-      moved = false;
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  /* Drag to scroll gallery */
+  if (galleryContainer) {
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    galleryContainer.addEventListener('mousedown', (e) => {
+      isDragging = true;
       startX = e.pageX - galleryContainer.offsetLeft;
       scrollLeft = galleryContainer.scrollLeft;
+      galleryContainer.style.cursor = 'grabbing';
     });
-    galleryContainer.addEventListener('mouseleave', () => { isDown = false; });
-    galleryContainer.addEventListener('mouseup', () => { isDown = false; });
-    galleryContainer.addEventListener('mousemove', e => {
-      if (!isDown) return;
+    galleryContainer.addEventListener('mouseleave', () => {
+      isDragging = false;
+      galleryContainer.style.cursor = '';
+    });
+    galleryContainer.addEventListener('mouseup', () => {
+      isDragging = false;
+      galleryContainer.style.cursor = '';
+    });
+    galleryContainer.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
       e.preventDefault();
       const x = e.pageX - galleryContainer.offsetLeft;
-      const walk = (x - startX) * 1.4;
-      if (Math.abs(walk) > 4) moved = true;
-      galleryContainer.scrollLeft = scrollLeft - walk;
-    });
-
-    /* Prevent lightbox opening when user is dragging */
-    galleryItems.forEach(item => {
-      item.addEventListener('click', e => {
-        if (moved) { moved = false; return; }
-        const img = item.querySelector('img');
-        if (!img || !lightbox || !lightboxImg) return;
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      });
-    });
-  }
-
-  /* Lightbox close */
-  if (lightbox && lightboxImg) {
-    const closeLightbox = () => {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-      document.body.style.overflow = '';
-    };
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && lightbox.style.display === 'flex') closeLightbox();
+      galleryContainer.scrollLeft = scrollLeft - (x - startX) * 1.4;
     });
   }
 });
 
-/* --- Smooth anchor scrolling --- */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
-    const top = target.getBoundingClientRect().top + window.scrollY - navH;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-});
-
-/* --- Year auto-fill --- */
+/* ===== AMBIENT CURSOR GLOW (desktop only) ===== */
 document.addEventListener('DOMContentLoaded', () => {
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const layer = document.getElementById('ambientLayer');
+  if (!layer || window.matchMedia('(max-width:900px)').matches) return;
+  if (window.matchMedia('(hover:none)').matches) return;
+
+  window.addEventListener('pointermove', (e) => {
+    document.documentElement.style.setProperty('--mx', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--my', `${e.clientY}px`);
+  }, { passive: true });
 });
 
-/* ============================================================
-   i18n — Language switch (Seva page)
-   ============================================================ */
+/* ===== ACTIVE NAV LINK on scroll ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  if (!sections.length || !navLinks.length) return;
+
+  const setActive = () => {
+    const fromTop = window.scrollY + 130;
+    let current = sections[0].id;
+    sections.forEach(s => { if (s.offsetTop <= fromTop) current = s.id; });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+    });
+  };
+
+  setActive();
+  window.addEventListener('scroll', setActive, { passive: true });
+});
+
+/* ===== FOOTER YEAR ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+});
+
+/* ===== SEVA i18n (seva.html only) ===== */
 const i18n = {
   en: {
     title: 'Sevas | Mahalingeshwara Temple',
-    'hero.h1': 'Divine Sevas and Offerings',
+    'hero.h1': 'Divine Sevas & Offerings',
     'hero.p': 'Daily poojas, abhishekas, homas, and special rituals offered with devotion',
     'groups.daily': 'Daily Sevas',
     'groups.special': 'Special Sevas (On Request)',
@@ -256,14 +292,12 @@ const i18n = {
     'sevas.maha.name': 'Maha Pooje',
     'sevas.maha.desc': 'A complete worship including alankara, naivedya and mangalarati. This seva is performed for overall well-being and the grace of Lord Mahalingeshwara.',
     'sevas.nitya.name': 'Nitya Pooje',
-    'sevas.nitya.desc': "The temple's daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple's spiritual rhythm.",
+    'sevas.nitya.desc': 'The temple\'s daily worship cycle with alankara, naivedya and arati, performed on behalf of the devotee. Supporting Nitya Pooje sustains the temple\'s spiritual rhythm.',
     'sevas.shashwatha.name': 'Shashwatha Pooje',
-    'sevas.shashwatha.desc': "A one-time endowment through which pooja is performed annually in the devotee's name, carrying blessings to future generations.",
+    'sevas.shashwatha.desc': 'A one-time endowment through which pooja is performed annually in the devotee\'s name, carrying blessings to future generations.',
     'sevas.ranga.name': 'Ranga Pooje',
-    'sevas.ranga.desc': '<p>Ranga Pooje is a special evening ritual performed only on the request of devotees. It begins at <strong>6:00 PM</strong>, where freshly cooked rice is first offered to <strong>Lord Mahalingeshwara</strong> and <strong>Lord Ganapathi</strong>. Following this, the <em>Bali</em> ritual is carried out, where uncooked rice placed on leaves is respectfully offered to the Bali stones located both inside and outside the temple premises.</p>',
     'sevas.shatarudra.name': 'Shatarudrabhisheka',
-    'sevas.shatarudra.desc': '<p>Shatarudrabhisheka is regarded as one of the most powerful and sacred sevas offered to Lord Mahalingeshwara. In this ritual, the <strong>Sri Rudram</strong> is chanted one hundred times with deep devotion while the Shiva Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.</p>',
-    'contact.line': 'For bookings and details: +91 9880544629 \u2022 padubelmantemple@gmail.com',
+    'contact.line': 'For bookings and details: +91 9880 544 629 · padubelmantemple@gmail.com',
     'donation.title': 'Donations and Temple Support',
     'donation.note': 'Devotees may kindly contribute towards daily poojas, special sevas, and the development of the temple. Your offerings help sustain the spiritual and cultural activities of Mahalingeshwara Temple.',
     'donation.templename.label': 'Temple Name:',
@@ -275,56 +309,53 @@ const i18n = {
     'donation.acno.label': 'Account No:',
     'donation.ifsc.label': 'IFSC:',
     'donation.upi.text': 'Scan to Donate via UPI:',
-    'footer.templename': 'Mahalingeshwara Temple, Padubelman',
     'footer.mantra': 'Om Namah Shivaya',
+    'footer.templename': 'Mahalingeshwara Temple, Padubelman',
     'images.upi.alt': 'Temple UPI QR Code'
   },
   kn: {
-    title: '\u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1 | \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf',
-    'hero.h1': '\u0ca6\u0cc8\u0cb5\u0cbf\u0c95 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cae\u0cb0\u0ccd\u0caa\u0ca3\u0cc6\u0c97\u0cb3\u0cc1',
-    'hero.p': '\u0cad\u0c95\u0ccd\u0ca4\u0cbf\u0cad\u0cbe\u0cb5\u0ca6\u0cbf\u0c82\u0ca6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0cb5 \u0ca6\u0cc8\u0ca8\u0c82\u0ca6\u0cbf\u0ca8 \u0caa\u0cc2\u0c9c\u0cc6, \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95, \u0cb9\u0ccb\u0cae \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb5\u0cbf\u0ca7\u0cbf\u0c97\u0cb3\u0cc1',
-    'groups.daily': '\u0ca6\u0cc8\u0ca8\u0c82\u0ca6\u0cbf\u0ca8 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1',
-    'groups.special': '\u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1 (\u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6)',
-    'badges.daily': '\u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0ca6\u0cbf\u0ca8',
-    'badges.endowment': '\u0cb8\u0ccd\u0c96\u0cbe\u0caf\u0cbf \u0ca8\u0cbf\u0ca7\u0cbf',
-    'badges.special': '\u0cb5\u0cbf\u0cb6\u0cc7\u0cb7',
-    'prices.asReq': '\u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf\u0c82\u0ca4\u0cc6',
-    'sevas.panchakajaya.name': '\u0caa\u0c82\u0c9a\u0c95\u0c9c\u0ccd\u0c9c\u0cbe\u0caf',
-    'sevas.panchakajaya.desc': '\u0caa\u0c82\u0c9a\u0c95\u0c9c\u0ccd\u0c9c\u0cbe\u0caf\u0cb5\u0cc1 \u0cac\u0cc6\u0cb2\u0ccd\u0cb2, \u0cc6\u0cb3\u0ccd\u0cb3\u0cc1, \u0ca4\u0cc6\u0c82\u0c97\u0cbf\u0ca8\u0c95\u0cbe\u0caf\u0cbf, \u0ca4\u0cc1\u0caa\u0ccd\u0caa \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c9c\u0cc7\u0ca8\u0cc1\u0c97\u0cb3\u0cbf\u0c82\u0ca6 \u0ca4\u0caf\u0cbe\u0cb0\u0cbe\u0c97\u0cc1\u0cb5 \u0caa\u0cc2\u0c9c\u0cbe \u0caa\u0ccd\u0cb0\u0cb8\u0cbe\u0ca6.',
-    'sevas.rudra.name': '\u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cbe\u0cad\u0cbf\u0cb7\u0cc7\u0c95',
-    'sevas.rudra.desc': '\u0cb6\u0cbf\u0cb5\u0cb2\u0cbf\u0c82\u0c97\u0c95\u0ccd\u0c95\u0cc6 \u0ca8\u0cc0\u0cb0\u0cc1, \u0cb9\u0cbe\u0cb2\u0cc1 \u0cb9\u0cbe\u0c97\u0cc2 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0ca6\u0ccd\u0cb0\u0cb5\u0ccd\u0caf\u0c97\u0cb3\u0cbf\u0c82\u0ca6 \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95 \u0cae\u0cbe\u0ca1\u0cc1\u0ca4\u0ccd\u0ca4\u0cbe \u0cb6\u0ccd\u0cb0\u0cc0 \u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cae\u0ccd \u0caa\u0ca0\u0cbf\u0cb8\u0cb2\u0cbe\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-    'sevas.maha.name': '\u0cae\u0cb9\u0cbe \u0caa\u0cc2\u0c9c\u0cc6',
-    'sevas.maha.desc': '\u0c85\u0cb2\u0c82\u0c95\u0cbe\u0cb0, \u0ca8\u0cc8\u0cb5\u0cc7\u0ca6\u0ccd\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cae\u0c82\u0c97\u0cb3\u0cbe\u0cb0\u0ca4\u0cbf \u0c92\u0cb3\u0c97\u0cca\u0c82\u0ca1 \u0cb8\u0c82\u0caa\u0cc2\u0cb0\u0ccd\u0cb3 \u0caa\u0cc2\u0c9c\u0cc6.',
-    'sevas.nitya.name': '\u0ca8\u0cbf\u0ca4\u0ccd\u0caf \u0caa\u0cc2\u0c9c\u0cc6',
-    'sevas.nitya.desc': '\u0c85\u0cb2\u0c82\u0c95\u0cbe\u0cb0, \u0ca8\u0cc8\u0cb5\u0cc7\u0ca6\u0ccd\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c86\u0cb0\u0ca4\u0cbf\u0caf\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0ca6\u0cbf\u0ca8\u0ca8\u0cbf\u0ca4\u0ccd\u0caf\u0ca6 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0caa\u0cc2\u0c9c\u0cc6.',
-    'sevas.shashwatha.name': '\u0cb6\u0cbe\u0cb6\u0ccd\u0cb5\u0ca4 \u0caa\u0cc2\u0c9c\u0cc6',
-    'sevas.shashwatha.desc': '\u0c92\u0cae\u0ccd\u0cae\u0cc6\u0ca6\u0cbf\u0ca8 \u0ca6\u0cbe\u0ca8 \u0cae\u0cc1\u0c96\u0cbe\u0c82\u0ca4\u0cb0 \u0caa\u0ccd\u0cb0\u0ca4\u0cbf\u0cb5\u0cb0\u0ccd\u0cb7 \u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cb9\u0cc6\u0cb8\u0cb0\u0cbf\u0ca8\u0cb2\u0ccd\u0cb2\u0cbf \u0caa\u0cc2\u0c9c\u0cc6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0cb5 \u0cb8\u0cc7\u0cb5\u0cc6.',
-    'sevas.ranga.name': '\u0cb0\u0c82\u0c97 \u0caa\u0cc2\u0c9c\u0cc6',
-    'sevas.ranga.desc': '<p>\u0cb0\u0c82\u0c97 \u0caa\u0cc2\u0c9c\u0cc6 \u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6 \u0cae\u0cbe\u0ca4\u0ccd\u0cb0 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0cb5 \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0cbe\u0caf\u0c82\u0c95\u0cbe\u0cb2\u0ca6 \u0cb5\u0cbf\u0ca7\u0cbf.</p>',
-    'sevas.shatarudra.name': '\u0cb6\u0ca4\u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cbe\u0cad\u0cbf\u0cb7\u0cc7\u0c95',
-    'sevas.shatarudra.desc': '<p>\u0cb6\u0ca4\u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cbe\u0cad\u0cbf\u0cb7\u0cc7\u0c95\u0cb5\u0cc1 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0\u0ca8\u0cbf\u0c97\u0cc6 \u0cb8\u0cb2\u0ccd\u0cb2\u0cbf\u0cb8\u0cc1\u0cb5 \u0c85\u0ca4\u0ccd\u0caf\u0c82\u0ca4 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb6\u0c95\u0ccd\u0ca4\u0cbf\u0caf\u0cc1\u0ca4 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cbf \u0c92\u0c82\u0ca6\u0cbe\u0c97\u0cbf\u0ca6\u0cc6.</p>',
-    'contact.line': '\u0cac\u0cc1\u0c95\u0ccd\u0c95\u0cbf\u0c82\u0c97\u0ccd \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb5\u0cbf\u0cb5\u0cb0\u0c97\u0cb3\u0cbf\u0c97\u0cc6: +91 9880544629 \u2022 padubelmantemple@gmail.com',
-    'donation.title': '\u0ca6\u0cbe\u0ca8\u0c97\u0cb3\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cac\u0cc6\u0c82\u0cac\u0cb2',
-    'donation.note': '\u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cc1 \u0ca6\u0cc8\u0ca8\u0c82\u0ca6\u0cbf\u0ca8 \u0caa\u0cc2\u0c9c\u0cc6\u0c97\u0cb3\u0cc1, \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0cbe\u0cad\u0cbf\u0cb5\u0cc3\u0ca6\u0ccd\u0ca7\u0cbf\u0c97\u0cbe\u0c97\u0cbf \u0ca6\u0caf\u0cb5\u0cbf\u0c9f\u0ccd\u0c9f\u0cc1 \u0ca6\u0cbe\u0ca8\u0cb5\u0cbe\u0c97\u0cbf \u0cb8\u0cb9\u0c95\u0cb0\u0cbf\u0cb8\u0cac\u0cb9\u0cc1\u0ca6\u0cc1.',
-    'donation.templename.label': '\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0cb9\u0cc6\u0cb8\u0cb0\u0cc1:',
-    'donation.templename.value': '\u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf, \u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3',
-    'donation.bank.label': '\u0cac\u0ccd\u0caf\u0cbe\u0c82\u0c95\u0ccd:',
-    'donation.bank.value': '\u0c87\u0c82\u0ca1\u0cbf\u0caf\u0ca8\u0ccd \u0d13\u0cb5\u0cb0\u0ccd\u200c\u0cb8\u0cc0\u0cb8\u0ccd \u0cac\u0ccd\u0caf\u0cbe\u0c82\u0c95\u0ccd',
-    'donation.branch.label': '\u0cb6\u0cbe\u0c96\u0cc6:',
-    'donation.branch.value': '\u0cac\u0cc6\u0cb2\u0cae\u0ca3\u0ccd\u0ca3\u0cc1 (2591)',
-    'donation.acno.label': '\u0c96\u0cbe\u0ca4\u0cc6 \u0cb8\u0c82\u0c96\u0ccd\u0caf\u0cc6:',
-    'donation.ifsc.label': '\u0c90\u0c8e\u0cab\u0ccd\u200c\u0c8e\u0cb8\u0ccd\u200c\u0cb8\u0cbf:',
-    'donation.upi.text': '\u0caf\u0cc1\u0caa\u0cbf\u0a90 \u0cae\u0cc2\u0cb2\u0c95 \u0ca6\u0cbe\u0ca8 \u0cae\u0cbe\u0ca1\u0cb2\u0cc1 \u0cb8\u0ccd\u0c95\u0ccd\u0caf\u0cbe\u0ca8\u0ccd \u0cae\u0cbe\u0ca1\u0cbf:',
-    'footer.templename': '\u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf, \u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3',
-    'footer.mantra': '\u0d13\u0c82 \u0ca8\u0cae\u0c83 \u0cb6\u0cbf\u0cb5\u0cbe\u0caf',
-    'images.upi.alt': '\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0caf\u0cc1\u0caa\u0cbf\u0a90 \u0c95\u0ccd\u0caf\u0cc2\u0c86\u0cb0\u0ccd \u0c95\u0ccb\u0ca1\u0ccd'
+    title: 'ಸೇವೆಗಳು | ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
+    'hero.h1': 'ದೈವಿಕ ಸೇವೆಗಳು ಮತ್ತು ಸಮರ್ಪಣೆಗಳು',
+    'hero.p': 'ಭಕ್ತಿಭಾವದಿಂದ ನೆರವೇರುವ ದೈನಂದಿನ ಪೂಜೆ, ಅಭಿಷೇಕ, ಹೋಮ ಮತ್ತು ವಿಶೇಷ ವಿಧಿಗಳು',
+    'groups.daily': 'ದೈನಂದಿನ ಸೇವೆಗಳು',
+    'groups.special': 'ವಿಶೇಷ ಸೇವೆಗಳು (ವಿನಂತಿಯ ಮೇರೆಗೆ)',
+    'badges.daily': 'ಪ್ರತಿ ದಿನ',
+    'badges.special': 'ವಿಶೇಷ',
+    'prices.asReq': 'ವಿನಂತಿಯಂತೆ',
+    'sevas.panchakajaya.name': 'ಪಂಚಕಜ್ಜಾಯ',
+    'sevas.panchakajaya.desc': 'ಪಂಚಕಜ್ಜಾಯವು ಬೆಲ್ಲ, ಎಳ್ಳು, ತೆಂಗಿನಕಾಯಿ, ತುಪ್ಪ ಮತ್ತು ಜೇನುಗಳಿಂದ ತಯಾರಾಗುವ ಪೂಜಾ ಪ್ರಸಾದ.',
+    'sevas.rudra.name': 'ರುದ್ರಾಭಿಷೇಕ',
+    'sevas.rudra.desc': 'ಶಿವಲಿಂಗಕ್ಕೆ ನೀರು, ಹಾಲು ಹಾಗೂ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ಮಾಡುತ್ತಾ ಶ್ರೀ ರುದ್ರಂ ಪಠಿಸಲಾಗುತ್ತದೆ.',
+    'sevas.maha.name': 'ಮಹಾ ಪೂಜೆ',
+    'sevas.maha.desc': 'ಅಲಂಕಾರ, ನೈವೇದ್ಯ ಮತ್ತು ಮಂಗಳಾರತಿ ಒಳಗೊಂಡ ಸಂಪೂರ್ಣ ಪೂಜೆ.',
+    'sevas.nitya.name': 'ನಿತ್ಯ ಪೂಜೆ',
+    'sevas.nitya.desc': 'ಅಲಂಕಾರ, ನೈವೇದ್ಯ ಮತ್ತು ಆರತಿಯೊಂದಿಗೆ ದೈನಂದಿನ ದೇವಾಲಯ ಪೂಜೆ.',
+    'sevas.shashwatha.name': 'ಶಾಶ್ವತ ಪೂಜೆ',
+    'sevas.shashwatha.desc': 'ಒಮ್ಮೆದಿನ ದಾನ ಮುಖಾಂತರ ಪ್ರತಿವರ್ಷ ಭಕ್ತರ ಹೆಸರಿನಲ್ಲಿ ಪೂಜೆ ನೆರವೇರುವ ಸೇವೆ.',
+    'sevas.ranga.name': 'ರಂಗ ಪೂಜೆ',
+    'sevas.shatarudra.name': 'ಶತರುದ್ರಾಭಿಷೇಕ',
+    'contact.line': 'ಬುಕ್ಕಿಂಗ್ ಮತ್ತು ವಿವರಗಳಿಗೆ: +91 9880544629 • padubelmantemple@gmail.com',
+    'donation.title': 'ದಾನಗಳು ಮತ್ತು ದೇವಾಲಯ ಬೆಂಬಲ',
+    'donation.note': 'ಭಕ್ತರು ದೈನಂದಿನ ಪೂಜೆಗಳು, ವಿಶೇಷ ಸೇವೆಗಳು ಮತ್ತು ದೇವಾಲಯಾಭಿವೃದ್ಧಿಗಾಗಿ ದಯವಿಟ್ಟು ದಾನವಾಗಿ ಸಹಕರಿಸಬಹುದು.',
+    'donation.templename.label': 'ದೇವಾಲಯದ ಹೆಸರು:',
+    'donation.templename.value': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ',
+    'donation.bank.label': 'ಬ್ಯಾಂಕ್:',
+    'donation.bank.value': 'ಇಂಡಿಯನ್ ಓವರ್‌ಸೀಸ್ ಬ್ಯಾಂಕ್',
+    'donation.branch.label': 'ಶಾಖೆ:',
+    'donation.branch.value': 'ಬೆಲಮಣ್ಣು (2591)',
+    'donation.acno.label': 'ಖಾತೆ ಸಂಖ್ಯೆ:',
+    'donation.ifsc.label': 'ಐಎಫ್‌ಎಸ್‌ಸಿ:',
+    'donation.upi.text': 'ಯುಪಿಐ ಮೂಲಕ ದಾನ ಮಾಡಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ:',
+    'footer.mantra': 'ಓಂ ನಮಃ ಶಿವಾಯ',
+    'footer.templename': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ',
+    'images.upi.alt': 'ದೇವಾಲಯ ಯುಪಿಐ ಕ್ಯೂಆರ್ ಕೋಡ್'
   }
 };
 
 function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    const val = i18n[lang] && i18n[lang][key];
+    const val = i18n[lang]?.[key];
     if (val !== undefined) {
       if (/<\/?(strong|em|p|br|span)/i.test(String(val))) el.innerHTML = val;
       else el.textContent = val;
@@ -332,10 +363,10 @@ function applyLang(lang) {
   });
   document.querySelectorAll('[data-i18n-alt]').forEach(el => {
     const key = el.getAttribute('data-i18n-alt');
-    const val = i18n[lang] && i18n[lang][key];
-    if (val !== undefined) el.setAttribute('alt', val);
+    const val = i18n[lang]?.[key];
+    if (val) el.setAttribute('alt', val);
   });
-  if (i18n[lang] && i18n[lang].title) document.title = i18n[lang].title;
+  if (i18n[lang]?.title) document.title = i18n[lang].title;
   const btn = document.getElementById('langBtn');
   if (btn) {
     btn.textContent = lang === 'en' ? 'ಕನ್ನಡ' : 'English';
@@ -348,60 +379,11 @@ function applyLang(lang) {
 document.addEventListener('DOMContentLoaded', () => {
   const langBtn = document.getElementById('langBtn');
   if (!langBtn) return;
-
   let currentLang = 'en';
   try { currentLang = localStorage.getItem('lang') || 'en'; } catch(e) {}
   applyLang(currentLang);
-
   langBtn.addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'kn' : 'en';
     applyLang(currentLang);
   });
-});
-/* --- Premium interactions layer --- */
-document.addEventListener('DOMContentLoaded', () => {
-  const root = document.documentElement;
-  const glow = document.getElementById('cursorGlow');
-
-  window.addEventListener('pointermove', (event) => {
-    root.style.setProperty('--mx', `${event.clientX}px`);
-    root.style.setProperty('--my', `${event.clientY}px`);
-    if (glow) {
-      glow.style.left = `${event.clientX}px`;
-      glow.style.top = `${event.clientY}px`;
-    }
-  }, { passive: true });
-
-  const tiltItems = document.querySelectorAll('[data-tilt]');
-  tiltItems.forEach((item) => {
-    item.addEventListener('pointermove', (event) => {
-      const rect = item.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      item.style.transform = `perspective(900px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
-    });
-
-    item.addEventListener('pointerleave', () => {
-      item.style.transform = '';
-    });
-  });
-
-  const sections = Array.from(document.querySelectorAll('section[id]'));
-  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  if (sections.length && navLinks.length) {
-    const setActiveLink = () => {
-      const fromTop = window.scrollY + 120;
-      let current = sections[0].id;
-      sections.forEach((section) => {
-        if (section.offsetTop <= fromTop) current = section.id;
-      });
-      navLinks.forEach((link) => {
-        const active = link.getAttribute('href') === `#${current}`;
-        link.classList.toggle('active', active);
-      });
-    };
-
-    setActiveLink();
-    window.addEventListener('scroll', setActiveLink, { passive: true });
-  }
 });

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +11,7 @@
 </head>
 <body class="home-page">
 
-  <div class="ambient-gradient" aria-hidden="true"></div>
-  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
 
   <!-- ===== NAVIGATION ===== -->
   <nav class="navbar transparent" id="navbar">
@@ -32,7 +30,7 @@
         <div class="lang-switch" role="group" aria-label="Language switcher">
           <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
         </div>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Toggle navigation" aria-expanded="false">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -45,10 +43,19 @@
   <section class="hero" id="home">
     <div class="hero-bg" role="img" aria-label="Temple exterior view"></div>
     <div class="hero-content fade-in">
-      <div class="hero-badge" data-i18n="hero.badge">Padubelman, Karnataka</div>
-      <div class="hero-status" data-i18n="hero.status">Daily Darshan Open • Morning &amp; Evening</div>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        <span class="hero-eyebrow-text" data-i18n="hero.badge">Padubelman, Karnataka</span>
+        <span class="hero-eyebrow-line"></span>
+      </div>
       <h1 data-i18n="hero.h1">Sri Mahalingeshwara Temple</h1>
+      <div class="hero-divider">
+        <span class="hero-divider-line"></span>
+        <span class="hero-divider-dot"></span>
+        <span class="hero-divider-line"></span>
+      </div>
       <p class="hero-subtitle" data-i18n="hero.p">Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace</p>
+      <div class="hero-status" data-i18n="hero.status">Daily Darshan Open &nbsp;·&nbsp; Morning &amp; Evening</div>
       <div class="hero-cta">
         <a href="#highlights" class="btn btn-primary" data-i18n="hero.cta1">Discover the Temple</a>
         <a href="seva.html" class="btn btn-outline" data-i18n="hero.cta2">Book a Seva</a>
@@ -62,23 +69,25 @@
   </section>
 
   <!-- ===== HIGHLIGHTS ===== -->
-  <section class="section premium-strip" id="highlights">
+  <section class="section highlights-section" id="highlights">
     <div class="section-container">
       <div class="section-header fade-in">
         <span class="section-label" data-i18n="highlights.label">Why Devotees Choose This Temple</span>
         <h2 data-i18n="highlights.h2">Spiritual Experience with Trusted Tradition</h2>
-        <div class="ornament"><span class="ornament-symbol"></span></div>
       </div>
-      <div class="premium-grid">
-        <article class="premium-card">
+      <div class="highlights-grid stagger fade-in">
+        <article class="highlight-card">
+          <div class="highlight-num">01</div>
           <h3 data-i18n="highlights.card1.title">Traditional Authenticity</h3>
           <p data-i18n="highlights.card1.desc">Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.</p>
         </article>
-        <article class="premium-card">
+        <article class="highlight-card">
+          <div class="highlight-num">02</div>
           <h3 data-i18n="highlights.card2.title">Seamless Devotee Support</h3>
           <p data-i18n="highlights.card2.desc">Quick seva guidance through WhatsApp, clear schedules, and transparent offerings for every devotee.</p>
         </article>
-        <article class="premium-card">
+        <article class="highlight-card">
+          <div class="highlight-num">03</div>
           <h3 data-i18n="highlights.card3.title">Festival Excellence</h3>
           <p data-i18n="highlights.card3.desc">Large annual utsavas with precise planning, spiritual discipline, and welcoming community participation.</p>
         </article>
@@ -90,24 +99,29 @@
   <section class="section about-section" id="about">
     <div class="section-container">
       <div class="about-grid">
-        <div class="about-image-wrap fade-in">
-          <img src="photos/eshwara.jpg" alt="Mahalingeshwara Temple" loading="lazy" />
+        <div class="about-image-stack fade-in">
+          <div class="about-img-main">
+            <img src="photos/eshwara.jpg" alt="Lord Mahalingeshwara deity" loading="lazy" />
+          </div>
+          <div class="about-img-accent">
+            <img src="photos/out1.jpg" alt="Temple exterior" loading="lazy" />
+          </div>
         </div>
         <div class="about-text fade-in" style="transition-delay:0.15s">
           <span class="section-label" data-i18n="about.label">About the Temple</span>
           <h2 data-i18n="about.h2">A Sacred Abode of Lord Shiva</h2>
-          <div class="ornament"><span class="ornament-symbol"></span></div>
-          <p data-i18n="about.p1">Sri Mahalingeshwara Temple at Padubelman is a revered Shaivite shrine in coastal Karnataka, dedicated to Lord Mahalingeshwara — a form of Lord Shiva. The temple is cherished by devotees from across the region for its sanctity, ancient traditions, and the deep sense of peace it offers.</p>
-          <p data-i18n="about.p2">The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.</p>
-          <p data-i18n="about.p3">Each year, the temple hosts vibrant festivals including the Brahmakalasha, Kola, and the Utsava — events that draw thousands of devotees and echo with the sound of devotional music, chants, and ancient ceremonies.</p>
-          <div class="about-stats stagger-children">
+          <div class="rule"><span class="rule-diamond"></span></div>
+          <p class="para" data-i18n="about.p1">Sri Mahalingeshwara Temple at Padubelman is a revered Shaivite shrine in coastal Karnataka, dedicated to Lord Mahalingeshwara — a form of Lord Shiva. The temple is cherished by devotees from across the region for its sanctity, ancient traditions, and the deep sense of peace it offers.</p>
+          <p class="para" data-i18n="about.p2">The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.</p>
+          <p class="para" data-i18n="about.p3">Each year, the temple hosts vibrant festivals including the Brahmakalasha, Kola, and the Utsava — events that draw thousands of devotees and echo with the sound of devotional music, chants, and ancient ceremonies.</p>
+          <div class="about-stats stagger">
             <div class="stat-card fade-in">
               <div class="stat-number">2</div>
               <div class="stat-label" data-i18n="stat.deities">Deities</div>
             </div>
             <div class="stat-card fade-in">
               <div class="stat-number">7</div>
-              <div class="stat-label" data-i18n="stat.sevas">Sevas Offered</div>
+              <div class="stat-label" data-i18n="stat.sevas">Sevas</div>
             </div>
             <div class="stat-card fade-in">
               <div class="stat-number">365</div>
@@ -125,15 +139,15 @@
       <div class="section-header fade-in">
         <span class="section-label" data-i18n="rituals.label">Daily Observances</span>
         <h2 data-i18n="rituals.h2">Sacred Rituals &amp; Timings</h2>
-        <div class="ornament"><span class="ornament-symbol"></span></div>
+        <div class="rule" style="justify-content:center"><span class="rule-diamond"></span></div>
         <p data-i18n="rituals.sub">Each day at the temple follows a rhythmic cycle of worship, offering devotees multiple opportunities to receive divine blessings</p>
       </div>
-      <div class="rituals-grid stagger-children">
+      <div class="rituals-grid stagger">
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="ritual-card-head">
-            <div class="ritual-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <div class="ritual-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
             </div>
             <div class="ritual-title-wrap">
               <h3 data-i18n="ritual.morning.title">Morning Pooja</h3>
@@ -143,13 +157,15 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ritual-details" data-i18n="ritual.morning.desc">The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka (sacred bath) with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya (food offering) is presented and arati concludes the morning session.</div>
+          <div class="ritual-details">
+            <div class="ritual-details-inner" data-i18n="ritual.morning.desc">The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya is presented and arati concludes the morning session.</div>
+          </div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="ritual-card-head">
-            <div class="ritual-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <div class="ritual-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </div>
             <div class="ritual-title-wrap">
               <h3 data-i18n="ritual.evening.title">Evening Pooja</h3>
@@ -159,13 +175,15 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ritual-details" data-i18n="ritual.evening.desc">As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana (lamp worship) and is accompanied by devotional music. The Shiva Linga is decorated with new flowers for the evening session and the Mangalarati brings the day's worship to a serene and luminous close.</div>
+          <div class="ritual-details">
+            <div class="ritual-details-inner" data-i18n="ritual.evening.desc">As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana and is accompanied by devotional music. The Shiva Linga is decorated with new flowers and the Mangalarati brings the day's worship to a serene and luminous close.</div>
+          </div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="ritual-card-head">
-            <div class="ritual-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="ritual-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div class="ritual-title-wrap">
               <h3 data-i18n="ritual.ranga.title">Ranga Pooje</h3>
@@ -175,13 +193,15 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ritual-details" data-i18n="ritual.ranga.desc">A special evening ritual performed only upon devotee request. Freshly cooked rice is first offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice placed on leaves is offered at Bali stones inside and outside the temple with deep reverence.</div>
+          <div class="ritual-details">
+            <div class="ritual-details-inner" data-i18n="ritual.ranga.desc">A special evening ritual performed only at the request of devotees. Freshly cooked rice is offered to Lord Mahalingeshwara and Lord Ganapathi. The Bali ritual follows, where uncooked rice on leaves is offered to the Bali stones inside and outside the temple.</div>
+          </div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" role="button" tabindex="0" aria-expanded="false">
           <div class="ritual-card-head">
-            <div class="ritual-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div class="ritual-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
             <div class="ritual-title-wrap">
               <h3 data-i18n="ritual.shata.title">Shatarudrabhisheka</h3>
@@ -191,7 +211,9 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
-          <div class="ritual-details" data-i18n="ritual.shata.desc">One of the most powerful sevas at the temple — Sri Rudram is chanted one hundred times while the Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings. This is typically performed during important festivals, milestones, or by devotees seeking profound spiritual transformation.</div>
+          <div class="ritual-details">
+            <div class="ritual-details-inner" data-i18n="ritual.shata.desc">One of the most powerful sevas at the temple — Sri Rudram is chanted one hundred times while the Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings. Typically performed during important festivals or milestones.</div>
+          </div>
         </div>
 
       </div>
@@ -202,16 +224,16 @@
   <section class="section visit-section" id="visit">
     <div class="section-container">
       <div class="section-header fade-in">
-        <span class="section-label" style="color:var(--clr-gold-light)" data-i18n="visit.label">Plan Your Visit</span>
-        <h2 style="color:var(--clr-cream)" data-i18n="visit.h2">Temple Timings &amp; Information</h2>
-        <div class="ornament"><span class="ornament-symbol" style="color:var(--clr-gold-light)">*</span></div>
-        <p style="color:rgba(255,255,255,0.7)" data-i18n="visit.sub">The temple is open to all devotees. We welcome you throughout the year</p>
+        <span class="section-label" style="color:var(--dk-gold-light)" data-i18n="visit.label">Plan Your Visit</span>
+        <h2 style="color:var(--dk-text)" data-i18n="visit.h2">Temple Timings &amp; Information</h2>
+        <div class="rule" style="justify-content:center"><span class="rule-diamond" style="background:var(--dk-gold)"></span></div>
+        <p style="color:var(--dk-muted)" data-i18n="visit.sub">The temple is open to all devotees throughout the year</p>
       </div>
-      <div class="visit-grid stagger-children">
+      <div class="visit-grid stagger">
 
         <div class="visit-card fade-in">
           <div class="visit-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           </div>
           <h3 data-i18n="visit.morning.title">Morning Hours</h3>
           <p data-i18n="visit.morning.desc">6:00 AM to 1:00 PM. Open daily including festivals and public holidays</p>
@@ -219,7 +241,7 @@
 
         <div class="visit-card fade-in">
           <div class="visit-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </div>
           <h3 data-i18n="visit.evening.title">Evening Hours</h3>
           <p data-i18n="visit.evening.desc">5:30 PM to 8:00 PM. Evening poojas and deepa aradhana</p>
@@ -227,7 +249,7 @@
 
         <div class="visit-card fade-in">
           <div class="visit-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <h3 data-i18n="visit.location.title">Location</h3>
           <p data-i18n="visit.location.desc">Padubelman, Bantwal Taluk, Dakshina Kannada, Karnataka</p>
@@ -235,10 +257,10 @@
 
         <div class="visit-card fade-in">
           <div class="visit-icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
           <h3 data-i18n="visit.dress.title">Dress Code</h3>
-          <p data-i18n="visit.dress.desc">Traditional attire preferred. Dhoti or saree encouraged. Respectful dress required at all times</p>
+          <p data-i18n="visit.dress.desc">Traditional attire preferred. Dhoti or saree encouraged. Respectful dress required</p>
         </div>
 
       </div>
@@ -251,7 +273,7 @@
       <div class="section-header fade-in">
         <span class="section-label" data-i18n="contact.label">Get in Touch</span>
         <h2 data-i18n="contact.h2">Contact the Temple</h2>
-        <div class="ornament"><span class="ornament-symbol"></span></div>
+        <div class="rule" style="justify-content:center"><span class="rule-diamond"></span></div>
         <p data-i18n="contact.sub">Reach out for seva bookings, festival information, or any queries</p>
       </div>
       <div class="contact-grid">
@@ -261,27 +283,27 @@
 
           <div class="contact-detail">
             <div class="contact-detail-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </div>
             <div class="contact-detail-text">
               <strong data-i18n="contact.phone.label">Phone</strong>
-              <span><a href="tel:+919880544629" style="color:inherit">+91 9880 544 629</a></span>
+              <span><a href="tel:+919880544629">+91 9880 544 629</a></span>
             </div>
           </div>
 
           <div class="contact-detail">
             <div class="contact-detail-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </div>
             <div class="contact-detail-text">
               <strong data-i18n="contact.email.label">Email</strong>
-              <span><a href="/cdn-cgi/l/email-protection#3c4c5d58495e5950515d524859514c50597c5b515d5550125f5351" style="color:inherit"><span class="__cf_email__" data-cfemail="453524213027202928242b312028352920052228242c296b262a28">[email&#160;protected]</span></a></span>
+              <span><a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a></span>
             </div>
           </div>
 
           <div class="contact-detail">
             <div class="contact-detail-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div class="contact-detail-text">
               <strong data-i18n="contact.address.label">Address</strong>
@@ -298,13 +320,14 @@
         <div class="map-card fade-in" style="transition-delay:0.15s">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.0!2d75.2!3d12.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQ4JzAwLjAiTiA3NcKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            title="Mahalingeshwara Temple Location"
-            aria-label="Google Maps showing temple location">
+            title="Temple location map"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-          <div class="map-card-footer">
-            <p data-i18n="contact.maplabel">Padubelman, Karnataka</p>
-            <a href="https://maps.google.com/?q=Padubelman+Mahalingeshwara+Temple" target="_blank" rel="noopener" class="btn btn-maroon" style="padding:0.6rem 1.2rem;font-size:0.8rem;" data-i18n="contact.mapbtn">Open in Maps</a>
+          <div class="map-label">
+            <span class="map-label-dot"></span>
+            <span data-i18n="contact.maplabel">Padubelman, Karnataka</span>
           </div>
         </div>
       </div>
@@ -315,6 +338,7 @@
   <footer class="footer">
     <div class="footer-container">
       <p class="footer-mantra" data-i18n="footer.mantra">Om Namah Shivaya</p>
+      <div class="footer-rule"></div>
       <div class="footer-links">
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#rituals" data-i18n="nav.rituals">Rituals</a>
@@ -322,24 +346,20 @@
         <a href="gallery.html" data-i18n="nav.gallery">Gallery</a>
         <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
       </div>
-      <p class="footer-copy">&copy; <span id="year"></span> <span data-i18n="footer.copy">Sri Mahalingeshwara Temple Trust, Padubelman. All rights reserved.</span></p>
+      <p class="footer-copy">&copy; <span id="year"></span> <span data-i18n="footer.templename">Sri Mahalingeshwara Temple Trust, Padubelman</span>. All rights reserved.</p>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
-
+  <script src="script.js"></script>
   <script>
-  /* ============================================================
-     HOME PAGE — i18n (Language Switch)
-     All other logic (nav, scroll, animations) handled by script.js
-  ============================================================ */
+  /* ===== HOME i18n ===== */
   const homeI18n = {
     en: {
       'nav.about':'About','nav.rituals':'Rituals','nav.seva':'Seva','nav.gallery':'Gallery','nav.contact':'Contact',
       'hero.badge':'Padubelman, Karnataka',
+      'hero.status':'Daily Darshan Open · Morning & Evening',
       'hero.h1':'Sri Mahalingeshwara Temple',
       'hero.p':'Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace',
-      'hero.status':'Daily Darshan Open \u2022 Morning & Evening',
       'hero.cta1':'Discover the Temple','hero.cta2':'Book a Seva','hero.cta3':'Gallery','hero.scroll':'Scroll',
       'highlights.label':'Why Devotees Choose This Temple','highlights.h2':'Spiritual Experience with Trusted Tradition',
       'highlights.card1.title':'Traditional Authenticity','highlights.card1.desc':'Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.',
@@ -349,76 +369,74 @@
       'about.p1':'Sri Mahalingeshwara Temple at Padubelman is a revered Shaivite shrine in coastal Karnataka, dedicated to Lord Mahalingeshwara — a form of Lord Shiva. The temple is cherished by devotees from across the region for its sanctity, ancient traditions, and the deep sense of peace it offers.',
       'about.p2':'The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.',
       'about.p3':'Each year, the temple hosts vibrant festivals including the Brahmakalasha, Kola, and the Utsava — events that draw thousands of devotees and echo with the sound of devotional music, chants, and ancient ceremonies.',
-      'stat.deities':'Deities','stat.sevas':'Sevas Offered','stat.days':'Days of Worship',
+      'stat.deities':'Deities','stat.sevas':'Sevas','stat.days':'Days of Worship',
       'rituals.label':'Daily Observances','rituals.h2':'Sacred Rituals & Timings',
       'rituals.sub':'Each day at the temple follows a rhythmic cycle of worship, offering devotees multiple opportunities to receive divine blessings',
       'ritual.morning.title':'Morning Pooja','ritual.morning.time':'7:00 AM – 8:00 AM',
-      'ritual.morning.desc':'The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka (sacred bath) with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya (food offering) is presented and arati concludes the morning session.',
+      'ritual.morning.desc':'The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting.',
       'ritual.evening.title':'Evening Pooja','ritual.evening.time':'5:00 PM – 7:30 PM',
-      'ritual.evening.desc':'As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana (lamp worship) and is accompanied by devotional music. The Mangalarati brings the day\'s worship to a serene and luminous close.',
+      'ritual.evening.desc':'As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana and is accompanied by devotional music. The Mangalarati brings the day\'s worship to a serene and luminous close.',
       'ritual.ranga.title':'Ranga Pooje','ritual.ranga.time':'6:00 PM (On Request)',
-      'ritual.ranga.desc':'A special evening ritual performed only upon devotee request. Freshly cooked rice is first offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice placed on leaves is offered at Bali stones inside and outside the temple with deep reverence.',
+      'ritual.ranga.desc':'A special evening ritual performed only at the request of devotees. Freshly cooked rice is offered to Lord Mahalingeshwara and Lord Ganapathi, followed by the Bali ritual.',
       'ritual.shata.title':'Shatarudrabhisheka','ritual.shata.time':'Special Occasions',
-      'ritual.shata.desc':'One of the most powerful sevas at the temple — Sri Rudram is chanted one hundred times while the Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.',
+      'ritual.shata.desc':'Sri Rudram is chanted one hundred times while the Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings. Performed during important festivals or milestones.',
       'visit.label':'Plan Your Visit','visit.h2':'Temple Timings & Information',
-      'visit.sub':'The temple is open to all devotees. We welcome you throughout the year',
+      'visit.sub':'The temple is open to all devotees throughout the year',
       'visit.morning.title':'Morning Hours','visit.morning.desc':'6:00 AM to 1:00 PM. Open daily including festivals and public holidays',
       'visit.evening.title':'Evening Hours','visit.evening.desc':'5:30 PM to 8:00 PM. Evening poojas and deepa aradhana',
       'visit.location.title':'Location','visit.location.desc':'Padubelman, Bantwal Taluk, Dakshina Kannada, Karnataka',
-      'visit.dress.title':'Dress Code','visit.dress.desc':'Traditional attire preferred. Dhoti or saree encouraged. Respectful dress required at all times',
+      'visit.dress.title':'Dress Code','visit.dress.desc':'Traditional attire preferred. Dhoti or saree encouraged. Respectful dress required',
       'contact.label':'Get in Touch','contact.h2':'Contact the Temple',
       'contact.sub':'Reach out for seva bookings, festival information, or any queries',
       'contact.trust':'Sri Mahalingeshwara Temple Trust',
-      'contact.intro':'We are here to assist devotees with seva bookings, festival schedules, and general enquiries. Feel free to reach us by phone or email.',
+      'contact.intro':'We are here to assist devotees with seva bookings, festival schedules, and general enquiries.',
       'contact.phone.label':'Phone','contact.email.label':'Email','contact.address.label':'Address',
       'contact.address.value':'Padubelman, Bantwal Taluk, Dakshina Kannada, Karnataka',
       'contact.cta1':'Book a Seva','contact.cta2':'WhatsApp Us',
-      'contact.maplabel':'Padubelman, Karnataka','contact.mapbtn':'Open in Maps',
-      'footer.mantra':'Om Namah Shivaya','footer.privacy':'Privacy Policy',
-      'footer.copy':'Sri Mahalingeshwara Temple Trust, Padubelman. All rights reserved.'
+      'contact.maplabel':'Padubelman, Karnataka',
+      'footer.mantra':'Om Namah Shivaya','footer.templename':'Sri Mahalingeshwara Temple Trust, Padubelman','footer.privacy':'Privacy Policy'
     },
     kn: {
-      'nav.about':'\u0cac\u0c97\u0ccd\u0c97\u0cc6','nav.rituals':'\u0cb5\u0cbf\u0ca7\u0cbf\u0c97\u0cb3\u0cc1','nav.seva':'\u0cb8\u0cc7\u0cb5\u0cc6','nav.gallery':'\u0c97\u0ccd\u0caf\u0cbe\u0cb2\u0cb0\u0cbf','nav.contact':'\u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95',
-      'hero.badge':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
-      'hero.h1':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf',
-      'hero.p':'\u0cad\u0c95\u0ccd\u0ca4\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cbf\u0cb5\u0ccd\u0caf\u0ca4\u0cc6 \u0c92\u0c82\u0ca6\u0cbe\u0c97\u0cc1\u0cb5 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0c95\u0ccd\u0cb7\u0cc7\u0ca4\u0ccd\u0cb0 \u2014 \u0cb6\u0cbe\u0cb6\u0ccd\u0cb5\u0ca4 \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c86\u0ca7\u0ccd\u0caf\u0cbe\u0ca4\u0ccd\u0cae\u0cbf\u0c95 \u0c85\u0ca8\u0cc1\u0c97\u0ccd\u0cb0\u0cb9\u0ca6 \u0ca4\u0cbe\u0ca3',
-      'hero.status':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf\u0ca6\u0cbf\u0ca8 \u0ca6\u0cb0\u0ccd\u0cb6\u0ca8 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6 \u2022 \u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0c82\u0c9c\u0cc6',
-      'hero.cta1':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c85\u0ca8\u0ccd\u0cb5\u0cc7\u0cb7\u0cbf\u0cb8\u0cbf','hero.cta2':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd \u0cae\u0cbe\u0ca1\u0cbf','hero.cta3':'\u0c97\u0ccd\u0caf\u0cbe\u0cb2\u0cb0\u0cbf','hero.scroll':'\u0cae\u0cc1\u0c82\u0ca6\u0cc6',
-      'highlights.label':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cc1 \u0c88 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0cb5\u0ca8\u0ccd\u0ca8\u0cc1 \u0c86\u0cb0\u0cbf\u0cb8\u0cc1\u0cb5 \u0c95\u0cbe\u0cb0\u0ca3','highlights.h2':'\u0caa\u0cb0\u0c82\u0caa\u0cb0\u0cc6\u0caf \u0cb5\u0cbf\u0cb6\u0ccd\u0cb5\u0cbe\u0cb8\u0ca6\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0c86\u0ca7\u0ccd\u0caf\u0cbe\u0ca4\u0ccd\u0cae\u0cbf\u0c95 \u0c85\u0ca8\u0cc1\u0cad\u0cb5',
-      'highlights.card1.title':'\u0cb8\u0cbe\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cbf\u0c95 \u0caa\u0ccd\u0cb0\u0cbe\u0cae\u0cbe\u0ca3\u0cbf\u0c95\u0ca4\u0cc6','highlights.card1.desc':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0cb5\u0cbf\u0ca7\u0cbf\u0caf\u0cc2 \u0c86\u0c97\u0cae \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca4\u0cc1\u0cb3\u0cc1\u0ca8\u0cbe\u0ca1\u0cc1 \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0ca6 \u0caa\u0ccd\u0cb0\u0c95\u0cbe\u0cb0 \u0ca4\u0cb0\u0cac\u0cc7\u0ca4\u0cbf \u0caa\u0ca1\u0cc6\u0ca6 \u0c85\u0cb0\u0ccd\u0c9a\u0c95\u0cb0\u0cbf\u0c82\u0ca6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'highlights.card2.title':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cbf\u0c97\u0cc6 \u0cb8\u0cc1\u0cb2\u0cad \u0cb8\u0cb9\u0cbe\u0caf','highlights.card2.desc':'WhatsApp \u0cae\u0cc2\u0cb2\u0c95 \u0ca4\u0ccd\u0cb5\u0cb0\u0cbf\u0ca4 \u0cb8\u0cc7\u0cb5\u0cbe \u0cae\u0cbe\u0cb0\u0ccd\u0c97\u0ca6\u0cb0\u0ccd\u0cb6\u0ca8, \u0cb8\u0ccd\u0caa\u0cb7\u0ccd\u0c9f \u0cb5\u0cc7\u0cb3\u0cbe\u0caa\u0c9f\u0ccd\u0c9f\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0caa\u0cbe\u0cb0\u0ca6\u0cb0\u0ccd\u0cb6\u0c95 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf.',
-      'highlights.card3.title':'\u0cb9\u0cac\u0ccd\u0cac\u0c97\u0cb3 \u0cb6\u0cbf\u0cb8\u0ccd\u0ca4\u0cc1\u0cac\u0ca6\u0ccd\u0ca7 \u0c86\u0caf\u0ccb\u0c9c\u0ca8\u0cc6','highlights.card3.desc':'\u0cb5\u0cbe\u0cb0\u0ccd\u0cb7\u0cbf\u0c95 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5\u0c97\u0cb3\u0ca8\u0ccd\u0ca8\u0cc1 \u0cb6\u0cbf\u0cb8\u0ccd\u0ca4\u0cbf\u0ca8 \u0caf\u0ccb\u0c9c\u0ca8\u0cc6\u0caf\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0cad\u0c95\u0ccd\u0ca4\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cae\u0cc1\u0ca6\u0cbe\u0caf \u0caa\u0cbe\u0cb2\u0ccd\u0c97\u0cca\u0cb3\u0ccd\u0cb3\u0cc1\u0cb5\u0cbf\u0c95\u0cc6\u0caf\u0cbf\u0c82\u0ca6 \u0c86\u0caf\u0ccb\u0c9c\u0cbf\u0cb8\u0cb2\u0cbe\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'about.label':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0cac\u0c97\u0ccd\u0c97\u0cc6','about.h2':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cb6\u0cbf\u0cb5\u0ca8 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0ca8\u0cc6\u0cb2\u0cc6',
-      'about.p1':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3\u0ca6 \u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c95\u0cb0\u0cbe\u0cb5\u0cb3\u0cbf \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95\u0ca6 \u0c92\u0c82\u0ca6\u0cc1 \u0caa\u0ccd\u0cb0\u0ca4\u0cbf\u0cb7\u0ccd\u0c9f\u0cbf\u0ca4 \u0cb6\u0cc8\u0cb5 \u0c95\u0ccd\u0cb7\u0cc7\u0ca4\u0ccd\u0cb0. \u0cb6\u0ccd\u0cb0\u0cc0 \u0cb6\u0cbf\u0cb5\u0ca8 \u0cb0\u0cc2\u0caa\u0cb5\u0cbe\u0ca6 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0\u0ca8\u0cbf\u0c97\u0cc6 \u0cb8\u0cae\u0cb0\u0ccd\u0caa\u0cbf\u0ca4 \u0c88 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cae\u0ca8\u0ca6\u0cb2\u0ccd\u0cb2\u0cbf \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0ccd\u0ca5\u0cbe\u0ca8 \u0caa\u0ca1\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6.',
-      'about.p2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0ca4\u0cc1\u0cb3\u0cc1 \u0ca8\u0cbe\u0ca1\u0cbf\u0ca8 \u0caa\u0cc2\u0c9c\u0cbe \u0cb8\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cb5\u0ca8\u0ccd\u0ca8\u0cc1 \u0c85\u0ca8\u0cc1\u0cb8\u0cb0\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0c86\u0c97\u0cae \u0cb6\u0cbe\u0cb8\u0ccd\u0ca4\u0ccd\u0cb0\u0ca6 \u0caa\u0ccd\u0cb0\u0c95\u0cbe\u0cb0 \u0ca4\u0cb0\u0cac\u0cc7\u0ca4\u0cbf \u0caa\u0ca1\u0cc6\u0ca6 \u0c85\u0cb0\u0ccd\u0c9a\u0c95\u0cb0\u0cbf\u0c82\u0ca6 \u0ca8\u0cbf\u0ca4\u0ccd\u0caf \u0caa\u0cc2\u0c9c\u0cc6 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'about.p3':'\u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0cb5\u0cb0\u0ccd\u0cb7 \u0cac\u0ccd\u0cb0\u0cb9\u0ccd\u0cae\u0c95\u0cb2\u0cb6, \u0c95\u0ccb\u0cb2 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0ca4\u0ccd\u0ca4\u0cb5\u0cc6. \u0cb8\u0cbe\u0cb5\u0cbf\u0cb0\u0cbe\u0cb0\u0cc1 \u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cc1 \u0cad\u0cbe\u0c97\u0cb5\u0cb9\u0cbf\u0cb8\u0cc1\u0cb5 \u0c88 \u0c89\u0ca4\u0ccd\u0cb8\u0cb5\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cbf \u0ca6\u0cc7\u0cb5 \u0cb8\u0ca8\u0ccd\u0ca8\u0cbf\u0ca7\u0cbf \u0c85\u0ca8\u0cc1\u0cad\u0cb5\u0cbf\u0cb8\u0cac\u0cb9\u0cc1\u0ca6\u0cc1.',
-      'stat.deities':'\u0ca6\u0cc7\u0cb5\u0ca4\u0cc6\u0c97\u0cb3\u0cc1','stat.sevas':'\u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cc1','stat.days':'\u0caa\u0cc2\u0c9c\u0cbe \u0ca6\u0cbf\u0ca8\u0c97\u0cb3\u0cc1',
-      'rituals.label':'\u0ca6\u0cc8\u0ca8\u0c82\u0ca6\u0cbf\u0ca8 \u0c86\u0c9a\u0cb0\u0ca3\u0cc6\u0c97\u0cb3\u0cc1','rituals.h2':'\u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0cb5\u0cbf\u0ca7\u0cbf\u0c97\u0cb3\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cae\u0caf',
-      'rituals.sub':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0caa\u0ccd\u0cb0\u0ca4\u0cbf \u0ca6\u0cbf\u0ca8 \u0cad\u0c95\u0ccd\u0ca4\u0cbf\u0cae\u0caf \u0caa\u0cc2\u0c9c\u0cbe \u0c95\u0ccd\u0cb0\u0cae\u0ca6\u0cbf\u0c82\u0ca6 \u0cb8\u0cbe\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6',
-      'ritual.morning.title':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6','ritual.morning.time':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 7:00 \u2013 8:00',
-      'ritual.morning.desc':'\u0ca6\u0cbf\u0ca8\u0ca6 \u0c86\u0cb0\u0c82\u0cad \u0cae\u0c82\u0c97\u0cb3\u0cbe\u0cb0\u0ca4\u0cbf\u0caf\u0cbf\u0c82\u0ca6 \u0c86\u0c97\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0ca8\u0c82\u0ca4\u0cb0 \u0ca8\u0cc0\u0cb0\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0caa\u0c82\u0c9a\u0cbe\u0cae\u0cc3\u0ca4\u0ca6\u0cbf\u0c82\u0ca6 \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'ritual.evening.title':'\u0cb8\u0c82\u0c9c\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6','ritual.evening.time':'\u0cb8\u0c82\u0c9c\u0cc6 5:00 \u2013 7:30',
-      'ritual.evening.desc':'\u0cb8\u0c82\u0c9c\u0cc6 \u0ca6\u0cc0\u0caa \u0cac\u0cc6\u0cb3\u0c97\u0cbf\u0ca8\u0cca\u0c82\u0ca6\u0cbf\u0c97\u0cc6 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9d\u0c97\u0cae\u0c97\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6. \u0ca6\u0cc0\u0caa \u0c86\u0cb0\u0cbe\u0ca7\u0ca8\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cad\u0c9c\u0ca8\u0cc6\u0caf \u0ca8\u0ca1\u0cc1\u0cb5\u0cc6 \u0cb8\u0c82\u0c9c\u0cc6 \u0cae\u0c82\u0c97\u0cb3\u0cbe\u0cb0\u0ca4\u0cbf \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'ritual.ranga.title':'\u0cb0\u0c82\u0c97 \u0caa\u0cc2\u0c9c\u0cc6','ritual.ranga.time':'\u0cb8\u0c82\u0c9c\u0cc6 6:00 (\u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6)',
-      'ritual.ranga.desc':'\u0cad\u0c95\u0ccd\u0ca4\u0cb0 \u0cb5\u0cbf\u0ca8\u0c82\u0ca4\u0cbf\u0caf \u0cae\u0cc7\u0cb0\u0cc6\u0c97\u0cc6 \u0cae\u0cbe\u0ca4\u0ccd\u0cb0 \u0ca8\u0ca1\u0cc6\u0caf\u0cc1\u0cb5 \u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0cbe\u0caf\u0c82\u0c95\u0cbe\u0cb2\u0ca6 \u0cb5\u0cbf\u0ca7\u0cbf. \u0c85\u0ca8\u0ccd\u0ca8 \u0ca8\u0cc8\u0cb5\u0cc7\u0ca6\u0ccd\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cac\u0cb2\u0cbf \u0cb5\u0cbf\u0ca7\u0cbf \u0c92\u0cb3\u0c97\u0cca\u0c82\u0ca1 \u0c88 \u0cb8\u0cc7\u0cb5\u0cc6 \u0cad\u0c95\u0ccd\u0ca4 \u0cb8\u0cae\u0cc1\u0ca6\u0cbe\u0caf\u0c95\u0ccd\u0c95\u0cc6 \u0c85\u0ca4\u0ccd\u0caf\u0c82\u0ca4 \u0caa\u0ccd\u0cb0\u0cbf\u0caf.',
-      'ritual.shata.title':'\u0cb6\u0ca4\u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cbe\u0cad\u0cbf\u0cb7\u0cc7\u0c95','ritual.shata.time':'\u0cb5\u0cbf\u0cb6\u0cc7\u0cb7 \u0cb8\u0c82\u0ca6\u0cb0\u0ccd\u0cad\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cbf',
-      'ritual.shata.desc':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf\u0ca6 \u0c85\u0ca4\u0ccd\u0caf\u0c82\u0ca4 \u0cb6\u0c95\u0ccd\u0ca4\u0cbf\u0caf\u0cc1\u0ca4 \u0cb8\u0cc7\u0cb5\u0cc6\u0c97\u0cb3\u0cb2\u0ccd\u0cb2\u0cca\u0c82\u0ca6\u0cc1. \u0cb6\u0ccd\u0cb0\u0cc0 \u0cb0\u0cc1\u0ca6\u0ccd\u0cb0\u0cae\u0ccd \u0ca8\u0cc2\u0cb0\u0cc1 \u0cac\u0cbe\u0cb0\u0cbf \u0caa\u0ca0\u0cbf\u0cb8\u0cc1\u0ca4\u0ccd\u0ca4\u0cbe \u0ca4\u0cc0\u0cb0\u0ccd\u0ca5, \u0caa\u0c82\u0c9a\u0cbe\u0cae\u0cc3\u0ca4 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c87\u0ca4\u0cb0 \u0caa\u0cb5\u0cbf\u0ca4\u0ccd\u0cb0 \u0ca6\u0ccd\u0cb0\u0cb5\u0ccd\u0caf\u0c97\u0cb3\u0cbf\u0c82\u0ca6 \u0c85\u0cad\u0cbf\u0cb7\u0cc7\u0c95 \u0ca8\u0cc6\u0cb0\u0cb5\u0cc7\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6.',
-      'visit.label':'\u0cad\u0cc7\u0c9f\u0cbf \u0caf\u0ccb\u0c9c\u0cbf\u0cb8\u0cbf','visit.h2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb8\u0cae\u0caf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf',
-      'visit.sub':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb5\u0cb0\u0ccd\u0cb7\u0cac\u0cc2\u0cb0\u0ccd\u0ca4\u0cbf \u0c8e\u0cb2\u0ccd\u0cb2 \u0cad\u0c95\u0ccd\u0ca4\u0cb0\u0cbf\u0c97\u0cc6 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0ca6\u0cc6',
-      'visit.morning.title':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 \u0cb8\u0cae\u0caf','visit.morning.desc':'\u0cac\u0cc6\u0cb3\u0cbf\u0c97\u0ccd\u0c97\u0cc6 6:00 \u0cb0\u0cbf\u0c82\u0ca6 \u0cae\u0ca7\u0ccd\u0caf\u0cbe\u0cb9\u0ccd\u0ca8 1:00. \u0cb9\u0cac\u0ccd\u0cac \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb0\u0c9c\u0cbe \u0ca6\u0cbf\u0ca8\u0c97\u0cb3\u0c82\u0ca6\u0cc2 \u0ca4\u0cc6\u0cb0\u0cc6\u0ca6\u0cbf\u0cb0\u0cc1\u0ca4\u0ccd\u0ca4\u0ca6\u0cc6',
-      'visit.evening.title':'\u0cb8\u0c82\u0c9c\u0cc6 \u0cb8\u0cae\u0caf','visit.evening.desc':'\u0cb8\u0c82\u0c9c\u0cc6 5:30 \u0cb0\u0cbf\u0c82\u0ca6 \u0cb0\u0cbe\u0ca4\u0ccd\u0cb0\u0cbf 8:00. \u0cb8\u0c82\u0c9c\u0cc6 \u0caa\u0cc2\u0c9c\u0cc6 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0ca6\u0cc0\u0caa \u0c86\u0cb0\u0cbe\u0ca7\u0ca8\u0cc6',
-      'visit.location.title':'\u0cb8\u0ccd\u0ca5\u0cb3','visit.location.desc':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0cac\u0c82\u0c9f\u0ccd\u0cb5\u0cb3 \u0ca4\u0cbe\u0cb2\u0ccd\u0cb2\u0cc2\u0c95\u0cc1, \u0ca6\u0c95\u0ccd\u0cb7\u0cbf\u0ca3 \u0c95\u0ca8\u0ccd\u0ca8\u0ca1, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
-      'visit.dress.title':'\u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0ca8\u0cbf\u0caf\u0cae','visit.dress.desc':'\u0cb8\u0cbe\u0c82\u0caa\u0ccd\u0cb0\u0ca6\u0cbe\u0caf\u0cbf\u0c95 \u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0cb8\u0cc2\u0c95\u0ccd\u0ca4. \u0ca7\u0ccb\u0ca4\u0cbf \u0c85\u0ca5\u0cb5\u0cbe \u0cb8\u0cc0\u0cb0\u0cc6 \u0cb6\u0ccd\u0cb0\u0cc7\u0caf\u0cb8\u0ccd\u0c95\u0cb0. \u0c97\u0ccc\u0cb0\u0cb5\u0caa\u0cc2\u0cb0\u0ccd\u0ca3 \u0c89\u0ca1\u0cc1\u0c97\u0cc6 \u0c95\u0ca1\u0ccd\u0ca1\u0cbe\u0caf',
-      'contact.label':'\u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95\u0cbf\u0cb8\u0cbf','contact.h2':'\u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95',
-      'contact.sub':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd\u0c95\u0cbf\u0c82\u0c97\u0ccd, \u0cb9\u0cac\u0ccd\u0cac\u0ca6 \u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf \u0c85\u0ca5\u0cb5\u0cbe \u0caf\u0cbe\u0cb5\u0cc1\u0ca6\u0cc7\u0ca8\u0cc1 \u0caa\u0ccd\u0cb0\u0cb6\u0ccd\u0ca8\u0cc6\u0c97\u0cb3\u0cbf\u0c97\u0cbe\u0c97\u0cbf \u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95\u0cbf\u0cb8\u0cbf',
-      'contact.trust':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9f\u0ccd\u0cb0\u0cb8\u0ccd\u0c9f\u0ccd',
-      'contact.intro':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd\u0c95\u0cbf\u0c82\u0c97\u0ccd, \u0cb9\u0cac\u0ccd\u0cac\u0ca6 \u0cb5\u0cc7\u0cb3\u0cbe\u0caa\u0c9f\u0ccd\u0c9f\u0cbf \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0cb8\u0cbe\u0cae\u0cbe\u0ca8\u0ccd\u0caf \u0cb5\u0cbf\u0c9a\u0cbe\u0cb0\u0ca3\u0cc6\u0c97\u0cb3\u0cbf\u0c97\u0cc6 \u0ca8\u0cbe\u0cb5\u0cc1 \u0cb8\u0cb9\u0cbe\u0caf \u0cae\u0cbe\u0ca1\u0cb2\u0cc1 \u0cb8\u0cbf\u0ca6\u0ccd\u0ca7.',
-      'contact.phone.label':'\u0ca6\u0cc2\u0cb0\u0cb5\u0cbe\u0ca3\u0cbf','contact.email.label':'\u0c87-\u0cae\u0cc7\u0cb2\u0ccd','contact.address.label':'\u0cb5\u0cbf\u0cb3\u0cbe\u0cb8',
-      'contact.address.value':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0cac\u0c82\u0c9f\u0ccd\u0cb5\u0cb3 \u0ca4\u0cbe\u0cb2\u0ccd\u0cb2\u0cc2\u0c95\u0cc1, \u0ca6\u0c95\u0ccd\u0cb7\u0cbf\u0ca3 \u0c95\u0ca8\u0ccd\u0ca8\u0ca1, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95',
-      'contact.cta1':'\u0cb8\u0cc7\u0cb5\u0cc6 \u0cac\u0cc1\u0c95\u0ccd \u0cae\u0cbe\u0ca1\u0cbf','contact.cta2':'WhatsApp \u0cae\u0cbe\u0ca1\u0cbf',
-      'contact.maplabel':'\u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3, \u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95','contact.mapbtn':'\u0ca8\u0c95\u0ccd\u0cb7\u0cc6\u0caf\u0cb2\u0ccd\u0cb2\u0cbf \u0ca4\u0cc6\u0cb0\u0cc6\u0caf\u0cbf\u0cb0\u0cbf',
-      'footer.mantra':'\u0d13\u0c82 \u0ca8\u0cae\u0c83 \u0cb6\u0cbf\u0cb5\u0cbe\u0caf','footer.privacy':'\u0c97\u0ccc\u0caa\u0ccd\u0caf\u0ca4\u0cbe \u0ca8\u0cc0\u0ca4\u0cbf',
-      'footer.copy':'\u0cb6\u0ccd\u0cb0\u0cc0 \u0cae\u0cb9\u0cbe\u0cb2\u0cbf\u0c82\u0c97\u0cc7\u0cb6\u0ccd\u0cb0 \u0ca6\u0cc7\u0cb5\u0cbe\u0cb2\u0caf \u0c9f\u0ccd\u0cb0\u0cb8\u0ccd\u0c9f\u0ccd, \u0caa\u0ca6\u0cc1\u0cac\u0cc6\u0cb2\u0ccd\u0cae\u0ca3. \u0c8e\u0cb2\u0ccd\u0cb2 \u0cb9\u0c95\u0ccd\u0c95\u0cc1\u0c97\u0cb3\u0cc1 \u0c95\u0cbe\u0caf\u0ccd\u0ca6\u0cbf\u0cb0\u0cbf\u0cb8\u0cbf\u0cb5\u0cc6.'
+      'nav.about':'ನಮ್ಮ ಬಗ್ಗೆ','nav.rituals':'ವಿಧಿಗಳು','nav.seva':'ಸೇವೆ','nav.gallery':'ಗ್ಯಾಲರಿ','nav.contact':'ಸಂಪರ್ಕ',
+      'hero.badge':'ಪದುಬೆಲ್ಮಣ, ಕರ್ನಾಟಕ',
+      'hero.status':'ದೈನಂದಿನ ದರ್ಶನ ತೆರೆದಿದೆ · ಬೆಳಿಗ್ಗೆ & ಸಂಜೆ',
+      'hero.h1':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
+      'hero.p':'ಭಕ್ತಿ ದೈವತ್ವವನ್ನು ಭೇಟಿಯಾಗುವ ಸ್ಥಳ — ಶಾಶ್ವತ ಸಂಪ್ರದಾಯ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಅನುಗ್ರಹದ ಪವಿತ್ರ ಕ್ಷೇತ್ರ',
+      'hero.cta1':'ದೇವಾಲಯ ಪರಿಚಯ','hero.cta2':'ಸೇವೆ ಬುಕ್ ಮಾಡಿ','hero.cta3':'ಗ್ಯಾಲರಿ','hero.scroll':'ಕೆಳಗೆ',
+      'highlights.label':'ಭಕ್ತರು ಈ ದೇವಾಲಯ ಆರಿಸುವ ಕಾರಣ','highlights.h2':'ವಿಶ್ವಾಸಾರ್ಹ ಸಂಪ್ರದಾಯದೊಂದಿಗೆ ಆಧ್ಯಾತ್ಮಿಕ ಅನುಭವ',
+      'highlights.card1.title':'ಸಾಂಪ್ರದಾಯಿಕ ಅಧಿಕೃತತೆ','highlights.card1.desc':'ಪ್ರತಿಯೊಂದು ವಿಧಿಯು ಆಗಮ ಮತ್ತು ತುಳು ನಾಡಿನ ದೇವಾಲಯ ಸಂಪ್ರದಾಯವನ್ನು ಅನುಸರಿಸುತ್ತದೆ.',
+      'highlights.card2.title':'ಭಕ್ತ ಸಹಾಯ','highlights.card2.desc':'WhatsApp ಮೂಲಕ ತ್ವರಿತ ಸೇವಾ ಮಾರ್ಗದರ್ಶನ, ಸ್ಪಷ್ಟ ವೇಳಾಪಟ್ಟಿಗಳು ಮತ್ತು ಪ್ರತಿಯೊಬ್ಬ ಭಕ್ತರಿಗೆ ಪಾರದರ್ಶಕ ಕಾಣಿಕೆಗಳು.',
+      'highlights.card3.title':'ಹಬ್ಬಗಳ ಶಿಸ್ತುಬದ್ಧ ಆಯೋಜನೆ','highlights.card3.desc':'ವಾರ್ಷಿಕ ಉತ್ಸವಗಳನ್ನು ಶಿಸ್ತಿನ ಯೋಜನೆಯೊಂದಿಗೆ ಭಕ್ತಿ ಮತ್ತು ಸಮುದಾಯ ಪಾಲ್ಗೊಳ್ಳುವಿಕೆಯಿಂದ ಆಯೋಜಿಸಲಾಗುತ್ತದೆ.',
+      'about.label':'ದೇವಾಲಯದ ಬಗ್ಗೆ','about.h2':'ಶ್ರೀ ಶಿವನ ಪವಿತ್ರ ನೆಲೆ',
+      'about.p1':'ಪದುಬೆಲ್ಮಣದ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಕರಾವಳಿ ಕರ್ನಾಟಕದ ಒಂದು ಪ್ರತಿಷ್ಠಿತ ಶೈವ ಕ್ಷೇತ್ರ. ಶ್ರೀ ಶಿವನ ರೂಪವಾದ ಮಹಾಲಿಂಗೇಶ್ವರನಿಗೆ ಸಮರ್ಪಿತ ಈ ದೇವಾಲಯ ಭಕ್ತರ ಮನದಲ್ಲಿ ವಿಶೇಷ ಸ್ಥಾನ ಪಡೆದಿದೆ.',
+      'about.p2':'ದೇವಾಲಯ ತುಳು ನಾಡಿನ ಪೂಜಾ ಸಂಪ್ರದಾಯವನ್ನು ಅನುಸರಿಸುತ್ತದೆ. ಆಗಮ ಶಾಸ್ತ್ರದ ಪ್ರಕಾರ ತರಬೇತಿ ಪಡೆದ ಅರ್ಚಕರಿಂದ ನಿತ್ಯ ಪೂಜೆ ನೆರವೇರುತ್ತದೆ.',
+      'about.p3':'ಪ್ರತಿ ವರ್ಷ ಬ್ರಹ್ಮಕಲಶ, ಕೋಲ ಮತ್ತು ಉತ್ಸವ ನಡೆಯುತ್ತವೆ. ಸಾವಿರಾರು ಭಕ್ತರು ಭಾಗವಹಿಸುವ ಈ ಉತ್ಸವಗಳಲ್ಲಿ ದೇವ ಸನ್ನಿಧಿ ಅನುಭವಿಸಬಹುದು.',
+      'stat.deities':'ದೇವತೆಗಳು','stat.sevas':'ಸೇವೆಗಳು','stat.days':'ಪೂಜಾ ದಿನಗಳು',
+      'rituals.label':'ದೈನಂದಿನ ಆಚರಣೆಗಳು','rituals.h2':'ಪವಿತ್ರ ವಿಧಿಗಳು ಮತ್ತು ಸಮಯ',
+      'rituals.sub':'ದೇವಾಲಯದ ಪ್ರತಿ ದಿನ ಭಕ್ತಿಮಯ ಪೂಜಾ ಕ್ರಮದಿಂದ ಸಾಗುತ್ತದೆ',
+      'ritual.morning.title':'ಬೆಳಿಗ್ಗೆ ಪೂಜೆ','ritual.morning.time':'ಬೆಳಿಗ್ಗೆ 7:00 – 8:00',
+      'ritual.morning.desc':'ದಿನದ ಆರಂಭ ಮಂಗಳಾರತಿಯಿಂದ ಆಗುತ್ತದೆ. ನಂತರ ನೀರು ಮತ್ತು ಪಂಚಾಮೃತದಿಂದ ಅಭಿಷೇಕ ನಡೆಯುತ್ತದೆ.',
+      'ritual.evening.title':'ಸಂಜೆ ಪೂಜೆ','ritual.evening.time':'ಸಂಜೆ 5:00 – 7:30',
+      'ritual.evening.desc':'ಸಂಜೆ ದೀಪ ಬೆಳಗಿನೊಂದಿಗೆ ದೇವಾಲಯ ಝಗಮಗಿಸುತ್ತದೆ. ದೀಪ ಆರಾಧನೆ ಮತ್ತು ಭಜನೆಯ ನಡುವೆ ಸಂಜೆ ಮಂಗಳಾರತಿ ನೆರವೇರುತ್ತದೆ.',
+      'ritual.ranga.title':'ರಂಗ ಪೂಜೆ','ritual.ranga.time':'ಸಂಜೆ 6:00 (ವಿನಂತಿಯ ಮೇರೆಗೆ)',
+      'ritual.ranga.desc':'ಭಕ್ತರ ವಿನಂತಿಯ ಮೇರೆಗೆ ಮಾತ್ರ ನಡೆಯುವ ವಿಶೇಷ ಸಾಯಂಕಾಲದ ವಿಧಿ. ಅನ್ನ ನೈವೇದ್ಯ ಮತ್ತು ಬಲಿ ವಿಧಿ ಒಳಗೊಂಡ ಈ ಸೇವೆ ಭಕ್ತ ಸಮುದಾಯಕ್ಕೆ ಅತ್ಯಂತ ಪ್ರಿಯ.',
+      'ritual.shata.title':'ಶತರುದ್ರಾಭಿಷೇಕ','ritual.shata.time':'ವಿಶೇಷ ಸಂದರ್ಭಗಳಲ್ಲಿ',
+      'ritual.shata.desc':'ದೇವಾಲಯದ ಅತ್ಯಂತ ಶಕ್ತಿಯುತ ಸೇವೆಗಳಲ್ಲೊಂದು. ಶ್ರೀ ರುದ್ರಂ ನೂರು ಬಾರಿ ಪಠಿಸುತ್ತಾ ತೀರ್ಥ, ಪಂಚಾಮೃತ ಮತ್ತು ಇತರ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ನಡೆಯುತ್ತದೆ.',
+      'visit.label':'ಭೇಟಿ ಯೋಜಿಸಿ','visit.h2':'ದೇವಾಲಯ ಸಮಯ ಮತ್ತು ಮಾಹಿತಿ',
+      'visit.sub':'ದೇವಾಲಯ ವರ್ಷಬೂರ್ತಿ ಎಲ್ಲ ಭಕ್ತರಿಗೆ ತೆರೆದಿದೆ',
+      'visit.morning.title':'ಬೆಳಿಗ್ಗೆ ಸಮಯ','visit.morning.desc':'ಬೆಳಿಗ್ಗೆ 6:00 ರಿಂದ ಮಧ್ಯಾಹ್ನ 1:00. ಹಬ್ಬ ಮತ್ತು ರಜಾ ದಿನಗಳಂದೂ ತೆರೆದಿರುತ್ತದೆ',
+      'visit.evening.title':'ಸಂಜೆ ಸಮಯ','visit.evening.desc':'ಸಂಜೆ 5:30 ರಿಂದ ರಾತ್ರಿ 8:00. ಸಂಜೆ ಪೂಜೆ ಮತ್ತು ದೀಪ ಆರಾಧನೆ',
+      'visit.location.title':'ಸ್ಥಳ','visit.location.desc':'ಪದುಬೆಲ್ಮಣ, ಬಂಟ್ವಳ ತಾಲ್ಲೂಕು, ದಕ್ಷಿಣ ಕನ್ನಡ, ಕರ್ನಾಟಕ',
+      'visit.dress.title':'ಉಡುಗೆ ನಿಯಮ','visit.dress.desc':'ಸಾಂಪ್ರದಾಯಿಕ ಉಡುಗೆ ಸೂಕ್ತ. ಧೋತಿ ಅಥವಾ ಸೀರೆ ಶ್ರೇಯಸ್ಕರ. ಗೌರವಪೂರ್ಣ ಉಡುಗೆ ಕಡ್ಡಾಯ',
+      'contact.label':'ಸಂಪರ್ಕಿಸಿ','contact.h2':'ದೇವಾಲಯ ಸಂಪರ್ಕ',
+      'contact.sub':'ಸೇವೆ ಬುಕ್ಕಿಂಗ್, ಹಬ್ಬದ ಮಾಹಿತಿ ಅಥವಾ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗಾಗಿ ಸಂಪರ್ಕಿಸಿ',
+      'contact.trust':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಟ್ರಸ್ಟ್',
+      'contact.intro':'ಸೇವೆ ಬುಕ್ಕಿಂಗ್, ಹಬ್ಬದ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಸಾಮಾನ್ಯ ವಿಚಾರಣೆಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡಲು ಸಿದ್ಧ.',
+      'contact.phone.label':'ದೂರವಾಣಿ','contact.email.label':'ಇ-ಮೇಲ್','contact.address.label':'ವಿಳಾಸ',
+      'contact.address.value':'ಪದುಬೆಲ್ಮಣ, ಬಂಟ್ವಳ ತಾಲ್ಲೂಕು, ದಕ್ಷಿಣ ಕನ್ನಡ, ಕರ್ನಾಟಕ',
+      'contact.cta1':'ಸೇವೆ ಬುಕ್ ಮಾಡಿ','contact.cta2':'WhatsApp ಮಾಡಿ',
+      'contact.maplabel':'ಪದುಬೆಲ್ಮಣ, ಕರ್ನಾಟಕ',
+      'footer.mantra':'ಓಂ ನಮಃ ಶಿವಾಯ','footer.templename':'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ','footer.privacy':'ಗೌಪ್ಯತಾ ನೀತಿ'
     }
   };
 
@@ -430,7 +448,7 @@
     });
     const btn = document.getElementById('langBtn');
     if (btn) {
-      btn.textContent = lang === 'en' ? '\u0c95\u0ca8\u0ccd\u0ca8\u0ca1' : 'English';
+      btn.textContent = lang === 'en' ? 'ಕನ್ನಡ' : 'English';
       btn.setAttribute('aria-pressed', String(lang === 'kn'));
     }
     document.documentElement.lang = lang === 'kn' ? 'kn' : 'en';
