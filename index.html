@@ -9,7 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
+  <div class="ambient-gradient" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
   <!-- ===== NAVIGATION ===== -->
   <nav class="navbar transparent" id="navbar">
@@ -43,10 +45,11 @@
     <div class="hero-bg" role="img" aria-label="Temple exterior view"></div>
     <div class="hero-content fade-in">
       <div class="hero-badge" data-i18n="hero.badge">Padubelman, Karnataka</div>
+      <div class="hero-status" data-i18n="hero.status">Daily Darshan Open • Morning & Evening</div>
       <h1 data-i18n="hero.h1">Sri Mahalingeshwara Temple</h1>
       <p class="hero-subtitle" data-i18n="hero.p">Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace</p>
       <div class="hero-cta">
-        <a href="#about" class="btn btn-primary" data-i18n="hero.cta1">Discover the Temple</a>
+        <a href="#highlights" class="btn btn-primary" data-i18n="hero.cta1">Discover the Temple</a>
         <a href="seva.html" class="btn btn-outline" data-i18n="hero.cta2">Book a Seva</a>
         <a href="gallery.html" class="btn btn-outline" data-i18n="hero.cta3">Gallery</a>
       </div>
@@ -54,6 +57,31 @@
     <div class="hero-scroll" aria-hidden="true">
       <div class="hero-scroll-line"></div>
       <span data-i18n="hero.scroll">Scroll</span>
+    </div>
+  </section>
+
+
+  <section class="section premium-strip" id="highlights">
+    <div class="section-container">
+      <div class="section-header fade-in">
+        <span class="section-label" data-i18n="highlights.label">Why Devotees Choose This Temple</span>
+        <h2 data-i18n="highlights.h2">Spiritual Experience with Trusted Tradition</h2>
+        <div class="ornament"><span class="ornament-symbol"></span></div>
+      </div>
+      <div class="premium-grid">
+        <article class="premium-card" data-tilt>
+          <h3 data-i18n="highlights.card1.title">Traditional Authenticity</h3>
+          <p data-i18n="highlights.card1.desc">Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.</p>
+        </article>
+        <article class="premium-card" data-tilt>
+          <h3 data-i18n="highlights.card2.title">Seamless Devotee Support</h3>
+          <p data-i18n="highlights.card2.desc">Quick seva guidance through WhatsApp, clear schedules, and transparent offerings for every devotee.</p>
+        </article>
+        <article class="premium-card" data-tilt>
+          <h3 data-i18n="highlights.card3.title">Festival Excellence</h3>
+          <p data-i18n="highlights.card3.desc">Large annual utsavas with precise planning, spiritual discipline, and welcoming community participation.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -72,15 +100,15 @@
           <p data-i18n="about.p2">The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.</p>
           <p data-i18n="about.p3">Each year, the temple hosts vibrant festivals including the Brahmakalasha, Kola, and the Utsava — events that draw thousands of devotees and echo with the sound of devotional music, chants, and ancient ceremonies.</p>
           <div class="about-stats stagger-children">
-            <div class="stat-card fade-in">
+            <div class="stat-card fade-in" data-tilt>
               <div class="stat-number">2</div>
               <div class="stat-label" data-i18n="stat.deities">Deities</div>
             </div>
-            <div class="stat-card fade-in">
+            <div class="stat-card fade-in" data-tilt>
               <div class="stat-number">7</div>
               <div class="stat-label" data-i18n="stat.sevas">Sevas Offered</div>
             </div>
-            <div class="stat-card fade-in">
+            <div class="stat-card fade-in" data-tilt>
               <div class="stat-number">365</div>
               <div class="stat-label" data-i18n="stat.days">Days of Worship</div>
             </div>
@@ -101,7 +129,7 @@
       </div>
       <div class="rituals-grid stagger-children">
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -117,7 +145,7 @@
           <div class="ritual-details" data-i18n="ritual.morning.desc">The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka (sacred bath) with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya (food offering) is presented and arati concludes the morning session.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -133,7 +161,7 @@
           <div class="ritual-details" data-i18n="ritual.evening.desc">As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana (lamp worship) and is accompanied by devotional music. The Shiva Linga is decorated with new flowers for the evening session and the Mangalarati brings the day's worship to a serene and luminous close.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -149,7 +177,7 @@
           <div class="ritual-details" data-i18n="ritual.ranga.desc">A special evening ritual performed only upon devotee request. Freshly cooked rice is first offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice placed on leaves is offered at Bali stones inside and outside the temple with deep reverence.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -307,7 +335,12 @@
       'hero.badge':'Padubelman, Karnataka',
       'hero.h1':'Sri Mahalingeshwara Temple',
       'hero.p':'Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace',
+      'hero.status':'Daily Darshan Open • Morning & Evening',
       'hero.cta1':'Discover the Temple','hero.cta2':'Book a Seva','hero.cta3':'Gallery','hero.scroll':'Scroll',
+      'highlights.label':'Why Devotees Choose This Temple','highlights.h2':'Spiritual Experience with Trusted Tradition',
+      'highlights.card1.title':'Traditional Authenticity','highlights.card1.desc':'Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.',
+      'highlights.card2.title':'Seamless Devotee Support','highlights.card2.desc':'Quick seva guidance through WhatsApp, clear schedules, and transparent offerings for every devotee.',
+      'highlights.card3.title':'Festival Excellence','highlights.card3.desc':'Large annual utsavas with precise planning, spiritual discipline, and welcoming community participation.',
       'about.label':'About the Temple','about.h2':'A Sacred Abode of Lord Shiva',
       'about.p1':'Sri Mahalingeshwara Temple at Padubelman is a revered Shaivite shrine in coastal Karnataka, dedicated to Lord Mahalingeshwara — a form of Lord Shiva. The temple is cherished by devotees from across the region for its sanctity, ancient traditions, and the deep sense of peace it offers.',
       'about.p2':'The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.',
@@ -349,7 +382,12 @@
       'hero.badge':'ಪದುಬೆಲ್ಮಣ, ಕರ್ನಾಟಕ',
       'hero.h1':'ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
       'hero.p':'ಭಕ್ತಿ ಮತ್ತು ದಿವ್ಯತೆ ಒಂದಾಗುವ ಪವಿತ್ರ ಕ್ಷೇತ್ರ — ಶಾಶ್ವತ ಸಂಪ್ರದಾಯ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಅನುಗ್ರಹದ ತಾಣ',
+      'hero.status':'ಪ್ರತಿದಿನ ದರ್ಶನ ತೆರೆದಿದೆ • ಬೆಳಿಗ್ಗೆ ಮತ್ತು ಸಂಜೆ',
       'hero.cta1':'ದೇವಾಲಯ ಅನ್ವೇಷಿಸಿ','hero.cta2':'ಸೇವೆ ಬುಕ್ ಮಾಡಿ','hero.cta3':'ಗ್ಯಾಲರಿ','hero.scroll':'ಮುಂದೆ',
+      'highlights.label':'ಭಕ್ತರು ಈ ದೇವಾಲಯವನ್ನು ಆರಿಸುವ ಕಾರಣ','highlights.h2':'ಪರಂಪರೆಯ ವಿಶ್ವಾಸದೊಂದಿಗೆ ಆಧ್ಯಾತ್ಮಿಕ ಅನುಭವ',
+      'highlights.card1.title':'ಸಾಂಪ್ರದಾಯಿಕ ಪ್ರಾಮಾಣಿಕತೆ','highlights.card1.desc':'ಪ್ರತಿ ವಿಧಿಯೂ ಆಗಮ ಮತ್ತು ತುಳುನಾಡು ಸಂಪ್ರದಾಯದ ಪ್ರಕಾರ ತರಬೇತಿ ಪಡೆದ ಅರ್ಚಕರಿಂದ ನೆರವೇರುತ್ತದೆ.',
+      'highlights.card2.title':'ಭಕ್ತರಿಗೆ ಸುಲಭ ಸಹಾಯ','highlights.card2.desc':'WhatsApp ಮೂಲಕ ತ್ವರಿತ ಸೇವಾ ಮಾರ್ಗದರ್ಶನ, ಸ್ಪಷ್ಟ ವೇಳಾಪಟ್ಟಿ ಮತ್ತು ಪಾರದರ್ಶಕ ಮಾಹಿತಿ.',
+      'highlights.card3.title':'ಹಬ್ಬಗಳ ಶಿಸ್ತುಬದ್ಧ ಆಯೋಜನೆ','highlights.card3.desc':'ವಾರ್ಷಿಕ ಉತ್ಸವಗಳನ್ನು ಶಿಸ್ತಿನ ಯೋಜನೆಯೊಂದಿಗೆ ಭಕ್ತಿ ಮತ್ತು ಸಮುದಾಯ ಪಾಲ್ಗೊಳ್ಳುವಿಕೆಯಿಂದ ಆಯೋಜಿಸಲಾಗುತ್ತದೆ.',
       'about.label':'ದೇವಾಲಯದ ಬಗ್ಗೆ','about.h2':'ಶ್ರೀ ಶಿವನ ಪವಿತ್ರ ನೆಲೆ',
       'about.p1':'ಪದುಬೆಲ್ಮಣದ ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ ಕರಾವಳಿ ಕರ್ನಾಟಕದ ಒಂದು ಪ್ರತಿಷ್ಠಿತ ಶೈವ ಕ್ಷೇತ್ರ. ಶ್ರೀ ಶಿವನ ರೂಪವಾದ ಮಹಾಲಿಂಗೇಶ್ವರನಿಗೆ ಸಮರ್ಪಿತ ಈ ದೇವಾಲಯ ಭಕ್ತರ ಮನದಲ್ಲಿ ವಿಶೇಷ ಸ್ಥಾನ ಪಡೆದಿದೆ.',
       'about.p2':'ದೇವಾಲಯ ತುಳು ನಾಡಿನ ಪೂಜಾ ಸಂಪ್ರದಾಯವನ್ನು ಅನುಸರಿಸುತ್ತದೆ. ಆಗಮ ಶಾಸ್ತ್ರದ ಪ್ರಕಾರ ತರಬೇತಿ ಪಡೆದ ಅರ್ಚಕರಿಂದ ನಿತ್ಯ ಪೂಜೆ ನೆರವೇರುತ್ತದೆ. ಶ್ರೀ ಗಣಪತಿಯ ಅನುಗ್ರಹದೊಂದಿಗೆ ಎಲ್ಲ ಧಾರ್ಮಿಕ ಕಾರ್ಯಗಳು ಪ್ರಾರಂಭವಾಗುತ್ತವೆ.',
