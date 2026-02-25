@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
+
   <div class="ambient-gradient" aria-hidden="true"></div>
   <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
@@ -31,7 +32,7 @@
         <div class="lang-switch" role="group" aria-label="Language switcher">
           <button id="langBtn" class="lang-btn" aria-pressed="false" title="Switch language">ಕನ್ನಡ</button>
         </div>
-        <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -45,7 +46,7 @@
     <div class="hero-bg" role="img" aria-label="Temple exterior view"></div>
     <div class="hero-content fade-in">
       <div class="hero-badge" data-i18n="hero.badge">Padubelman, Karnataka</div>
-      <div class="hero-status" data-i18n="hero.status">Daily Darshan Open • Morning & Evening</div>
+      <div class="hero-status" data-i18n="hero.status">Daily Darshan Open • Morning &amp; Evening</div>
       <h1 data-i18n="hero.h1">Sri Mahalingeshwara Temple</h1>
       <p class="hero-subtitle" data-i18n="hero.p">Where devotion meets divinity — a sacred space of timeless traditions and spiritual grace</p>
       <div class="hero-cta">
@@ -60,7 +61,7 @@
     </div>
   </section>
 
-
+  <!-- ===== HIGHLIGHTS ===== -->
   <section class="section premium-strip" id="highlights">
     <div class="section-container">
       <div class="section-header fade-in">
@@ -69,15 +70,15 @@
         <div class="ornament"><span class="ornament-symbol"></span></div>
       </div>
       <div class="premium-grid">
-        <article class="premium-card" data-tilt>
+        <article class="premium-card">
           <h3 data-i18n="highlights.card1.title">Traditional Authenticity</h3>
           <p data-i18n="highlights.card1.desc">Every ritual follows established Agamic and Tulu Nadu temple traditions guided by trained priests.</p>
         </article>
-        <article class="premium-card" data-tilt>
+        <article class="premium-card">
           <h3 data-i18n="highlights.card2.title">Seamless Devotee Support</h3>
           <p data-i18n="highlights.card2.desc">Quick seva guidance through WhatsApp, clear schedules, and transparent offerings for every devotee.</p>
         </article>
-        <article class="premium-card" data-tilt>
+        <article class="premium-card">
           <h3 data-i18n="highlights.card3.title">Festival Excellence</h3>
           <p data-i18n="highlights.card3.desc">Large annual utsavas with precise planning, spiritual discipline, and welcoming community participation.</p>
         </article>
@@ -100,15 +101,15 @@
           <p data-i18n="about.p2">The temple follows the Tulu Nadu tradition of worship, with daily rituals conducted by trained priests according to agamic guidelines. It is also home to Lord Ganapathi, whose blessings are invoked at the commencement of all religious activities.</p>
           <p data-i18n="about.p3">Each year, the temple hosts vibrant festivals including the Brahmakalasha, Kola, and the Utsava — events that draw thousands of devotees and echo with the sound of devotional music, chants, and ancient ceremonies.</p>
           <div class="about-stats stagger-children">
-            <div class="stat-card fade-in" data-tilt>
+            <div class="stat-card fade-in">
               <div class="stat-number">2</div>
               <div class="stat-label" data-i18n="stat.deities">Deities</div>
             </div>
-            <div class="stat-card fade-in" data-tilt>
+            <div class="stat-card fade-in">
               <div class="stat-number">7</div>
               <div class="stat-label" data-i18n="stat.sevas">Sevas Offered</div>
             </div>
-            <div class="stat-card fade-in" data-tilt>
+            <div class="stat-card fade-in">
               <div class="stat-number">365</div>
               <div class="stat-label" data-i18n="stat.days">Days of Worship</div>
             </div>
@@ -129,7 +130,7 @@
       </div>
       <div class="rituals-grid stagger-children">
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -145,7 +146,7 @@
           <div class="ritual-details" data-i18n="ritual.morning.desc">The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka (sacred bath) with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya (food offering) is presented and arati concludes the morning session.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -161,7 +162,7 @@
           <div class="ritual-details" data-i18n="ritual.evening.desc">As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana (lamp worship) and is accompanied by devotional music. The Shiva Linga is decorated with new flowers for the evening session and the Mangalarati brings the day's worship to a serene and luminous close.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -177,7 +178,7 @@
           <div class="ritual-details" data-i18n="ritual.ranga.desc">A special evening ritual performed only upon devotee request. Freshly cooked rice is first offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice placed on leaves is offered at Bali stones inside and outside the temple with deep reverence.</div>
         </div>
 
-        <div class="ritual-card fade-in" onclick="toggleRitual(this)" data-tilt>
+        <div class="ritual-card fade-in" onclick="toggleRitual(this)">
           <div class="ritual-card-head">
             <div class="ritual-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -328,7 +329,85 @@
   <script src="script.js"></script>
 
   <script>
-  /* ---- Homepage i18n ---- */
+  /* ---- Cursor glow ---- */
+  (function() {
+    const glow = document.getElementById('cursorGlow');
+    const ambient = document.querySelector('.ambient-gradient');
+    if (!glow || !ambient) return;
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+      ambient.style.setProperty('--mx', (e.clientX / window.innerWidth * 100) + '%');
+      ambient.style.setProperty('--my', (e.clientY / window.innerHeight * 100) + '%');
+    });
+  })();
+
+  /* ---- Navbar scroll ---- */
+  (function() {
+    const nav = document.getElementById('navbar');
+    if (!nav) return;
+    const onScroll = () => {
+      if (window.scrollY > 50) {
+        nav.classList.remove('transparent');
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.add('transparent');
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+  /* ---- Hero BG loaded ---- */
+  window.addEventListener('load', () => {
+    const bg = document.querySelector('.hero-bg');
+    if (bg) bg.classList.add('loaded');
+  });
+
+  /* ---- Mobile nav toggle ---- */
+  function toggleNav() {
+    const links = document.getElementById('nav-links');
+    const toggle = document.getElementById('navToggle');
+    if (!links || !toggle) return;
+    const isOpen = links.classList.toggle('active');
+    toggle.classList.toggle('open', isOpen);
+  }
+
+  /* ---- Close nav on link click ---- */
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav-links')?.classList.remove('active');
+      document.getElementById('navToggle')?.classList.remove('open');
+    });
+  });
+
+  /* ---- Ritual accordion ---- */
+  function toggleRitual(card) {
+    const details = card.querySelector('.ritual-details');
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.ritual-card.open').forEach(c => {
+      c.classList.remove('open');
+      c.querySelector('.ritual-details').classList.remove('active');
+    });
+    if (!isOpen) {
+      card.classList.add('open');
+      details.classList.add('active');
+    }
+  }
+
+  /* ---- Scroll animations ---- */
+  (function() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in, .slide-up').forEach(el => observer.observe(el));
+  })();
+
+  /* ---- Footer year ---- */
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---- i18n ---- */
   const homeI18n = {
     en: {
       'nav.about':'About','nav.rituals':'Rituals','nav.seva':'Seva','nav.gallery':'Gallery','nav.contact':'Contact',
@@ -350,20 +429,16 @@
       'rituals.sub':'Each day at the temple follows a rhythmic cycle of worship, offering devotees multiple opportunities to receive divine blessings',
       'ritual.morning.title':'Morning Pooja','ritual.morning.time':'7:00 AM – 8:00 AM',
       'ritual.morning.desc':'The day begins with the ceremonial awakening of the deity — Mangalarati — followed by abhisheka (sacred bath) with water and panchamruta. The priest adorns the Linga with fresh flowers and performs Rudrabhisheka with Sri Rudram chanting. Naivedya (food offering) is presented and arati concludes the morning session.',
-      'ritual.noon.title':'Noon Pooja','ritual.noon.time':'12:00 PM – 1:00 PM',
-      'ritual.noon.desc':'The midday ritual includes alankara (decoration) of the deities with fresh offerings. A full naivedya of cooked food is placed before the Lord, followed by pradakshina and arati. This pooja marks the high point of the day and is especially auspicious for seeking blessings of health and prosperity.',
       'ritual.evening.title':'Evening Pooja','ritual.evening.time':'5:00 PM – 7:30 PM',
       'ritual.evening.desc':'As dusk falls, the temple comes alive with the glow of lamps. The evening pooja begins with deepa aradhana (lamp worship) and is accompanied by devotional music. The Mangalarati brings the day\'s worship to a serene and luminous close.',
-      'ritual.rudra.title':'Rudrabhisheka','ritual.rudra.time':'By Appointment',
-      'ritual.rudra.desc':'Rudrabhisheka is a deeply purifying ritual where the Shiva Linga is bathed with water, milk, honey, curd, and ghee while Sri Rudram is chanted. Devotees receive special blessings for health, protection, and the removal of obstacles.',
       'ritual.ranga.title':'Ranga Pooje','ritual.ranga.time':'6:00 PM (On Request)',
-      'ritual.ranga.desc':'A special evening ritual performed only upon devotee request. Freshly cooked rice is offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice on leaves is offered at Bali stones inside and outside the temple.',
+      'ritual.ranga.desc':'A special evening ritual performed only upon devotee request. Freshly cooked rice is first offered to both Lord Mahalingeshwara and Lord Ganapathi. Following this, the Bali ritual is performed — uncooked rice placed on leaves is offered at Bali stones inside and outside the temple with deep reverence.',
       'ritual.shata.title':'Shatarudrabhisheka','ritual.shata.time':'Special Occasions',
       'ritual.shata.desc':'One of the most powerful sevas at the temple — Sri Rudram is chanted one hundred times while the Linga is bathed with holy water, panchamruta, tender coconut, and other sacred offerings.',
       'visit.label':'Plan Your Visit','visit.h2':'Temple Timings & Information',
       'visit.sub':'The temple is open to all devotees. We welcome you throughout the year',
-      'visit.morning.title':'Morning Hours','visit.morning.desc':'7:00 AM to 1:00 PM. Open daily including festivals and public holidays',
-      'visit.evening.title':'Evening Hours','visit.evening.desc':'5:00 PM to 8:00 PM. Evening poojas and deepa aradhana',
+      'visit.morning.title':'Morning Hours','visit.morning.desc':'6:00 AM to 1:00 PM. Open daily including festivals and public holidays',
+      'visit.evening.title':'Evening Hours','visit.evening.desc':'5:30 PM to 8:00 PM. Evening poojas and deepa aradhana',
       'visit.location.title':'Location','visit.location.desc':'Padubelman, Bantwal Taluk, Dakshina Kannada, Karnataka',
       'visit.dress.title':'Dress Code','visit.dress.desc':'Traditional attire preferred. Dhoti or saree encouraged. Respectful dress required at all times',
       'contact.label':'Get in Touch','contact.h2':'Contact the Temple',
@@ -397,20 +472,16 @@
       'rituals.sub':'ದೇವಾಲಯದ ಪ್ರತಿ ದಿನ ಭಕ್ತಿಮಯ ಪೂಜಾ ಕ್ರಮದಿಂದ ಸಾಗುತ್ತದೆ',
       'ritual.morning.title':'ಬೆಳಿಗ್ಗೆ ಪೂಜೆ','ritual.morning.time':'ಬೆಳಿಗ್ಗೆ 7:00 – 8:00',
       'ritual.morning.desc':'ದಿನದ ಆರಂಭ ಮಂಗಳಾರತಿಯಿಂದ ಆಗುತ್ತದೆ. ನಂತರ ನೀರು ಮತ್ತು ಪಂಚಾಮೃತದಿಂದ ಅಭಿಷೇಕ ನಡೆಯುತ್ತದೆ. ಅರ್ಚಕರು ಲಿಂಗಕ್ಕೆ ತಾಜಾ ಹೂವಿನಿಂದ ಅಲಂಕಾರ ಮಾಡಿ ರುದ್ರಾಭಿಷೇಕ ನೆರವೇರಿಸುತ್ತಾರೆ.',
-      'ritual.noon.title':'ಮಧ್ಯಾಹ್ನ ಪೂಜೆ','ritual.noon.time':'ಮಧ್ಯಾಹ್ನ 12:00 – 1:00',
-      'ritual.noon.desc':'ಮಧ್ಯಾಹ್ನದ ಪೂಜೆಯಲ್ಲಿ ದೇವತೆಗಳಿಗೆ ಅಲಂಕಾರ ಮಾಡಿ ಅನ್ನ ನೈವೇದ್ಯ ಸಮರ್ಪಿಸಲಾಗುತ್ತದೆ. ಆರೋಗ್ಯ ಮತ್ತು ಸಮೃದ್ಧಿಗಾಗಿ ಅನುಗ್ರಹ ಪಡೆಯಲು ಈ ಪೂಜೆ ವಿಶೇಷ.',
       'ritual.evening.title':'ಸಂಜೆ ಪೂಜೆ','ritual.evening.time':'ಸಂಜೆ 5:00 – 7:30',
       'ritual.evening.desc':'ಸಂಜೆ ದೀಪ ಬೆಳಗಿನೊಂದಿಗೆ ದೇವಾಲಯ ಝಗಮಗಿಸುತ್ತದೆ. ದೀಪ ಆರಾಧನೆ ಮತ್ತು ಭಜನೆಯ ನಡುವೆ ಸಂಜೆ ಮಂಗಳಾರತಿ ನೆರವೇರುತ್ತದೆ.',
-      'ritual.rudra.title':'ರುದ್ರಾಭಿಷೇಕ','ritual.rudra.time':'ಮೊದಲೇ ಬುಕ್ ಮಾಡಿ',
-      'ritual.rudra.desc':'ಶ್ರೀ ರುದ್ರಮ್ ಪಠಿಸುತ್ತಾ ಶಿವಲಿಂಗಕ್ಕೆ ನೀರು, ಹಾಲು, ಜೇನು, ಮೊಸರು, ತುಪ್ಪ ಅಭಿಷೇಕ ಮಾಡುವ ಪವಿತ್ರ ಸೇವೆ. ಆರೋಗ್ಯ, ರಕ್ಷಣೆ ಮತ್ತು ವಿಘ್ನ ನಿವಾರಣೆಗಾಗಿ ಇದು ವಿಶೇಷ.',
       'ritual.ranga.title':'ರಂಗ ಪೂಜೆ','ritual.ranga.time':'ಸಂಜೆ 6:00 (ವಿನಂತಿಯ ಮೇರೆಗೆ)',
       'ritual.ranga.desc':'ಭಕ್ತರ ವಿನಂತಿಯ ಮೇರೆಗೆ ಮಾತ್ರ ನಡೆಯುವ ವಿಶೇಷ ಸಾಯಂಕಾಲ ವಿಧಿ. ಅನ್ನ ನೈವೇದ್ಯ ಮತ್ತು ಬಲಿ ವಿಧಿ ಒಳಗೊಂಡ ಈ ಸೇವೆ ಭಕ್ತ ಸಮುದಾಯಕ್ಕೆ ಅತ್ಯಂತ ಪ್ರಿಯ.',
       'ritual.shata.title':'ಶತರುದ್ರಾಭಿಷೇಕ','ritual.shata.time':'ವಿಶೇಷ ಸಂದರ್ಭಗಳಲ್ಲಿ',
       'ritual.shata.desc':'ದೇವಾಲಯದ ಅತ್ಯಂತ ಶಕ್ತಿಯುತ ಸೇವೆಗಳಲ್ಲೊಂದು. ಶ್ರೀ ರುದ್ರಮ್ ನೂರು ಬಾರಿ ಪಠಿಸುತ್ತಾ ತೀರ್ಥ, ಪಂಚಾಮೃತ ಮತ್ತು ಇತರ ಪವಿತ್ರ ದ್ರವ್ಯಗಳಿಂದ ಅಭಿಷೇಕ ನೆರವೇರುತ್ತದೆ.',
       'visit.label':'ಭೇಟಿ ಯೋಜಿಸಿ','visit.h2':'ದೇವಾಲಯ ಸಮಯ ಮತ್ತು ಮಾಹಿತಿ',
       'visit.sub':'ದೇವಾಲಯ ವರ್ಷಪೂರ್ತಿ ಎಲ್ಲ ಭಕ್ತರಿಗೆ ತೆರೆದಿದೆ',
-      'visit.morning.title':'ಬೆಳಿಗ್ಗೆ ಸಮಯ','visit.morning.desc':'ಬೆಳಿಗ್ಗೆ 7:00 ರಿಂದ ಮಧ್ಯಾಹ್ನ 1:00. ಹಬ್ಬ ಮತ್ತು ರಜಾ ದಿನಗಳಂದೂ ತೆರೆದಿರುತ್ತದೆ',
-      'visit.evening.title':'ಸಂಜೆ ಸಮಯ','visit.evening.desc':'ಸಂಜೆ 5:00 ರಿಂದ ರಾತ್ರಿ 8:00. ಸಂಜೆ ಪೂಜೆ ಮತ್ತು ದೀಪ ಆರಾಧನೆ',
+      'visit.morning.title':'ಬೆಳಿಗ್ಗೆ ಸಮಯ','visit.morning.desc':'ಬೆಳಿಗ್ಗೆ 6:00 ರಿಂದ ಮಧ್ಯಾಹ್ನ 1:00. ಹಬ್ಬ ಮತ್ತು ರಜಾ ದಿನಗಳಂದೂ ತೆರೆದಿರುತ್ತದೆ',
+      'visit.evening.title':'ಸಂಜೆ ಸಮಯ','visit.evening.desc':'ಸಂಜೆ 5:30 ರಿಂದ ರಾತ್ರಿ 8:00. ಸಂಜೆ ಪೂಜೆ ಮತ್ತು ದೀಪ ಆರಾಧನೆ',
       'visit.location.title':'ಸ್ಥಳ','visit.location.desc':'ಪದುಬೆಲ್ಮಣ, ಬಂಟ್ವಾಳ ತಾಲ್ಲೂಕು, ದಕ್ಷಿಣ ಕನ್ನಡ, ಕರ್ನಾಟಕ',
       'visit.dress.title':'ಉಡುಗೆ ನಿಯಮ','visit.dress.desc':'ಸಾಂಪ್ರದಾಯಿಕ ಉಡುಗೆ ಸೂಕ್ತ. ಧೋತಿ ಅಥವಾ ಸೀರೆ ಶ್ರೇಯಸ್ಕರ. ಗೌರವಪೂರ್ಣ ಉಡುಗೆ ಕಡ್ಡಾಯ',
       'contact.label':'ಸಂಪರ್ಕಿಸಿ','contact.h2':'ದೇವಾಲಯ ಸಂಪರ್ಕ',

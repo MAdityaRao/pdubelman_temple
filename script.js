@@ -7,15 +7,31 @@ function toggleNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
   if (!navLinks) return;
+
   const isOpen = navLinks.classList.toggle('active');
-  if (navToggle) navToggle.classList.toggle('open', isOpen);
+
+  if (isOpen) navLinks.removeAttribute('style');
+  else navLinks.style.cssText = '';
+
+  if (navToggle) {
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  }
 }
 
 function closeNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
-  if (navLinks) navLinks.classList.remove('active');
-  if (navToggle) navToggle.classList.remove('open');
+
+  if (navLinks) {
+    navLinks.classList.remove('active');
+    navLinks.style.cssText = '';
+  }
+
+  if (navToggle) {
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
 }
 
 /* Close nav on link click */
@@ -24,6 +40,7 @@ document.addEventListener('click', (e) => {
   if (!navLinks) return;
   if (e.target.closest('.nav-links a')) closeNav();
 });
+
 
 /* --- Navbar Scroll Effect --- */
 window.addEventListener('scroll', () => {
