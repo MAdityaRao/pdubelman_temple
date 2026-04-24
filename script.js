@@ -6,12 +6,15 @@
 function toggleNav() {
   const navLinks = document.getElementById('nav-links');
   const navToggle = document.querySelector('.nav-toggle');
-  if (!navLinks) return;
+  
   const isOpen = navLinks.classList.toggle('active');
+  
   if (navToggle) {
     navToggle.classList.toggle('open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
   }
+  
+  // Prevent background scrolling when menu is open
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
@@ -340,18 +343,18 @@ function submitSevaBooking() {
   const lines = [
     '🙏 *Seva Booking Request*',
     '*Sri Mahalingeshwara Temple, Padubelman*',
-    '─────────────────────',
-    `👤 *Name:* ${nameVal}`,
-    `📞 *Phone:* ${phoneEl.value.trim()}`,
-    `🕉️ *Seva:* ${sevaVal}`,
-    `📅 *Date:* ${formattedDate}`,
+    '',
+    `*Name:* ${nameVal}`,
+    `*Phone:* ${phoneEl.value.trim()}`,
+    `*Seva:* ${sevaVal}`,
+    `*Date:* ${formattedDate}`,
   ];
   const occasionVal = occasionEl ? occasionEl.value.trim() : '';
-  if (occasionVal) lines.push(`🎉 *Occasion:* ${occasionVal}`);
+  if (occasionVal) lines.push(`*Occasion:* ${occasionVal}`);
   const notesVal = notesEl ? notesEl.value.trim() : '';
-  if (notesVal) lines.push(`📝 *Notes:* ${notesVal}`);
-  lines.push('─────────────────────');
-  lines.push('_Please confirm availability. Thank you!_');
+  if (notesVal) lines.push(`*Notes:* ${notesVal}`);
+  lines.push('');
+  lines.push('_Kindly confirm availability. Thank you! 🙏_');
 
   const msg = encodeURIComponent(lines.join('\n'));
   window.open('https://wa.me/919880544629?text=' + msg, '_blank', 'noopener,noreferrer');
