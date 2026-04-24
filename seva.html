@@ -164,7 +164,89 @@
           For bookings and details: <a href="tel:+919880544629">+91 9880 544 629</a> &bull; <a href="mailto:padubelmantemple@gmail.com">padubelmantemple@gmail.com</a>
         </p>
 
-        <!-- Donation card -->
+        <!-- ===== SEVA BOOKING FORM ===== -->
+        <section class="booking-card" id="booking-form">
+          <div class="booking-card-header">
+            <div class="booking-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <h2 class="booking-title" data-i18n="booking.title">Book a Seva via WhatsApp</h2>
+              <p class="booking-subtitle" data-i18n="booking.subtitle">Fill in your details and we'll open WhatsApp with your request pre-filled</p>
+            </div>
+          </div>
+
+          <div class="booking-form-grid" id="sevaBookingForm" novalidate>
+
+            <div class="booking-field">
+              <label class="booking-label" for="bf-name" data-i18n="booking.name.label">Your Full Name <span class="booking-req">*</span></label>
+              <input class="booking-input" id="bf-name" type="text" autocomplete="name"
+                placeholder="e.g. Ramesh Kumar" data-i18n-placeholder="booking.name.placeholder" required />
+              <span class="booking-error" id="err-name" data-i18n="booking.name.err">Please enter your name</span>
+            </div>
+
+            <div class="booking-field">
+              <label class="booking-label" for="bf-phone" data-i18n="booking.phone.label">Phone Number <span class="booking-req">*</span></label>
+              <input class="booking-input" id="bf-phone" type="tel" autocomplete="tel"
+                placeholder="e.g. 98765 43210" data-i18n-placeholder="booking.phone.placeholder" required />
+              <span class="booking-error" id="err-phone" data-i18n="booking.phone.err">Please enter a valid phone number</span>
+            </div>
+
+            <div class="booking-field booking-field--full">
+              <label class="booking-label" for="bf-seva" data-i18n="booking.seva.label">Select Seva <span class="booking-req">*</span></label>
+              <div class="booking-select-wrap">
+                <select class="booking-input booking-select" id="bf-seva" required>
+                  <option value="" data-i18n="booking.seva.placeholder">-- Choose a Seva --</option>
+                  <optgroup label="Daily Sevas" data-i18n-label="booking.seva.group1">
+                    <option value="Panchakajaya (₹20)" data-i18n="booking.seva.opt1">Panchakajaya — ₹20</option>
+                    <option value="Rudrabhisheka (₹50)" data-i18n="booking.seva.opt2">Rudrabhisheka — ₹50</option>
+                    <option value="Maha Pooje (₹50)" data-i18n="booking.seva.opt3">Maha Pooje — ₹50</option>
+                    <option value="Nitya Pooje (₹250)" data-i18n="booking.seva.opt4">Nitya Pooje — ₹250</option>
+                    <option value="Shashwatha Pooje (₹3001)" data-i18n="booking.seva.opt5">Shashwatha Pooje — ₹3001</option>
+                  </optgroup>
+                  <optgroup label="Special Sevas" data-i18n-label="booking.seva.group2">
+                    <option value="Ranga Pooje" data-i18n="booking.seva.opt6">Ranga Pooje — As per request</option>
+                    <option value="Shatarudrabhisheka" data-i18n="booking.seva.opt7">Shatarudrabhisheka — As per request</option>
+                  </optgroup>
+                </select>
+                <span class="booking-select-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </span>
+              </div>
+              <span class="booking-error" id="err-seva" data-i18n="booking.seva.err">Please select a seva</span>
+            </div>
+
+            <div class="booking-field">
+              <label class="booking-label" for="bf-date" data-i18n="booking.date.label">Preferred Date <span class="booking-req">*</span></label>
+              <input class="booking-input" id="bf-date" type="date" required />
+              <span class="booking-error" id="err-date" data-i18n="booking.date.err">Please select a date</span>
+            </div>
+
+            <div class="booking-field">
+              <label class="booking-label" for="bf-occasion" data-i18n="booking.occasion.label">Occasion <span class="booking-opt" data-i18n="booking.optional">(optional)</span></label>
+              <input class="booking-input" id="bf-occasion" type="text"
+                placeholder="e.g. Birthday, Anniversary" data-i18n-placeholder="booking.occasion.placeholder" />
+            </div>
+
+            <div class="booking-field booking-field--full">
+              <label class="booking-label" for="bf-notes" data-i18n="booking.notes.label">Additional Notes <span class="booking-opt" data-i18n="booking.optional">(optional)</span></label>
+              <textarea class="booking-input booking-textarea" id="bf-notes" rows="3"
+                placeholder="Any special instructions or requests..." data-i18n-placeholder="booking.notes.placeholder"></textarea>
+            </div>
+
+            <div class="booking-field booking-field--full">
+              <button class="booking-submit" id="bf-submit" type="button" onclick="submitSevaBooking()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.12 1.531 5.845L.057 23.571a.5.5 0 0 0 .614.614l5.726-1.474A11.943 11.943 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.787 9.787 0 0 1-5.045-1.398l-.361-.214-3.742.963.994-3.617-.235-.373A9.78 9.78 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+                <span data-i18n="booking.submit">Send Booking on WhatsApp</span>
+              </button>
+              <p class="booking-note" data-i18n="booking.note">
+                Tapping the button will open WhatsApp with your booking details pre-filled. The temple team will confirm your seva within 24 hours.
+              </p>
+            </div>
+
+          </div>
+        </section>
+        <!-- ===== END BOOKING FORM ===== -->
         <section class="donation-card">
           <h2 class="donation-title" data-i18n="donation.title">Donations and Temple Support</h2>
           <p class="donation-note" data-i18n="donation.note">Devotees may kindly contribute towards daily poojas, special sevas, and the development of the temple. Your offerings help sustain the spiritual and cultural activities of Mahalingeshwara Temple.</p>
@@ -205,5 +287,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    /* Set date input min to today */
+    const d = document.getElementById('bf-date');
+    if (d) d.min = new Date().toISOString().split('T')[0];
+  </script>
 </body>
 </html>

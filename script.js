@@ -168,11 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
+        let visibleCount = 0;
         galleryItems.forEach(item => {
           const match = filter === 'all' || item.dataset.category === filter;
-          item.style.display = match ? '' : 'none';
-          item.style.opacity = match ? '1' : '0';
+          if (match) {
+            item.style.display = '';
+            // Use rAF to trigger transition after display is restored
+            requestAnimationFrame(() => item.classList.remove('gallery-filtered'));
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
         });
+        // Scroll gallery back to start when filter changes
+        if (galleryContainer) galleryContainer.scrollLeft = 0;
       });
     });
   }
@@ -182,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('click', () => {
       const img = item.querySelector('img');
       if (!img || !lightbox || !lightboxImg) return;
+      closeNav(); // close mobile nav if open before showing lightbox
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
       lightbox.classList.add('active');
@@ -210,12 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeLightbox();
   });
 
-  /* Drag to scroll gallery */
+  /* Drag to scroll gallery — desktop mouse only */
   if (galleryContainer) {
-    let isDragging = false, startX = 0, scrollLeft = 0;
+    let isDragging = false, startX = 0, scrollLeft = 0, hasDragged = false;
 
     galleryContainer.addEventListener('mousedown', (e) => {
       isDragging = true;
+      hasDragged = false;
       startX = e.pageX - galleryContainer.offsetLeft;
       scrollLeft = galleryContainer.scrollLeft;
       galleryContainer.style.cursor = 'grabbing';
@@ -232,8 +243,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
       e.preventDefault();
       const x = e.pageX - galleryContainer.offsetLeft;
-      galleryContainer.scrollLeft = scrollLeft - (x - startX) * 1.4;
-    });
+      const walk = (x - startX) * 1.4;
+      if (Math.abs(walk) > 3) hasDragged = true;
+      galleryContainer.scrollLeft = scrollLeft - walk;
+    }, { passive: false });
+
+    // Prevent click from firing after a drag
+    galleryContainer.addEventListener('click', (e) => {
+      if (hasDragged) { e.stopPropagation(); hasDragged = false; }
+    }, true);
   }
 });
 
@@ -274,6 +292,71 @@ document.addEventListener('DOMContentLoaded', () => {
   if (el) el.textContent = new Date().getFullYear();
 });
 
+/* ===== SEVA BOOKING — WhatsApp submit ===== */
+function submitSevaBooking() {
+  const nameEl     = document.getElementById('bf-name');
+  const phoneEl    = document.getElementById('bf-phone');
+  const sevaEl     = document.getElementById('bf-seva');
+  const dateEl     = document.getElementById('bf-date');
+  const occasionEl = document.getElementById('bf-occasion');
+  const notesEl    = document.getElementById('bf-notes');
+
+  function showErr(id, show) {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('visible', show);
+  }
+  function markErr(el, invalid) {
+    if (el) el.classList.toggle('input-error', invalid);
+  }
+
+  let valid = true;
+
+  const nameVal = nameEl ? nameEl.value.trim() : '';
+  const nameOk = nameVal.length >= 2;
+  showErr('err-name', !nameOk); markErr(nameEl, !nameOk);
+  if (!nameOk) valid = false;
+
+  const rawPhone = phoneEl ? phoneEl.value.replace(/[\s\-().+]/g, '') : '';
+  const phoneOk = /^\d{10,13}$/.test(rawPhone);
+  showErr('err-phone', !phoneOk); markErr(phoneEl, !phoneOk);
+  if (!phoneOk) valid = false;
+
+  const sevaVal = sevaEl ? sevaEl.value.trim() : '';
+  const sevaOk = sevaVal !== '';
+  showErr('err-seva', !sevaOk); markErr(sevaEl, !sevaOk);
+  if (!sevaOk) valid = false;
+
+  const dateVal = dateEl ? dateEl.value : '';
+  const dateOk = dateVal !== '';
+  showErr('err-date', !dateOk); markErr(dateEl, !dateOk);
+  if (!dateOk) valid = false;
+
+  if (!valid) return;
+
+  const formattedDate = new Date(dateVal + 'T00:00:00').toLocaleDateString('en-IN', {
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+  });
+
+  const lines = [
+    '🙏 *Seva Booking Request*',
+    '*Sri Mahalingeshwara Temple, Padubelman*',
+    '─────────────────────',
+    `👤 *Name:* ${nameVal}`,
+    `📞 *Phone:* ${phoneEl.value.trim()}`,
+    `🕉️ *Seva:* ${sevaVal}`,
+    `📅 *Date:* ${formattedDate}`,
+  ];
+  const occasionVal = occasionEl ? occasionEl.value.trim() : '';
+  if (occasionVal) lines.push(`🎉 *Occasion:* ${occasionVal}`);
+  const notesVal = notesEl ? notesEl.value.trim() : '';
+  if (notesVal) lines.push(`📝 *Notes:* ${notesVal}`);
+  lines.push('─────────────────────');
+  lines.push('_Please confirm availability. Thank you!_');
+
+  const msg = encodeURIComponent(lines.join('\n'));
+  window.open('https://wa.me/919880544629?text=' + msg, '_blank', 'noopener,noreferrer');
+}
+
 /* ===== SEVA i18n (seva.html only) ===== */
 const i18n = {
   en: {
@@ -311,7 +394,36 @@ const i18n = {
     'donation.upi.text': 'Scan to Donate via UPI:',
     'footer.mantra': 'Om Namah Shivaya',
     'footer.templename': 'Mahalingeshwara Temple, Padubelman',
-    'images.upi.alt': 'Temple UPI QR Code'
+    'images.upi.alt': 'Temple UPI QR Code',
+    'booking.title': 'Book a Seva via WhatsApp',
+    'booking.subtitle': "Fill in your details and we'll open WhatsApp with your booking pre-filled",
+    'booking.name.label': 'Your Full Name',
+    'booking.name.placeholder': 'e.g. Ramesh Kumar',
+    'booking.name.err': 'Please enter your name (min 2 characters)',
+    'booking.phone.label': 'Phone Number',
+    'booking.phone.placeholder': 'e.g. 98765 43210',
+    'booking.phone.err': 'Please enter a valid 10-digit phone number',
+    'booking.seva.label': 'Select Seva',
+    'booking.seva.placeholder': '-- Choose a Seva --',
+    'booking.seva.group1': 'Daily Sevas',
+    'booking.seva.group2': 'Special Sevas',
+    'booking.seva.opt1': 'Panchakajaya — ₹20',
+    'booking.seva.opt2': 'Rudrabhisheka — ₹50',
+    'booking.seva.opt3': 'Maha Pooje — ₹50',
+    'booking.seva.opt4': 'Nitya Pooje — ₹250',
+    'booking.seva.opt5': 'Shashwatha Pooje — ₹3001',
+    'booking.seva.opt6': 'Ranga Pooje — As per request',
+    'booking.seva.opt7': 'Shatarudrabhisheka — As per request',
+    'booking.seva.err': 'Please select a seva',
+    'booking.date.label': 'Preferred Date',
+    'booking.date.err': 'Please select a date',
+    'booking.occasion.label': 'Occasion',
+    'booking.occasion.placeholder': 'e.g. Birthday, Anniversary',
+    'booking.optional': '(optional)',
+    'booking.notes.label': 'Additional Notes',
+    'booking.notes.placeholder': 'Any special instructions or requests...',
+    'booking.submit': 'Send Booking on WhatsApp',
+    'booking.note': 'Tapping the button will open WhatsApp with your booking details pre-filled. The temple team will confirm your seva within 24 hours.'
   },
   kn: {
     title: 'ಸೇವೆಗಳು | ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ',
@@ -348,7 +460,36 @@ const i18n = {
     'donation.upi.text': 'ಯುಪಿಐ ಮೂಲಕ ದಾನ ಮಾಡಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ:',
     'footer.mantra': 'ಓಂ ನಮಃ ಶಿವಾಯ',
     'footer.templename': 'ಮಹಾಲಿಂಗೇಶ್ವರ ದೇವಾಲಯ, ಪದುಬೆಲ್ಮಣ',
-    'images.upi.alt': 'ದೇವಾಲಯ ಯುಪಿಐ ಕ್ಯೂಆರ್ ಕೋಡ್'
+    'images.upi.alt': 'ದೇವಾಲಯ ಯುಪಿಐ ಕ್ಯೂಆರ್ ಕೋಡ್',
+    'booking.title': 'ವಾಟ್ಸ್‌ಆಪ್ ಮೂಲಕ ಸೇವೆ ಬುಕ್ ಮಾಡಿ',
+    'booking.subtitle': 'ನಿಮ್ಮ ವಿವರಗಳನ್ನು ತುಂಬಿಸಿ — ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಾಟ್ಸ್‌ಆಪ್‌ನಲ್ಲಿ ತೆರೆಯಲ್ಪಡುತ್ತದೆ',
+    'booking.name.label': 'ನಿಮ್ಮ ಪೂರ್ಣ ಹೆಸರು',
+    'booking.name.placeholder': 'ಉದಾ: ರಮೇಶ್ ಕುಮಾರ್',
+    'booking.name.err': 'ದಯವಿಟ್ಟು ನಿಮ್ಮ ಹೆಸರನ್ನು ನಮೂದಿಸಿ',
+    'booking.phone.label': 'ಫೋನ್ ಸಂಖ್ಯೆ',
+    'booking.phone.placeholder': 'ಉದಾ: 98765 43210',
+    'booking.phone.err': 'ದಯವಿಟ್ಟು ಸರಿಯಾದ ಫೋನ್ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ',
+    'booking.seva.label': 'ಸೇವೆ ಆಯ್ಕೆ ಮಾಡಿ',
+    'booking.seva.placeholder': '-- ಸೇವೆ ಆಯ್ಕೆ ಮಾಡಿ --',
+    'booking.seva.group1': 'ದೈನಂದಿನ ಸೇವೆಗಳು',
+    'booking.seva.group2': 'ವಿಶೇಷ ಸೇವೆಗಳು',
+    'booking.seva.opt1': 'ಪಂಚಕಜ್ಜಾಯ — ₹20',
+    'booking.seva.opt2': 'ರುದ್ರಾಭಿಷೇಕ — ₹50',
+    'booking.seva.opt3': 'ಮಹಾ ಪೂಜೆ — ₹50',
+    'booking.seva.opt4': 'ನಿತ್ಯ ಪೂಜೆ — ₹250',
+    'booking.seva.opt5': 'ಶಾಶ್ವತ ಪೂಜೆ — ₹3001',
+    'booking.seva.opt6': 'ರಂಗ ಪೂಜೆ — ವಿನಂತಿಯಂತೆ',
+    'booking.seva.opt7': 'ಶತರುದ್ರಾಭಿಷೇಕ — ವಿನಂತಿಯಂತೆ',
+    'booking.seva.err': 'ದಯವಿಟ್ಟು ಸೇವೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ',
+    'booking.date.label': 'ಆದ್ಯತೆಯ ದಿನಾಂಕ',
+    'booking.date.err': 'ದಯವಿಟ್ಟು ದಿನಾಂಕ ಆಯ್ಕೆ ಮಾಡಿ',
+    'booking.occasion.label': 'ಸಂದರ್ಭ',
+    'booking.occasion.placeholder': 'ಉದಾ: ಹುಟ್ಟುಹಬ್ಬ, ವಾರ್ಷಿಕೋತ್ಸವ',
+    'booking.optional': '(ಐಚ್ಛಿಕ)',
+    'booking.notes.label': 'ಹೆಚ್ಚಿನ ಟಿಪ್ಪಣಿಗಳು',
+    'booking.notes.placeholder': 'ಯಾವುದಾದರೂ ವಿಶೇಷ ಸೂಚನೆಗಳು...',
+    'booking.submit': 'ವಾಟ್ಸ್‌ಆಪ್‌ನಲ್ಲಿ ಬುಕ್ಕಿಂಗ್ ಕಳುಹಿಸಿ',
+    'booking.note': 'ಬಟನ್ ಒತ್ತಿದ ನಂತರ ನಿಮ್ಮ ಬುಕ್ಕಿಂಗ್ ವಿವರಗಳೊಂದಿಗೆ ವಾಟ್ಸ್‌ಆಪ್ ತೆರೆಯುತ್ತದೆ. ದೇವಾಲಯ ತಂಡವು 24 ಗಂಟೆಯೊಳಗೆ ದೃಢೀಕರಿಸುತ್ತದೆ.'
   }
 };
 
@@ -360,6 +501,16 @@ function applyLang(lang) {
       if (/<\/?(strong|em|p|br|span)/i.test(String(val))) el.innerHTML = val;
       else el.textContent = val;
     }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const val = i18n[lang]?.[key];
+    if (val !== undefined) el.setAttribute('placeholder', val);
+  });
+  document.querySelectorAll('[data-i18n-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-label');
+    const val = i18n[lang]?.[key];
+    if (val !== undefined) el.setAttribute('label', val);
   });
   document.querySelectorAll('[data-i18n-alt]').forEach(el => {
     const key = el.getAttribute('data-i18n-alt');
